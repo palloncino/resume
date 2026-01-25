@@ -4,72 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Antonio Guiotto - Web Developer</title>
-    <!-- Meta Viewport Tag for Mobile Responsiveness -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 100% privacy-first analytics -->
     <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
     <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""
             referrerpolicy="no-referrer-when-downgrade" /></noscript>
-    <!-- Google Fonts Preconnect -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Comfortaa:wght@300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Lexend:wght@100..900&family=Lobster&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Pacifico&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Tailwind CSS configuration
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Helvetica', 'sans-serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
                     },
+                    colors: {
+                        surface: '#1A1A1A',
+                        'surface-hover': '#242424',
+                        border: 'rgba(255, 255, 255, 0.08)',
+                    }
                 },
             },
         };
     </script>
-    <!-- Custom Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Helvetica:wght@400;700&display=swap" rel="stylesheet">
     <!-- Swiper CSS CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <style>
         body {
-            font-family: 'Helvetica', sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Print Styles */
         @media print {
-            @page {
-                size: A4;
-                margin: 20mm;
-            }
-
-            nav,
-            footer,
-            .no-print {
-                display: none;
-            }
-
-            .container {
-                width: 100%;
-                max-width: 1000px !important;
-                margin: 0;
-                padding: 0;
-            }
-
-            img {
-                max-width: 100%;
-                height: auto;
-            }
-
-            a {
-                color: #000;
-                text-decoration: none;
-            }
+            @page { size: A4; margin: 20mm; }
+            nav, footer, .no-print { display: none; }
+            .container { width: 100%; max-width: 1000px !important; margin: 0; padding: 0; }
+            img { max-width: 100%; height: auto; }
+            a { color: #000; text-decoration: none; }
         }
 
         .instaplug-widget-wrapper .post-footer,
@@ -81,27 +58,58 @@
             display: none !important;
         }
 
-        .instaplug-widget-wrapper .user-full-name span {
-            color: white!important;
+        .instaplug-widget-wrapper .user-full-name span { color: white!important; }
+        .instaplug-widget-wrapper .rounded-s { border: 1px solid white; }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1A1A1A; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #444; }
+
+        /* Skill tags */
+        .skill-tag {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(99, 102, 241, 0.15);
+            color: #818CF8;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 4px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
         }
-        .instaplug-widget-wrapper .rounded-s {
-            border: 1px solid white;
+
+        /* Section card */
+        .section-card {
+            background: #1A1A1A;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
         }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Experience item */
+        .exp-item {
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .exp-item:last-child { border-bottom: none; }
     </style>
     <!-- Theme Initialization Script -->
     <script>
-        if (
-            localStorage.getItem('color-theme') === 'dark' ||
-            (!('color-theme' in localStorage) &&
-                window.matchMedia('(prefers-color-scheme: dark)').matches)
-        ) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
+        document.documentElement.classList.add('dark');
     </script>
     <!-- Instaplug Script -->
-
     <script async src="https://app.instaplug.app/platform/instaplug.js" onload='
     window.renderApp({
     "containerId": "7e1d7260-3f22-437d-8d2c-46771c2c3662",
@@ -116,221 +124,178 @@
     '></script>
 </head>
 
-<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-    <!-- Navigation Bar (Sticky and Responsive) -->
-    <nav class="sticky top-0 z-50 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 no-print">
-        <div class="container mx-auto flex items-center justify-between px-4 py-4">
-            <a href="#" class="text-2xl font-bold">Antonio Guiotto</a>
-            <button id="nav-toggle" class="block md:hidden focus:outline-none">
-                <!-- Hamburger Icon -->
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                    </path>
+<body class="bg-[#0F0F0F] text-gray-100">
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-[#0F0F0F]/90 backdrop-blur-lg border-b border-white/5 no-print">
+        <div class="container mx-auto flex items-center justify-between px-4 py-3">
+            <a href="./index.html" class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
-            </button>
-            <div id="nav-menu" class="hidden md:flex items-center space-x-6">
-                <a href="#profile" class="hover:text-teal-600 dark:hover:text-teal-400">Profile</a>
-                <a href="#skills" class="hover:text-teal-600 dark:hover:text-teal-400">Skills</a>
-                <a href="#projects" class="hover:text-teal-600 dark:hover:text-teal-400">Projects</a>
-                <a href="#experience" class="hover:text-teal-600 dark:hover:text-teal-400">Experience</a>
-                <a href="#pricing" class="hover:text-teal-600 dark:hover:text-teal-400">Pricing</a>
-                <a href="#contact" class="hover:text-teal-600 dark:hover:text-teal-400">Contact</a>
-                <!-- Theme Toggle Button -->
-                <button id="theme-toggle" class="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
-                    <!-- Dark Mode Icon -->
-                    <svg id="theme-toggle-dark-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M17.293 13.293a8 8 0 01-10.586 0 8 8 0 0110.586 0z"></path>
-                    </svg>
-                    <!-- Light Mode Icon -->
-                    <svg id="theme-toggle-light-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M12 2a.75.75 0 01.75.75v1.26a.75.75 0 01-1.5 0V2.75A.75.75 0 0112 2zm5.303 1.974a.75.75 0 011.06 1.06l-.892.892a.75.75 0 01-1.06-1.06l.892-.892zM21 11.25a.75.75 0 010 1.5h-1.26a.75.75 0 010-1.5H21zM18.303 18.303a.75.75 0 01-1.06 0l-.892-.892a.75.75 0 111.06-1.06l.892.892a.75.75 0 010 1.06zM12 21a.75.75 0 01-.75-.75v-1.26a.75.75 0 011.5 0v1.26A.75.75 0 0112 21zm-5.303-1.974a.75.75 0 01-1.06-1.06l.892-.892a.75.75 0 111.06 1.06l-.892.892zM2.75 12a.75.75 0 01.75-.75h1.26a.75.75 0 010 1.5H3.5a.75.75 0 01-.75-.75zM5.697 5.697a.75.75 0 011.06 0l.892.892a.75.75 0 11-1.06 1.06l-.892-.892a.75.75 0 010-1.06z">
-                        </path>
-                        <path d="M12 16.25a4.25 4.25 0 100-8.5 4.25 4.25 0 000 8.5z"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
-            <a href="#profile" class="block py-2 hover:text-teal-600 dark:hover:text-teal-400">Profile</a>
-            <a href="#skills" class="block py-2 hover:text-teal-600 dark:hover:text-teal-400">Skills</a>
-            <a href="#projects" class="block py-2 hover:text-teal-600 dark:hover:text-teal-400">Projects</a>
-            <a href="#experience" class="block py-2 hover:text-teal-600 dark:hover:text-teal-400">Experience</a>
-            <a href="#pricing" class="block py-2 hover:text-teal-600 dark:hover:text-teal-400">Pricing</a>
-            <a href="#contact" class="block py-2 hover:text-teal-600 dark:hover:text-teal-400">Contact</a>
+                <span class="text-sm">Back</span>
+            </a>
+            <span class="text-sm font-medium text-white">CV</span>
+            <div class="w-12"></div>
         </div>
     </nav>
 
     <!-- Header Section -->
-    <header class="container mx-auto flex flex-col items-center px-4 py-12">
-        <img class="w-32 h-32 md:w-48 md:h-48 rounded-full object-cover border-4 border-teal-500 shadow-lg dark:border-teal-400"
+    <header class="container mx-auto flex flex-col items-center px-4 py-16">
+        <img class="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover border-2 border-white/10 shadow-2xl"
             src="./me.jpeg" alt="Antonio Guiotto">
-        <h1 class="text-3xl md:text-5xl font-extrabold mt-6">Antonio Guiotto</h1>
-        <p class="text-lg md:text-xl mt-2 text-teal-600 dark:text-teal-400">Experienced Web Developer</p>
-        <p class="text-base md:text-lg mt-1">Barcelona | Date of Birth: 20/03/1995</p>
-        <div class="mt-4 flex flex-wrap justify-center space-x-4 md:space-x-6">
-            <a href="mailto:powerhydratoni@gmail.com" class="hover:text-teal-600 dark:hover:text-teal-400">Email</a>
+        <h1 class="text-3xl md:text-4xl font-bold mt-6 tracking-tight">Antonio Guiotto</h1>
+        <p class="text-lg mt-2 text-indigo-400 font-medium">Full-Stack Developer</p>
+        <p class="text-sm text-gray-500 mt-1">Malta / Remote</p>
+        <div class="mt-6 flex flex-wrap justify-center gap-3">
+            <a href="mailto:powerhydratoni@gmail.com" 
+               class="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-full text-sm text-gray-300 transition-colors">
+                Email
+            </a>
             <a href="https://www.linkedin.com/in/antonioguiotto"
-                class="hover:text-teal-600 dark:hover:text-teal-400">LinkedIn</a>
-            <a href="https://github.com/palloncino" class="hover:text-teal-600 dark:hover:text-teal-400">GitHub</a>
+               class="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-full text-sm text-gray-300 transition-colors">
+                LinkedIn
+            </a>
+            <a href="https://github.com/palloncino" 
+               class="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-full text-sm text-gray-300 transition-colors">
+                GitHub
+            </a>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="py-12">
+    <main class="py-8">
         <!-- Profile Summary -->
-        <section id="profile" class="container mx-auto px-4 mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold border-b-2 border-teal-500 pb-2 mb-6 dark:border-teal-400">Profile
-            </h2>
-            <p class="leading-relaxed text-base md:text-lg">
-                Experienced Software Developer specializing in Front-end and Full-stack Technologies, with a passion for
-                delivering high-quality, efficient, and scalable solutions. Over the past year, I have independently
-                completed numerous complex projects, demonstrating strong problem-solving skills and a commitment to
-                excellence. Eager to contribute to a dynamic team to develop innovative software applications.
-            </p>
+        <section id="profile" class="container mx-auto px-4 mb-6">
+            <div class="section-card">
+                <h2 class="section-title">Profile</h2>
+                <p class="leading-relaxed text-gray-300">
+                    Full-stack developer with 6+ years of experience building high-quality web applications. 
+                    Specialized in React, TypeScript, and Node.js ecosystems. Strong track record of delivering 
+                    complex projects independently and within teams. Passionate about clean code, user experience, 
+                    and scalable architecture.
+                </p>
+            </div>
         </section>
 
         <!-- Skills -->
-        <section id="skills" class="container mx-auto px-4 mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold border-b-2 border-teal-500 pb-2 mb-6 dark:border-teal-400">Skills
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-xl md:text-2xl font-semibold mb-4">Languages & Frameworks</h3>
-                    <ul class="list-disc list-inside space-y-2 text-base md:text-lg">
-                        <li>JavaScript / TypeScript</li>
-                        <li>Python</li>
-                        <li>PHP</li>
-                        <li>HTML / CSS / SASS</li>
-                        <li>Node.js</li>
-                        <li>React / React Native</li>
-                        <li>Angular</li>
-                        <li>WordPress</li>
-                    </ul>
+        <section id="skills" class="container mx-auto px-4 mb-6">
+            <div class="section-card">
+                <h2 class="section-title">Skills</h2>
+                
+                <div class="mb-6">
+                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Languages & Frameworks</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">React Native</span>
+                        <span class="skill-tag">Angular</span>
+                        <span class="skill-tag">Laravel</span>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="text-xl md:text-2xl font-semibold mb-4">Tools & Technologies</h3>
-                    <ul class="list-disc list-inside space-y-2 text-base md:text-lg">
-                        <li>Git (GitHub, GitLab, Bitbucket)</li>
-                        <li>AWS / Azure</li>
-                        <li>CLI Command-line Interface</li>
-                        <li>Atlassian Suite</li>
-                        <li>Adobe Suite</li>
-                        <li>Figma</li>
-                        <li>2D & 3D Animations (Three.js, Canvas)</li>
-                    </ul>
+
+                <div class="mb-6">
+                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools & Infrastructure</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag" style="background: rgba(236, 72, 153, 0.15); color: #F472B6; border-color: rgba(236, 72, 153, 0.2);">Git</span>
+                        <span class="skill-tag" style="background: rgba(236, 72, 153, 0.15); color: #F472B6; border-color: rgba(236, 72, 153, 0.2);">AWS</span>
+                        <span class="skill-tag" style="background: rgba(236, 72, 153, 0.15); color: #F472B6; border-color: rgba(236, 72, 153, 0.2);">Docker</span>
+                        <span class="skill-tag" style="background: rgba(236, 72, 153, 0.15); color: #F472B6; border-color: rgba(236, 72, 153, 0.2);">Linux VPS</span>
+                        <span class="skill-tag" style="background: rgba(236, 72, 153, 0.15); color: #F472B6; border-color: rgba(236, 72, 153, 0.2);">CI/CD</span>
+                        <span class="skill-tag" style="background: rgba(236, 72, 153, 0.15); color: #F472B6; border-color: rgba(236, 72, 153, 0.2);">MQTT</span>
+                    </div>
                 </div>
+
                 <div>
-                    <h3 class="text-xl md:text-2xl font-semibold mb-4">UX/UI Design Expertise</h3>
-                    <ul class="list-disc list-inside space-y-2 text-base md:text-lg">
-                        <li>Figma Mastery</li>
-                        <li>Appealing UI Creation</li>
-                        <li>User-centric Designs</li>
-                        <li>Adobe Creative Suite</li>
-                        <li>Inkscape</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl md:text-2xl font-semibold mb-4">Additional Skills</h3>
-                    <ul class="list-disc list-inside space-y-2 text-base md:text-lg">
-                        <li>Software Architecture</li>
-                        <li>Design Patterns</li>
-                        <li>Network Management</li>
-                        <li>Video Streaming Technologies</li>
-                        <li>Database Management</li>
-                    </ul>
+                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Design & Other</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag" style="background: rgba(34, 197, 94, 0.15); color: #4ADE80; border-color: rgba(34, 197, 94, 0.2);">Figma</span>
+                        <span class="skill-tag" style="background: rgba(34, 197, 94, 0.15); color: #4ADE80; border-color: rgba(34, 197, 94, 0.2);">UI/UX</span>
+                        <span class="skill-tag" style="background: rgba(34, 197, 94, 0.15); color: #4ADE80; border-color: rgba(34, 197, 94, 0.2);">Three.js</span>
+                        <span class="skill-tag" style="background: rgba(34, 197, 94, 0.15); color: #4ADE80; border-color: rgba(34, 197, 94, 0.2);">Adobe Suite</span>
+                        <span class="skill-tag" style="background: rgba(34, 197, 94, 0.15); color: #4ADE80; border-color: rgba(34, 197, 94, 0.2);">SQL/NoSQL</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Notable Projects with Swiper -->
-        <section id="projects" class="container mx-auto px-4 mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold border-b-2 border-teal-500 pb-2 mb-6 dark:border-teal-400">
-                Notable Projects
-            </h2>
-            <!-- Swiper Container for Projects -->
-            <div class="swiper-container projects-swiper overflow-hidden">
-                <div class="swiper-wrapper">
-                    <!-- Project Slides will be injected here -->
+        <section id="projects" class="container mx-auto px-4 mb-6">
+            <div class="section-card">
+                <h2 class="section-title">Notable Projects</h2>
+                <!-- Swiper Container for Projects -->
+                <div class="swiper-container projects-swiper overflow-hidden rounded-lg">
+                    <div class="swiper-wrapper">
+                        <!-- Project Slides will be injected here -->
+                    </div>
+                    <!-- Pagination for Projects Swiper -->
+                    <div class="swiper-pagination mt-4"></div>
                 </div>
-                <!-- Pagination for Projects Swiper -->
-                <div class="swiper-pagination"></div>
             </div>
         </section>
 
         <!-- Professional Experience -->
-        <section id="experience" class="container mx-auto px-4 mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold border-b-2 border-teal-500 pb-2 mb-6 dark:border-teal-400">
-                Professional Experience</h2>
-            <!-- Experience 1 -->
-            <div class="mb-8">
-                <h3 class="text-xl md:text-2xl font-semibold">Freelancer, Antonio Guiotto, Italy</h3>
-                <p class="text-teal-600 dark:text-teal-400"><em>August 2023 — Present</em></p>
-                <ul class="list-disc list-inside space-y-2 mt-4 text-base md:text-lg">
-                    <li>Delivered complex projects independently, managing all phases from conception to deployment.
-                    </li>
-                    <li>Improved UI/UX for online businesses using advanced visual and technical skills.</li>
-                    <li>Developed custom WordPress websites with unique features tailored to client needs.</li>
-                    <li>Created sophisticated 2D and 3D web animations to enhance user engagement.</li>
-                </ul>
-            </div>
-            <!-- Experience 2 -->
-            <div class="mb-8">
-                <h3 class="text-xl md:text-2xl font-semibold">Software Engineer, Ovalx, Turin</h3>
-                <p class="text-teal-600 dark:text-teal-400"><em>April 2022 — February 2023</em></p>
-                <ul class="list-disc list-inside space-y-2 mt-4 text-base md:text-lg">
-                    <li>Created modern and secure web applications with React and TypeScript.</li>
-                    <li>Developed new features for onboarding websites, including a comprehensive Profile panel.</li>
-                    <li>Managed multiple CI/CD pipelines with Bitbucket and GitLab.</li>
-                    <li>Collaborated with designers and QA team to ensure high-quality deliverables.</li>
-                </ul>
-            </div>
-            <!-- Experience 3 -->
-            <div class="mb-8">
-                <h3 class="text-xl md:text-2xl font-semibold">Front End Developer, Sky, Remote</h3>
-                <p class="text-teal-600 dark:text-teal-400"><em>February 2020 — August 2021</em></p>
-                <ul class="list-disc list-inside space-y-2 mt-4 text-base md:text-lg">
-                    <li>Developed and maintained NOWTV application software for console browsers.</li>
-                    <li>Created new features tailored to the Italian market.</li>
-                    <li>Gained experience in video streaming technologies.</li>
-                    <li>Collaborated with the Automation Test team to ensure high-quality deliverables.</li>
-                </ul>
-            </div>
-            <!-- Experience 4 -->
-            <div class="mb-8">
-                <h3 class="text-xl md:text-2xl font-semibold">Front End Developer, RED Software Systems, Milan</h3>
-                <p class="text-teal-600 dark:text-teal-400"><em>December 2018 — January 2020</em></p>
-                <ul class="list-disc list-inside space-y-2 mt-4 text-base md:text-lg">
-                    <li>Built e-commerce front-end platforms using Polymer.js following Agile methodologies.</li>
-                    <li>Focused on high-quality code and strict procedures.</li>
-                    <li>Worked with pure JavaScript, creating internal modules and design systems.</li>
-                    <li>Collaborated effectively within a team, maintaining high code standards.</li>
-                </ul>
+        <section id="experience" class="container mx-auto px-4 mb-6">
+            <div class="section-card">
+                <h2 class="section-title">Experience</h2>
+                
+                <div class="exp-item">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-semibold text-white">Freelance Developer</h3>
+                        <span class="text-xs text-indigo-400 bg-indigo-400/10 px-2 py-1 rounded">2023 — Present</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-2">Remote / Malta</p>
+                    <p class="text-sm text-gray-400">Full-stack development for clients including Gucci, Sermixer, and Satifiltri. End-to-end project delivery from conception to deployment.</p>
+                </div>
+
+                <div class="exp-item">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-semibold text-white">Software Engineer</h3>
+                        <span class="text-xs text-gray-500 bg-white/5 px-2 py-1 rounded">2022 — 2023</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-2">Ovalx, Turin</p>
+                    <p class="text-sm text-gray-400">React/TypeScript applications, CI/CD pipeline management, trading platform UI development.</p>
+                </div>
+
+                <div class="exp-item">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-semibold text-white">Front-End Developer</h3>
+                        <span class="text-xs text-gray-500 bg-white/5 px-2 py-1 rounded">2020 — 2021</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-2">Sky / NOWTV, Remote</p>
+                    <p class="text-sm text-gray-400">Console browser applications, video streaming technologies, cross-platform development.</p>
+                </div>
+
+                <div class="exp-item">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-semibold text-white">Front-End Developer</h3>
+                        <span class="text-xs text-gray-500 bg-white/5 px-2 py-1 rounded">2018 — 2020</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-2">RED Software Systems, Milan</p>
+                    <p class="text-sm text-gray-400">E-commerce platforms, Polymer.js, internal design systems and component libraries.</p>
+                </div>
             </div>
         </section>
 
-        <!-- Certifications -->
-        <section class="container mx-auto px-4 mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold border-b-2 border-teal-500 pb-2 mb-6 dark:border-teal-400">
-                Certifications & Achievements</h2>
-            <ul class="list-disc list-inside space-y-2 text-base md:text-lg">
-                <li>Youthpass</li>
-                <li>GitHub Achievements: YOLO, Pull Shark x2, Quickdraw</li>
-            </ul>
-        </section>
-
-        <!-- Hobbies -->
-        <section class="container mx-auto px-4 mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold border-b-2 border-teal-500 pb-2 mb-6 dark:border-teal-400">Hobbies
-                & Interests</h2>
-            <ul class="list-disc list-inside space-y-2 text-base md:text-lg">
-                <li>Art and Tattoos</li>
-                <li>Calisthenics and Sports</li>
-                <li>Psychology</li>
-                <li>Fluent in English and Spanish</li>
-                <li>Traveling and Cultural Exploration</li>
-            </ul>
+        <!-- About -->
+        <section class="container mx-auto px-4 mb-6">
+            <div class="section-card">
+                <h2 class="section-title">About</h2>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1.5 bg-white/5 rounded-full text-sm text-gray-400">English (Fluent)</span>
+                    <span class="px-3 py-1.5 bg-white/5 rounded-full text-sm text-gray-400">Spanish (Fluent)</span>
+                    <span class="px-3 py-1.5 bg-white/5 rounded-full text-sm text-gray-400">Italian (Native)</span>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1.5 bg-white/5 rounded-full text-sm text-gray-500">Art & Tattoos</span>
+                    <span class="px-3 py-1.5 bg-white/5 rounded-full text-sm text-gray-500">Calisthenics</span>
+                    <span class="px-3 py-1.5 bg-white/5 rounded-full text-sm text-gray-500">Travel</span>
+                    <span class="px-3 py-1.5 bg-white/5 rounded-full text-sm text-gray-500">Psychology</span>
+                </div>
+            </div>
         </section>
 
         <!-- GitHub & Open Source -->
@@ -340,28 +305,27 @@
                 white-space: nowrap;
                 font-family: monospace;
                 padding: 1rem;
-
                 border-radius: 5px;
                 max-width: 100%;
             }
         </style>
-        <section class="container mx-auto px-4 mb-12 overflow-x-hidden">
-            <h2 class="text-2xl md:text-3xl font-bold border-b-2 border-teal-500 pb-2 mb-6 dark:border-teal-400">GitHub
-                & Open Source</h2>
-            <div class="text-center">
+        <section class="container mx-auto px-4 mb-6 overflow-x-hidden">
+            <div class="section-card">
+                <h2 class="section-title">GitHub & Open Source</h2>
+                <div class="text-center">
                 <!-- GitHub Contribution Graph -->
-                <div class="mb-6">
-                    <h3 class="text-xl md:text-2xl font-semibold mb-4">GitHub Contribution Graph</h3>
-                    <img src="https://ghchart.rshah.org/gray/palloncino" alt="GitHub Contribution Graph of palloncino"
-                        class="mx-auto">
+                <div class="mb-8">
+                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-4">Contribution Graph</h3>
+                    <img src="https://ghchart.rshah.org/6366f1/palloncino" alt="GitHub Contribution Graph of palloncino"
+                        class="mx-auto w-full rounded-lg">
                 </div>
                 
                 <!-- GitHub Stats -->
-                <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-8">
-                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=palloncino&theme=radical&show_icons=true&hide_border=true&layout=compact"
-                        alt="Top Languages" class="max-w-md">
-                    <img style="transform: scale(.8)" src="https://github-readme-stats.vercel.app/api?username=palloncino&theme=radical&show_icons=true&hide_border=true"
-                        alt="GitHub Stats" class="max-w-md">
+                <div class="flex flex-col md:flex-row justify-center items-center gap-6">
+                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=palloncino&theme=tokyonight&show_icons=true&hide_border=true&layout=compact&bg_color=1A1A1A"
+                        alt="Top Languages" class="max-w-xs rounded-lg">
+                    <img src="https://github-readme-stats.vercel.app/api?username=palloncino&theme=tokyonight&show_icons=true&hide_border=true&bg_color=1A1A1A"
+                        alt="GitHub Stats" class="max-w-xs rounded-lg" style="transform: scale(0.85);">
                 </div>
 
                 <!-- Tech Badges -->
@@ -383,168 +347,122 @@
                         gap: 1rem;
                     }
                 </style>
-                <div class="mt-6 mb-4 flex flex-wrap justify-center items-center space-x-2 gap-2 whitespace-nowrap marquee">
+                <div class="mt-8 flex flex-wrap justify-center items-center gap-2 whitespace-nowrap marquee">
                     <div class="marquee-content">
                         <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black"
-                            alt="JavaScript" style="height: 2.4rem;">
+                            alt="JavaScript" style="height: 2rem;">
                         <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white"
-                            alt="TypeScript" style="height: 2.4rem;">
+                            alt="TypeScript" style="height: 2rem;">
                         <img src="https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white"
-                            alt="Node.js" style="height: 2.4rem;">
+                            alt="Node.js" style="height: 2rem;">
                         <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black"
-                            alt="React.js" style="height: 2.4rem;">
+                            alt="React.js" style="height: 2rem;">
                         <img src="https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white"
-                            alt="Angular" style="height: 2.4rem;">
+                            alt="Angular" style="height: 2rem;">
                         <img src="https://img.shields.io/badge/AWS-FF9900?style=flat&logo=amazon-aws&logoColor=white"
-                            alt="AWS" style="height: 2.4rem;">
+                            alt="AWS" style="height: 2rem;">
                         <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white"
-                            alt="Docker" style="height: 2.4rem;">
+                            alt="Docker" style="height: 2rem;">
                         <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white"
-                            alt="Python" style="height: 2.4rem;">
+                            alt="Python" style="height: 2rem;">
                         <img src="https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white" alt="PHP"
-                            style="height: 2.4rem;">
-                        <!-- Duplicate the content to create the illusion of infinite scrolling -->
+                            style="height: 2rem;">
+                        <!-- Duplicate for infinite scroll -->
                         <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black"
-                            alt="JavaScript" style="height: 2.4rem;">
+                            alt="JavaScript" style="height: 2rem;">
                         <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white"
-                            alt="TypeScript" style="height: 2.4rem;">
+                            alt="TypeScript" style="height: 2rem;">
                         <img src="https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white"
-                            alt="Node.js" style="height: 2.4rem;">
+                            alt="Node.js" style="height: 2rem;">
                         <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black"
-                            alt="React.js" style="height: 2.4rem;">
+                            alt="React.js" style="height: 2rem;">
                         <img src="https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white"
-                            alt="Angular" style="height: 2.4rem;">
+                            alt="Angular" style="height: 2rem;">
                         <img src="https://img.shields.io/badge/AWS-FF9900?style=flat&logo=amazon-aws&logoColor=white"
-                            alt="AWS" style="height: 2.4rem;">
+                            alt="AWS" style="height: 2rem;">
                         <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white"
-                            alt="Docker" style="height: 2.4rem;">
+                            alt="Docker" style="height: 2rem;">
                         <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white"
-                            alt="Python" style="height: 2.4rem;">
+                            alt="Python" style="height: 2rem;">
                         <img src="https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white" alt="PHP"
-                            style="height: 2.4rem;">
+                            style="height: 2rem;">
                     </div>
+                </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="container mx-auto px-4 mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold border-b-2 border-teal-500 pb-2 mb-6 dark:border-teal-400">Get in
-                Touch</h2>
-            <p class="leading-relaxed text-base md:text-lg mb-6">
-                I'm currently open to new opportunities and collaborations. Feel free to reach out!
-            </p>
-            <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
-                <a href="mailto:powerhydratoni@gmail.com"
-                    class="block text-center bg-teal-500 text-white px-4 py-2 rounded-md font-semibold hover:bg-teal-600 dark:bg-teal-400 dark:hover:bg-teal-500">Email
-                    Me</a>
-                <a href="https://www.linkedin.com/in/antonioguiotto"
-                    class="block text-center bg-teal-500 text-white px-4 py-2 rounded-md font-semibold hover:bg-teal-600 dark:bg-teal-400 dark:hover:bg-teal-500">Connect
-                    on LinkedIn</a>
+        <section id="contact" class="container mx-auto px-4 mb-6">
+            <div class="section-card">
+                <h2 class="section-title">Get in Touch</h2>
+                <p class="text-gray-400 mb-6">
+                    Open to new opportunities and collaborations.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="mailto:powerhydratoni@gmail.com"
+                       class="flex-1 text-center bg-indigo-500 hover:bg-indigo-600 text-white px-5 py-3 rounded-lg font-medium transition-colors">
+                        Email Me
+                    </a>
+                    <a href="https://www.linkedin.com/in/antonioguiotto"
+                       class="flex-1 text-center bg-white/5 hover:bg-white/10 text-white px-5 py-3 rounded-lg font-medium transition-colors">
+                        LinkedIn
+                    </a>
+                </div>
             </div>
         </section>
 
         <!-- Instaplug Widget Section -->
-        <section class="container mx-auto px-4 mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold border-b-2 border-teal-500 pb-2 mb-6 dark:border-teal-400">
-                Instagram Feed</h2>
-            <div id="7e1d7260-3f22-437d-8d2c-46771c2c3662"></div>
+        <section class="container mx-auto px-4 mb-6">
+            <div class="section-card">
+                <h2 class="section-title">Instagram</h2>
+                <div id="7e1d7260-3f22-437d-8d2c-46771c2c3662"></div>
+            </div>
         </section>
 
         <!-- Collaboration & Rates Section -->
-        <section id="pricing" class="container mx-auto px-4 mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold border-b-2 border-teal-500 pb-2 mb-6 dark:border-teal-400">
-                Collaboration Plan & Hourly Rates</h2>
+        <section id="pricing" class="container mx-auto px-4 mb-6">
+            <div class="section-card">
+                <h2 class="section-title">Rates</h2>
 
-            <div class="space-y-6">
-                <div>
-                    <h3 class="text-xl md:text-2xl font-semibold mb-2">Base Information</h3>
-                    <ul class="list-disc list-inside space-y-2 text-base md:text-lg">
-                        <li>Base Rate: €36/hour</li>
-                    </ul>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div class="bg-white/5 rounded-xl p-4 text-center">
+                        <p class="text-2xl font-bold text-white">€36</p>
+                        <p class="text-sm text-gray-500">per hour</p>
+                    </div>
+                    <div class="bg-white/5 rounded-xl p-4 text-center">
+                        <p class="text-2xl font-bold text-white">€216</p>
+                        <p class="text-sm text-gray-500">per day</p>
+                    </div>
+                    <div class="bg-white/5 rounded-xl p-4 text-center">
+                        <p class="text-2xl font-bold text-white">€1.5k</p>
+                        <p class="text-sm text-gray-500">per week</p>
+                    </div>
+                    <div class="bg-white/5 rounded-xl p-4 text-center">
+                        <p class="text-2xl font-bold text-white">€6k</p>
+                        <p class="text-sm text-gray-500">per month</p>
+                    </div>
                 </div>
 
-                <p class="text-base md:text-lg">
-                    I offer a flexible collaboration plan with a constant, unchanged rate, regardless of the employment
-                    duration. No additional interest or vacation accrual is included.
-                </p>
-
-                <div>
-                    <h3 class="text-xl md:text-2xl font-semibold mb-2">Rate Details</h3>
-                    <ul class="list-disc list-inside space-y-2 text-base md:text-lg">
-                        <li>Hourly Rate: €36/hour</li>
-                        <li>Daily Rate (6 hours): €216</li>
-                        <li>Weekly Rate (42 hours): €1,512</li>
-                        <li>Monthly Rate (4 weeks, 168 hours): €6,048</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="text-xl md:text-2xl font-semibold mb-2">Additional Terms</h3>
-                    <ul class="list-disc list-inside space-y-2 text-base md:text-lg">
-                        <li>Payment Terms: End of each month, invoiced based on actual hours worked</li>
-                        <li>Renewal: Contracts can be renewed or adapted based on new collaboration needs</li>
-                    </ul>
+                <div class="text-sm text-gray-500 space-y-2">
+                    <p>• Flexible collaboration with consistent rates</p>
+                    <p>• Monthly invoicing based on actual hours</p>
+                    <p>• Contracts renewable based on project needs</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer (Will be hidden in print) -->
-    <footer class="bg-white border-t border-gray-200 py-6 no-print dark:bg-gray-800 dark:border-gray-700">
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-8 no-print">
         <div class="container mx-auto text-center">
-            <p class="text-gray-500 dark:text-gray-400">&copy; 2024 by Antonio Guiotto</p>
+            <p class="text-sm text-gray-600">2026 Antonio Guiotto</p>
         </div>
     </footer>
 
     <!-- Swiper JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <!-- Theme Toggle Script -->
     <script>
-        var themeToggleBtn = document.getElementById('theme-toggle');
-        var darkIcon = document.getElementById('theme-toggle-dark-icon');
-        var lightIcon = document.getElementById('theme-toggle-light-icon');
-
-        // Update icons based on the current theme
-        if (document.documentElement.classList.contains('dark')) {
-            lightIcon.classList.remove('hidden');
-        } else {
-            darkIcon.classList.remove('hidden');
-        }
-
-        themeToggleBtn.addEventListener('click', function () {
-            // Toggle icons inside the button
-            darkIcon.classList.toggle('hidden');
-            lightIcon.classList.toggle('hidden');
-
-            // Toggle theme and save preference in localStorage
-            if (localStorage.getItem('color-theme')) {
-                if (localStorage.getItem('color-theme') === 'light') {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('color-theme', 'dark');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('color-theme', 'light');
-                }
-            } else {
-                if (document.documentElement.classList.contains('dark')) {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('color-theme', 'light');
-                } else {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('color-theme', 'dark');
-                }
-            }
-        });
-
-        // Navigation Toggle Script
-        const navToggle = document.getElementById('nav-toggle');
-        const navMenu = document.getElementById('nav-menu');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        navToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
         // Projects Data
         var projectsData = [];
 
@@ -607,29 +525,24 @@
                 projectSlide.className = 'swiper-slide w-full';
 
                 var projectContent = `
-            <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <div class="bg-[#242424] p-5 rounded-xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">
                     <!-- Project Description -->
                     <div>
-                        <h3 class="text-xl md:text-2xl font-semibold mb-2">${project.title}</h3>
-                        <p class="text-teal-600 mb-2 dark:text-teal-400">
-                            <strong>Technologies:</strong> ${project.technologies}
-                        </p>
-                        <p class="leading-relaxed text-base md:text-lg">
-                            ${project.description}
-                        </p>
+                        <h3 class="text-lg font-semibold mb-2 text-white">${project.title}</h3>
+                        <p class="text-sm text-indigo-400 mb-3">${project.technologies}</p>
+                        <p class="text-sm text-gray-400 leading-relaxed">${project.description}</p>
                     </div>
                     <!-- Swiper Slider for Images -->
                     <div>
-                        <div class="swiper-container images-swiper overflow-hidden">
+                        <div class="swiper-container images-swiper overflow-hidden rounded-lg">
                             <div class="swiper-wrapper">
                                 ${project.images.map(image => `
                                     <div class="swiper-slide w-full">
-                                        <img src="${image}" alt="Project Image" class="w-full h-auto object-cover rounded-md">
+                                        <img src="${image}" alt="Project Image" class="w-full h-auto object-cover rounded-lg">
                                     </div>
                                 `).join('')}
                             </div>
-                            <!-- Pagination -->
                             <div class="swiper-pagination"></div>
                         </div>
                     </div>

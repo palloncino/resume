@@ -4,25 +4,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Connect With Me — 2025 Style</title>
+  <title>Antonio Guiotto — 2026</title>
 
-  <!-- Google Fonts: Using Roboto for a cleaner, modern look -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <!-- Additional Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Comfortaa:wght@300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Lexend:wght@100..900&family=Lobster&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Pacifico&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-    rel="stylesheet" />
-
   <style>
-    /***********************************************
-     * 1. BASIC RESET & GLOBAL STYLES
-     ***********************************************/
+    :root {
+      /* Accent Colors */
+      --personal: #E8725A;
+      --personal-light: rgba(232, 114, 90, 0.12);
+      --professional: #4A90D9;
+      --professional-light: rgba(74, 144, 217, 0.12);
+      --buildfast: #29D366;
+      --buildfast-light: rgba(41, 211, 102, 0.12);
+      --neutral: #6B7280;
+      --neutral-light: rgba(107, 114, 128, 0.12);
+      
+      /* Base Colors */
+      --bg: #0F0F0F;
+      --surface: #1A1A1A;
+      --surface-hover: #242424;
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #FFFFFF;
+      --text-secondary: rgba(255, 255, 255, 0.6);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -34,601 +46,395 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      padding: 20px;
-      font-family: 'Roboto', sans-serif;
-      color: #fff;
-      background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 50%, #252526 100%);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-    }
-
-    @keyframes gradientBG {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
+      padding: 24px 16px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
     }
 
     .container {
       width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    /***********************************************
-     * 2. RENTAL SECTION
-     ***********************************************/
-    .negotiable {
-      font-size: 0.8rem;
-      opacity: 0.9;
-      font-style: italic;
-      margin-left: 8px;
-    }
-
-    .rental-button {
+      max-width: 450px;
       display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 10px 16px;
-      background: rgba(255, 255, 255, 0.2);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      position: relative;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: transform 0.3s ease, background 0.3s ease;
+      flex-direction: column;
+      gap: 16px;
     }
 
-    .rental-button:hover {
-      transform: translateY(-2px);
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    .rental-button:active {
-      transform: translateY(0);
-    }
-
-    .rental-button i {
-      margin-right: 8px;
-      font-size: 18px;
-      width: 20px;
-      text-align: center;
-    }
-
-    .rental-button .main-text {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .rental-button .negotiable {
-      font-size: 0.8rem;
-      opacity: 0.9;
-      font-style: italic;
-      margin-left: 8px;
-    }
-
-    .rental-section h4 {
-      margin: 0 0 10px;
-      font-size: 1.2rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: #fff;
-      opacity: 0.95;
-    }
-
-    .subtitle {
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 1px;
-      opacity: 0.8;
-      display: block;
-      margin-top: 5px;
-    }
-
-    .rental-details {
-      font-size: 0.95rem;
-      opacity: 0.9;
-      text-align: center;
-      margin: 10px 0;
-      line-height: 1.5;
-    }
-
-    .qr-note {
-      font-size: 0.8rem;
-      opacity: 0.8;
-      text-align: center;
-      margin-top: 8px;
-      font-style: italic;
-    }
-
-    .location-label {
-      position: absolute;
-      top: -15px;
-      right: 20px;
-      background: rgba(255, 255, 255, 0.2);
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .location-label i {
-      font-size: 1rem;
-    }
-
-    /***********************************************
-     * 3. PROFILE SECTION
-     ***********************************************/
+    /* Profile Header */
     .profile {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 30px;
+      padding: 32px 24px;
       text-align: center;
     }
 
     .profile-pic {
-      width: 100px;
-      height: 100px;
+      width: 88px;
+      height: 88px;
       border-radius: 50%;
-      border: 3px solid rgba(255, 255, 255, 0.2);
-      margin-bottom: 15px;
+      border: 2px solid var(--border);
+      margin-bottom: 16px;
       object-fit: cover;
     }
 
-    .profile h2 {
+    .profile h1 {
       font-size: 1.5rem;
-      font-weight: 500;
-      margin: 0;
-      color: #fff;
+      font-weight: 600;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
     }
 
-    /***********************************************
-     * 4. CONTAINER WITH GLASSMORPHIC EFFECT
-     ***********************************************/
-    .social-buttons {
-      width: 100%;
-      padding: 25px;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-radius: 12px;
+    .profile p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    /* Section Groups */
+    .section {
+      background: var(--surface);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header .icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .section-header h2 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .section-content {
+      padding: 8px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      position: relative;
+      gap: 4px;
     }
 
-    /***********************************************
-     * 5. TITLES & DIVIDERS
-     ***********************************************/
-    h4 {
-      margin: 4px 0 2px;
+    /* Section Accent Colors */
+    .section.personal .section-header .icon {
+      background: var(--personal-light);
+      color: var(--personal);
+    }
+    .section.personal .section-header h2 {
+      color: var(--personal);
+    }
+
+    .section.professional .section-header .icon {
+      background: var(--professional-light);
+      color: var(--professional);
+    }
+    .section.professional .section-header h2 {
+      color: var(--professional);
+    }
+
+    .section.buildfast .section-header .icon {
+      background: var(--buildfast-light);
+      color: var(--buildfast);
+    }
+    .section.buildfast .section-header h2 {
+      color: var(--buildfast);
+    }
+
+    .section.neutral .section-header .icon {
+      background: var(--neutral-light);
+      color: var(--neutral);
+    }
+    .section.neutral .section-header h2 {
+      color: var(--neutral);
+    }
+
+    /* Link Buttons */
+    .link-btn {
+      display: flex;
+      align-items: center;
+      padding: 12px 14px;
+      background: transparent;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 10px;
       font-size: 0.9rem;
       font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: #fff;
-      opacity: 0.9;
-      position: relative;
-    }
-
-    hr {
-      border: none;
-      height: 1px;
-      margin: 0 0 6px;
-      background: rgba(255, 255, 255, 0.4);
-    }
-
-    /***********************************************
-     * 6. SOCIAL BUTTON STYLES – NO BOX SHADOWS
-     ***********************************************/
-    .social-button {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 10px 16px;
-      background: rgba(255, 255, 255, 0.2);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 500;
       cursor: pointer;
-      position: relative;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-
-      transition: transform 0.3s ease, background 0.3s ease;
+      transition: background 0.15s ease;
     }
 
-    .social-button:hover {
-      transform: translateY(-2px);
-      background: rgba(255, 255, 255, 0.3);
+    .link-btn:hover {
+      background: var(--surface-hover);
     }
 
-    .social-button:active {
-      transform: translateY(0);
-    }
-
-    .social-button i {
-      margin-right: 8px;
-      font-size: 18px;
+    .link-btn i {
       width: 20px;
-      text-align: center;
-    }
-
-    .instagram i,
-    .instagram2 i,
-    .linkedin i,
-    .whatsapp i,
-    .cv i {
-      color: #ffffffcc;
-    }
-
-    /***********************************************
-     * 7. RESPONSIVE
-     ***********************************************/
-    @media (max-width: 768px) {
-      .social-buttons {
-        width: 100%;
-        padding: 12px;
-        gap: 8px;
-      }
-
-      .social-button {
-        width: 100%;
-        padding: 12px 16px;
-        margin: 4px 0;
-      }
-
-      .rental-button {
-        width: 100%;
-        min-height: 90px;
-        padding: 14px 16px;
-        margin: 4px 0;
-      }
-
-      .rental-button .main-text {
-        font-size: 15px;
-      }
-
-      .rental-button .negotiable {
-        font-size: 0.8rem;
-        margin-left: 28px;
-      }
-
-      .opportunities-button {
-        width: 100%;
-        min-height: 90px;
-        padding: 14px 16px;
-        margin: 4px 0;
-      }
-
-      .opportunities-button .main-text {
-        font-size: 15px;
-      }
-    }
-
-    .sale-label,
-    .price-tag {
-      display: none;
-    }
-
-    .opportunities-button {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 16px 20px;
-      min-height: 80px;
-      background: rgba(76, 175, 80, 0.3);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      position: relative;
-      border: 1px solid rgba(76, 175, 80, 0.4);
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .opportunities-button:hover {
-      transform: translateY(-3px);
-      background: rgba(76, 175, 80, 0.4);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .opportunities-button .main-text {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 4px;
-    }
-
-    .opportunities-button i {
       margin-right: 12px;
-      font-size: 24px;
-      width: 28px;
+      font-size: 16px;
       text-align: center;
-      color: #4CAF50;
+      opacity: 0.7;
     }
 
-    /* QR Codes Section Styles */
-    .qr-codes-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      width: 100%;
-      margin: 0;
-      padding: 0;
+    .link-btn .meta {
+      margin-left: auto;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      font-weight: 400;
     }
 
-    .qr-code-item {
-      flex: 0 0 45%;
-      text-align: center;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 15px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
+    /* Accent Link Styles */
+    .section.personal .link-btn:hover { background: var(--personal-light); }
+    .section.professional .link-btn:hover { background: var(--professional-light); }
+    .section.buildfast .link-btn:hover { background: var(--buildfast-light); }
+    .section.neutral .link-btn:hover { background: var(--neutral-light); }
 
-    .qr-code-item h5 {
-      margin: 0 0 10px 0;
-      font-size: 1rem;
-      font-weight: 500;
-      color: #fff;
-      opacity: 0.9;
-    }
-
-    .qr-code {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
-    @media (max-width: 768px) {
-      .qr-codes-container {
-        flex-direction: column;
-      }
-
-      .qr-code-item {
-        flex: 0 0 100%;
-      }
-    }
-
-    /* Instagram Button Styles */
-    .instagram {
+    /* Special Buttons */
+    .link-btn.instagram-gradient {
       background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-      border: none !important;
-      position: relative;
-      overflow: hidden;
     }
-
-    .instagram::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(255, 255, 255, 0.1);
-      opacity: 0;
-      transition: opacity 0.3s ease;
+    .link-btn.instagram-gradient:hover {
+      opacity: 0.9;
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     }
-
-    .instagram:hover::before {
+    .link-btn.instagram-gradient i {
       opacity: 1;
+      color: #fff;
     }
 
-    .instagram i {
-      color: #fff !important;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    .link-btn.instagram-dark {
+      background: #000;
+      border: 1px solid #333;
     }
-
-    .instagram:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(220, 39, 67, 0.3);
+    .link-btn.instagram-dark:hover {
+      background: #111;
     }
-
-    .instagram:active {
-      transform: translateY(0);
-    }
-
-    .instagram-dark {
-      background: #000000 !important;
-      border: 2px solid transparent !important;
-      position: relative;
-      overflow: hidden;
-      background-image: linear-gradient(#000000, #000000), 
-                       linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
-      background-origin: border-box !important;
-      background-clip: padding-box, border-box !important;
-    }
-
-    .instagram-dark::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(255, 255, 255, 0.1);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .instagram-dark:hover::before {
-      opacity: 1;
-    }
-
-    .instagram-dark i {
+    .link-btn.instagram-dark i {
       background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
       -webkit-background-clip: text;
       background-clip: text;
-      color: transparent !important;
-      text-shadow: none;
-    }
-
-    .instagram-dark:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(220, 39, 67, 0.3);
-    }
-
-    .instagram-dark:active {
-      transform: translateY(0);
-    }
-
-    /* WhatsApp Button Styles */
-    .whatsapp {
-      background: #25D366;
-      border: none !important;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .whatsapp::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(255, 255, 255, 0.1);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .whatsapp:hover::before {
+      color: transparent;
       opacity: 1;
     }
 
-    .whatsapp i {
-      color: #fff !important;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    .link-btn.whatsapp {
+      background: #25D366;
+    }
+    .link-btn.whatsapp:hover {
+      background: #20bd5a;
+    }
+    .link-btn.whatsapp i {
+      opacity: 1;
+      color: #fff;
     }
 
-    .whatsapp:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    .link-btn.buildfast-accent {
+      background: var(--buildfast);
+    }
+    .link-btn.buildfast-accent:hover {
+      background: #24be5c;
+    }
+    .link-btn.buildfast-accent i {
+      opacity: 1;
+      color: #FFD700;
     }
 
-    .whatsapp:active {
-      transform: translateY(0);
+    .link-btn.linkedin {
+      background: #0A66C2;
+    }
+    .link-btn.linkedin:hover {
+      background: #0958a8;
+    }
+    .link-btn.linkedin i {
+      opacity: 1;
+      color: #fff;
+    }
+
+    /* QR Codes Grid */
+    .qr-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 8px;
+    }
+
+    .qr-item {
+      background: var(--surface-hover);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .qr-item h3 {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .qr-item img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 24px 0 8px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
     }
   </style>
 </head>
 
 <body>
-  <div class="social-buttons">
-    <!-- Profile Section -->
+  <div class="container">
+    <!-- Profile -->
     <div class="profile">
-      <img src="./me.jpeg" alt="My Profile Picture" class="profile-pic">
-      <h2>Antonio Guiotto</h2>
+      <img src="./me.jpeg" alt="Antonio Guiotto" class="profile-pic">
+      <h1>Antonio Guiotto</h1>
+      <p>Developer & Designer</p>
     </div>
-  </div>
 
-  <div class="social-buttons">
-    <h4>Contact</h4>
-    <a href="#" class="social-button whatsapp" data-url="https://wa.me/393474943221">
-      <i class="fab fa-whatsapp"></i>
-      WhatsApp
-    </a>
-  </div>
-
-  <!-- Instagram Section -->
-  <div class="social-buttons">
-    <h4>Instagram</h4>
-    <a href="#" class="social-button instagram" data-url="https://instagram.com/antonio_guiotto">
-      <i class="fab fa-instagram"></i>
-      Personal Profile
-    </a>
-    <a href="#" class="social-button instagram-dark" data-url="https://instagram.com/black_combat_design">
-      <i class="fab fa-instagram"></i>
-      Tattoo Designs
-    </a>
-  </div>
-
-  <!-- Instagram Section -->
-  <div class="social-buttons">
-    <h4>Professional</h4>
-    <a href="#" class="social-button linkedin" data-url="https://linkedin.com/in/antonioguiotto">
-      <i class="fab fa-linkedin"></i>
-      LinkedIn
-    </a>
-    <a href="#" class="social-button cv" id="cv-button">
-      <i class="fas fa-file-alt"></i>
-      Professional History
-    </a>
-    <a href="./media/cv-2025.pdf" class="social-button" download>
-      <i class="fas fa-download"></i>
-      Download CV
-    </a>
-  </div>
-
-  <div class="social-buttons">
-    <h4>Properties</h4>
-    <a href="apartment.html" class="social-button">
-      <i class="fas fa-home"></i>
-      Modern Apartment
-      <span class="negotiable">(450€/m, negotiable)</span>
-    </a>
-
-    <a href="storage.html" class="social-button">
-      <i class="fas fa-box"></i>
-      Storage Space
-      <span class="negotiable">(For Sale)</span>
-    </a>
-  </div>
-
-  <!-- Payment QR Codes Section -->
-  <div class="social-buttons">
-    <h4>Payment Methods</h4>
-    <div class="qr-codes-container">
-      <div class="qr-code-item">
-        <h5>Revolut</h5>
-        <img src="./media/revolut-qr.jpg" alt="Revolut QR Code" class="qr-code">
+    <!-- Personal -->
+    <div class="section personal">
+      <div class="section-header">
+        <div class="icon"><i class="fas fa-heart"></i></div>
+        <h2>Personal</h2>
       </div>
-      <div class="qr-code-item">
-        <h5>PayPal</h5>
-        <img src="./media/paypal-qr.jpg" alt="PayPal QR Code" class="qr-code">
+      <div class="section-content">
+        <a href="#" class="link-btn whatsapp" data-url="https://wa.me/35679641219">
+          <i class="fab fa-whatsapp"></i>
+          WhatsApp
+        </a>
+        <a href="#" class="link-btn instagram-gradient" data-url="https://instagram.com/antonio_guiotto">
+          <i class="fab fa-instagram"></i>
+          @antonio_guiotto
+        </a>
+        <a href="#" class="link-btn instagram-dark" data-url="https://instagram.com/black_combat_design">
+          <i class="fab fa-instagram"></i>
+          @black_combat_design
+          <span class="meta">Tattoo Art</span>
+        </a>
       </div>
+    </div>
+
+    <!-- Professional -->
+    <div class="section professional">
+      <div class="section-header">
+        <div class="icon"><i class="fas fa-briefcase"></i></div>
+        <h2>Professional</h2>
+      </div>
+      <div class="section-content">
+        <a href="#" class="link-btn linkedin" data-url="https://linkedin.com/in/antonioguiotto">
+          <i class="fab fa-linkedin"></i>
+          LinkedIn
+        </a>
+        <a href="#" class="link-btn" id="cv-button">
+          <i class="fas fa-file-alt"></i>
+          View CV
+        </a>
+        <a href="./media/cv-2025.pdf" class="link-btn" download>
+          <i class="fas fa-download"></i>
+          Download CV
+          <span class="meta">PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- BuildFast -->
+    <div class="section buildfast">
+      <div class="section-header">
+        <div class="icon"><i class="fas fa-bolt"></i></div>
+        <h2>BuildFast</h2>
+      </div>
+      <div class="section-content">
+        <a href="#" class="link-btn buildfast-accent" data-url="https://instagram.com/fastbuildsoftware">
+          <i class="fas fa-bolt"></i>
+          @fastbuildsoftware
+        </a>
+        <a href="#" class="link-btn" data-url="https://buildfast.it">
+          <i class="fas fa-globe"></i>
+          buildfast.it
+          <span class="meta">Main Site</span>
+        </a>
+        <a href="#" class="link-btn" data-url="https://blueprint.buildfast.it">
+          <i class="fas fa-drafting-compass"></i>
+          blueprint.buildfast.it
+          <span class="meta">Demo</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Properties -->
+    <div class="section neutral">
+      <div class="section-header">
+        <div class="icon"><i class="fas fa-building"></i></div>
+        <h2>Properties</h2>
+      </div>
+      <div class="section-content">
+        <a href="apartment.html" class="link-btn">
+          <i class="fas fa-home"></i>
+          Modern Apartment
+          <span class="meta">450€/m</span>
+        </a>
+        <a href="storage.html" class="link-btn">
+          <i class="fas fa-box"></i>
+          Storage Space
+          <span class="meta">For Sale</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Payments -->
+    <div class="section neutral">
+      <div class="section-header">
+        <div class="icon"><i class="fas fa-wallet"></i></div>
+        <h2>Payments</h2>
+      </div>
+      <div class="qr-grid">
+        <div class="qr-item">
+          <h3>Revolut</h3>
+          <img src="./media/revolut-qr.jpg" alt="Revolut QR">
+        </div>
+        <div class="qr-item">
+          <h3>PayPal</h3>
+          <img src="./media/paypal-qr.jpg" alt="PayPal QR">
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      2026
     </div>
   </div>
 
   <script>
-    // Handle all social links
-    document.querySelectorAll('.social-button').forEach(button => {
-      button.addEventListener('click', function (e) {
-        // Let the default action occur for download links.
+    document.querySelectorAll('.link-btn').forEach(button => {
+      button.addEventListener('click', function(e) {
         if (this.hasAttribute('download')) return;
-
+        
         e.preventDefault();
 
         if (this.id === 'cv-button') {
-          const path = /Mobi|Android/i.test(navigator.userAgent) ? '/cv/cv-mobile.html' : '/cv/cv-desktop.html';
+          const path = /Mobi|Android/i.test(navigator.userAgent) ? './cv-mobile.html' : './cv-desktop.html';
           window.open(path, '_blank');
           return;
         }
