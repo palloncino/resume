@@ -2,601 +2,680 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Antonio Guiotto - Web Developer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 100% privacy-first analytics -->
-    <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-    <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""
-            referrerpolicy="no-referrer-when-downgrade" /></noscript>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                    colors: {
-                        surface: '#1A1A1A',
-                        'surface-hover': '#242424',
-                        border: 'rgba(255, 255, 255, 0.08)',
-                    }
-                },
-            },
-        };
-    </script>
-    <!-- Swiper CSS CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <style>
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            -webkit-font-smoothing: antialiased;
+  <meta charset="UTF-8">
+  <title>Antonio Guiotto — CV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 100% privacy-first analytics -->
+  <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+  <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            ink: '#0D0D0D',
+            surface: '#161616',
+            'surface-2': '#1C1C1C',
+            'surface-hover': '#222222',
+            border: 'rgba(255,255,255,0.07)',
+            'border-strong': 'rgba(255,255,255,0.12)',
+            sand: '#D4A373',
+            text: '#F5F0EB',
+            'text-muted': 'rgba(245,240,235,0.52)'
+          }
         }
+      }
+    }
+  </script>
 
-        /* Print Styles */
-        @media print {
-            @page { size: A4; margin: 20mm; }
-            nav, footer, .no-print { display: none; }
-            .container { width: 100%; max-width: 1000px !important; margin: 0; padding: 0; }
-            img { max-width: 100%; height: auto; }
-            a { color: #000; text-decoration: none; }
-        }
+  <!-- Swiper CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
-        .instaplug-widget-wrapper .post-footer,
-        .instaplug-widget-wrapper .post-header,
-        .instaplug-widget-wrapper .slick-prev,
-        .instaplug-widget-wrapper .slick-next,
-        .instaplug-watermark,
-        [class*="slider absolute"] {
-            display: none !important;
-        }
+  <style>
+    html { color-scheme: dark; }
+    body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
 
-        .instaplug-widget-wrapper .user-full-name span { color: white!important; }
-        .instaplug-widget-wrapper .rounded-s { border: 1px solid white; }
+    /* Print */
+    @media print {
+      @page { size: A4; margin: 16mm; }
+      nav, footer, .no-print { display: none !important; }
+      body { background: #fff !important; color: #000 !important; }
+      .section-card { border: 1px solid #ddd !important; background: #fff !important; }
+      a { color: #000 !important; text-decoration: none !important; }
+    }
 
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #1A1A1A; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #444; }
+    /* Instaplug clean */
+    .instaplug-widget-wrapper .post-footer,
+    .instaplug-widget-wrapper .post-header,
+    .instaplug-widget-wrapper .slick-prev,
+    .instaplug-widget-wrapper .slick-next,
+    .instaplug-watermark,
+    [class*="slider absolute"] {
+      display: none !important;
+    }
 
-        /* Skill tags */
-        .skill-tag {
-            display: inline-block;
-            padding: 6px 14px;
-            background: rgba(99, 102, 241, 0.15);
-            color: #818CF8;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin: 4px;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-        }
+    :root {
+      --bg: #0D0D0D;
+      --surface: #161616;
+      --surface2: #1C1C1C;
+      --hover: #222222;
+      --border: rgba(255,255,255,0.07);
+      --borderStrong: rgba(255,255,255,0.12);
+      --text: #F5F0EB;
+      --muted: rgba(245,240,235,0.52);
+      --sand: #D4A373;
+      --r: 18px;
+      --rs: 14px;
+    }
 
-        /* Section card */
-        .section-card {
-            background: #1A1A1A;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 20px;
-        }
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 20px;
+    }
 
-        .section-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
+    .section-title {
+      font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -0.02em;
+    }
 
-        /* Experience item */
-        .exp-item {
-            padding: 16px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .exp-item:last-child { border-bottom: none; }
-    </style>
-    <!-- Theme Initialization Script -->
-    <script>
-        document.documentElement.classList.add('dark');
-    </script>
-    <!-- Instaplug Script -->
-    <script async src="https://app.instaplug.app/platform/instaplug.js" onload='
-    window.renderApp({
-    "containerId": "7e1d7260-3f22-437d-8d2c-46771c2c3662",
-    "domain": "https://app.instaplug.app/",
-    "widgetClass": "",
-    "fontFamily": "",
-    "color": "",
-    "colorLink": "",
-    "colorLinkActive": "",
-    "colorLinkHover": ""
-    });
-    '></script>
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+
+    .pill:hover { background: rgba(255,255,255,0.06); }
+
+    .pill.primary {
+      background: rgba(212,163,115,0.12);
+      border-color: rgba(212,163,115,0.28);
+      color: var(--text);
+    }
+
+    .pill.primary:hover {
+      background: rgba(212,163,115,0.16);
+      border-color: rgba(212,163,115,0.34);
+    }
+
+    .skill-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 12px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid var(--border);
+    }
+
+    .exp-item { padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .exp-item:last-child { border-bottom: none; }
+
+    .company-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      flex: 0 0 auto;
+    }
+
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .meta-chip.sand {
+      background: rgba(212,163,115,0.12);
+      border-color: rgba(212,163,115,0.28);
+      color: rgba(245,240,235,0.86);
+    }
+
+    .projects-swiper .swiper-pagination-bullet,
+    .images-swiper .swiper-pagination-bullet {
+      background: rgba(245,240,235,0.25);
+    }
+
+    .projects-swiper .swiper-pagination-bullet-active,
+    .images-swiper .swiper-pagination-bullet-active {
+      background: rgba(212,163,115,0.9);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+    }
+  </style>
+
+  <!-- Theme Initialization Script -->
+  <script>
+    document.documentElement.classList.add('dark');
+  </script>
+
+  <!-- Instaplug Script -->
+  <script async src="https://app.instaplug.app/platform/instaplug.js" onload='window.renderApp({"containerId":"7e1d7260-3f22-437d-8d2c-46771c2c3662","domain":"https://app.instaplug.app/","widgetClass":"","fontFamily":"","color":"","colorLink":"","colorLinkActive":"","colorLinkHover":""});'></script>
 </head>
 
-<body class="bg-[#0F0F0F] text-gray-100">
-    <!-- Navigation Bar -->
-    <nav class="sticky top-0 z-50 bg-[#0F0F0F]/90 backdrop-blur-lg border-b border-white/5 no-print">
-        <div class="container mx-auto flex items-center justify-between px-4 py-3">
-            <a href="../index.html" class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                </svg>
-                <span class="text-sm">Back</span>
-            </a>
-            <span class="text-sm font-medium text-white">CV</span>
-            <div class="w-12"></div>
+<body class="bg-ink text-[color:var(--text)]">
+  <nav class="sticky top-0 z-50 bg-ink/80 backdrop-blur-md border-b border-white/5 no-print">
+    <div class="container mx-auto flex items-center justify-between px-4 py-3">
+      <a href="../index.html" class="flex items-center gap-2 text-[color:var(--muted)] hover:text-white transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span class="text-sm">Back</span>
+      </a>
+      <span class="text-sm font-medium text-white">CV</span>
+      <div class="w-12"></div>
+    </div>
+  </nav>
+
+  <header class="container mx-auto px-4 pt-10 pb-6">
+    <div class="section-card">
+      <div class="flex items-center gap-4">
+        <img class="w-16 h-16 rounded-full object-cover border-2 border-white/10" src="../assets/me.jpeg" alt="Antonio Guiotto">
+        <div class="min-w-0">
+          <h1 class="font-display text-2xl font-bold tracking-tight text-white leading-tight">Antonio Guiotto</h1>
+          <p class="text-sm text-[color:var(--muted)] mt-0.5">Full‑stack developer · Malta / Remote</p>
         </div>
-    </nav>
+      </div>
 
-    <!-- Header Section -->
-    <header class="container mx-auto flex flex-col items-center px-4 py-16">
-        <img class="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover border-2 border-white/10 shadow-2xl"
-            src="../assets/me.jpeg" alt="Antonio Guiotto">
-        <h1 class="text-3xl md:text-4xl font-bold mt-6 tracking-tight">Antonio Guiotto</h1>
-        <p class="text-lg mt-2 text-indigo-400 font-medium">Full-Stack Developer</p>
-        <p class="text-sm text-gray-500 mt-1">Malta / Remote</p>
-        <div class="mt-6 flex flex-wrap justify-center gap-3">
-            <a href="mailto:powerhydratoni@gmail.com" 
-               class="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-full text-sm text-gray-300 transition-colors">
-                Email
-            </a>
-            <a href="https://www.linkedin.com/in/antonioguiotto"
-               class="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-full text-sm text-gray-300 transition-colors">
-                LinkedIn
-            </a>
-            <a href="https://github.com/palloncino" 
-               class="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-full text-sm text-gray-300 transition-colors">
-                GitHub
-            </a>
+      <p class="mt-5 text-[color:var(--text)] leading-relaxed">
+        I turn ideas into production‑ready software. Fast, lean, and AI‑driven. No fluff, just execution.
+      </p>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+        <a class="pill primary" href="https://palloncino.github.io/cv/" target="_blank" rel="noopener noreferrer">
+          <span aria-hidden="true">↗</span>
+          Link tree
+        </a>
+        <a class="pill" href="mailto:powerhydratoni@gmail.com">Email</a>
+        <a class="pill" href="https://www.linkedin.com/in/antonioguiotto" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="pill" href="https://github.com/palloncino" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="pill" href="../media/cv-2025.pdf" download>PDF</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pb-10">
+    <section id="about" class="container mx-auto px-4 mb-6">
+      <div class="section-card">
+        <h2 class="section-title">About</h2>
+
+        <p class="text-[color:var(--muted)] leading-relaxed">
+          I offer customized development services with maximum flexibility — hourly packages or project‑based quotes, always with clear estimates and transparent communication.
+          I handle the full process end‑to‑end: from concept and architecture to deployment and scale.
+        </p>
+
+        <div class="mt-5 grid gap-2 text-[color:var(--text)]">
+          <div class="flex gap-3">
+            <span class="company-badge" aria-hidden="true">FS</span>
+            <div class="min-w-0">
+              <p class="font-medium">Full‑stack development</p>
+              <p class="text-sm text-[color:var(--muted)]">Backend, frontend, APIs, databases</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <span class="company-badge" aria-hidden="true">ROI</span>
+            <div class="min-w-0">
+              <p class="font-medium">Custom projects</p>
+              <p class="text-sm text-[color:var(--muted)]">Solutions designed to maximize ROI</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <span class="company-badge" aria-hidden="true">FX</span>
+            <div class="min-w-0">
+              <p class="font-medium">Flexible model</p>
+              <p class="text-sm text-[color:var(--muted)]">Hourly or project‑based, zero hidden costs</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <span class="company-badge" aria-hidden="true">AI</span>
+            <div class="min-w-0">
+              <p class="font-medium">AI‑powered workflow</p>
+              <p class="text-sm text-[color:var(--muted)]">Build smarter, faster, with less waste</p>
+            </div>
+          </div>
         </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="py-8">
-        <!-- Profile Summary -->
-        <section id="profile" class="container mx-auto px-4 mb-6">
-            <div class="section-card">
-                <h2 class="section-title">Profile</h2>
-                <p class="leading-relaxed text-gray-300">
-                    Full-stack developer with 6+ years of experience building high-quality web applications. 
-                    Specialized in React, TypeScript, and Node.js ecosystems. Strong track record of delivering 
-                    complex projects independently and within teams. Passionate about clean code, user experience, 
-                    and scalable architecture.
-                </p>
-            </div>
-        </section>
+        <p class="mt-5 text-[color:var(--text)] font-medium">
+          I don’t just code. I build systems that ship, scale, and deliver results.
+        </p>
+      </div>
+    </section>
 
-        <!-- Skills -->
-        <section id="skills" class="container mx-auto px-4 mb-6">
-            <div class="section-card">
-                <h2 class="section-title">Skills</h2>
-                
-                <div class="mb-6">
-                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Languages & Frameworks</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">PHP</span>
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">React Native</span>
-                        <span class="skill-tag">Angular</span>
-                        <span class="skill-tag">Laravel</span>
-                    </div>
-                </div>
-
-                <div class="mb-6">
-                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools & Infrastructure</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag" style="background: rgba(236, 72, 153, 0.15); color: #F472B6; border-color: rgba(236, 72, 153, 0.2);">Git</span>
-                        <span class="skill-tag" style="background: rgba(236, 72, 153, 0.15); color: #F472B6; border-color: rgba(236, 72, 153, 0.2);">AWS</span>
-                        <span class="skill-tag" style="background: rgba(236, 72, 153, 0.15); color: #F472B6; border-color: rgba(236, 72, 153, 0.2);">Docker</span>
-                        <span class="skill-tag" style="background: rgba(236, 72, 153, 0.15); color: #F472B6; border-color: rgba(236, 72, 153, 0.2);">Linux VPS</span>
-                        <span class="skill-tag" style="background: rgba(236, 72, 153, 0.15); color: #F472B6; border-color: rgba(236, 72, 153, 0.2);">CI/CD</span>
-                        <span class="skill-tag" style="background: rgba(236, 72, 153, 0.15); color: #F472B6; border-color: rgba(236, 72, 153, 0.2);">MQTT</span>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Design & Other</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag" style="background: rgba(34, 197, 94, 0.15); color: #4ADE80; border-color: rgba(34, 197, 94, 0.2);">Figma</span>
-                        <span class="skill-tag" style="background: rgba(34, 197, 94, 0.15); color: #4ADE80; border-color: rgba(34, 197, 94, 0.2);">UI/UX</span>
-                        <span class="skill-tag" style="background: rgba(34, 197, 94, 0.15); color: #4ADE80; border-color: rgba(34, 197, 94, 0.2);">Three.js</span>
-                        <span class="skill-tag" style="background: rgba(34, 197, 94, 0.15); color: #4ADE80; border-color: rgba(34, 197, 94, 0.2);">Adobe Suite</span>
-                        <span class="skill-tag" style="background: rgba(34, 197, 94, 0.15); color: #4ADE80; border-color: rgba(34, 197, 94, 0.2);">SQL/NoSQL</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Notable Projects with Swiper -->
-        <section id="projects" class="container mx-auto px-4 mb-6">
-            <div class="section-card">
-                <h2 class="section-title">Notable Projects</h2>
-                <!-- Swiper Container for Projects -->
-                <div class="swiper-container projects-swiper overflow-hidden rounded-lg">
-                    <div class="swiper-wrapper">
-                        <!-- Project Slides will be injected here -->
-                    </div>
-                    <!-- Pagination for Projects Swiper -->
-                    <div class="swiper-pagination mt-4"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Professional Experience -->
-        <section id="experience" class="container mx-auto px-4 mb-6">
-            <div class="section-card">
-                <h2 class="section-title">Experience</h2>
-                
-                <div class="exp-item">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="font-semibold text-white">Freelance Developer</h3>
-                        <span class="text-xs text-indigo-400 bg-indigo-400/10 px-2 py-1 rounded">2023 — Present</span>
-                    </div>
-                    <p class="text-sm text-gray-500 mb-2">Remote / Malta</p>
-                    <p class="text-sm text-gray-400">Full-stack development for clients including Gucci, Sermixer, and Satifiltri. End-to-end project delivery from conception to deployment.</p>
-                </div>
-
-                <div class="exp-item">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="font-semibold text-white">Software Engineer</h3>
-                        <span class="text-xs text-gray-500 bg-white/5 px-2 py-1 rounded">2022 — 2023</span>
-                    </div>
-                    <p class="text-sm text-gray-500 mb-2">Ovalx, Turin</p>
-                    <p class="text-sm text-gray-400">React/TypeScript applications, CI/CD pipeline management, trading platform UI development.</p>
-                </div>
-
-                <div class="exp-item">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="font-semibold text-white">Front-End Developer</h3>
-                        <span class="text-xs text-gray-500 bg-white/5 px-2 py-1 rounded">2020 — 2021</span>
-                    </div>
-                    <p class="text-sm text-gray-500 mb-2">Sky / NOWTV, Remote</p>
-                    <p class="text-sm text-gray-400">Console browser applications, video streaming technologies, cross-platform development.</p>
-                </div>
-
-                <div class="exp-item">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="font-semibold text-white">Front-End Developer</h3>
-                        <span class="text-xs text-gray-500 bg-white/5 px-2 py-1 rounded">2018 — 2020</span>
-                    </div>
-                    <p class="text-sm text-gray-500 mb-2">RED Software Systems, Milan</p>
-                    <p class="text-sm text-gray-400">E-commerce platforms, Polymer.js, internal design systems and component libraries.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- About -->
-        <section class="container mx-auto px-4 mb-6">
-            <div class="section-card">
-                <h2 class="section-title">About</h2>
-                <div class="flex flex-wrap gap-2 mb-4">
-                    <span class="px-3 py-1.5 bg-white/5 rounded-full text-sm text-gray-400">English (Fluent)</span>
-                    <span class="px-3 py-1.5 bg-white/5 rounded-full text-sm text-gray-400">Spanish (Fluent)</span>
-                    <span class="px-3 py-1.5 bg-white/5 rounded-full text-sm text-gray-400">Italian (Native)</span>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1.5 bg-white/5 rounded-full text-sm text-gray-500">Art & Tattoos</span>
-                    <span class="px-3 py-1.5 bg-white/5 rounded-full text-sm text-gray-500">Calisthenics</span>
-                    <span class="px-3 py-1.5 bg-white/5 rounded-full text-sm text-gray-500">Travel</span>
-                    <span class="px-3 py-1.5 bg-white/5 rounded-full text-sm text-gray-500">Psychology</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- GitHub & Open Source -->
-        <style>
-            .github-snippet {
-                overflow-x: auto;
-                white-space: nowrap;
-                font-family: monospace;
-                padding: 1rem;
-                border-radius: 5px;
-                max-width: 100%;
-            }
-        </style>
-        <section class="container mx-auto px-4 mb-6 overflow-x-hidden">
-            <div class="section-card">
-                <h2 class="section-title">GitHub & Open Source</h2>
-                <div class="text-center">
-                <!-- GitHub Contribution Graph -->
-                <div class="mb-8">
-                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-4">Contribution Graph</h3>
-                    <img src="https://ghchart.rshah.org/6366f1/palloncino" alt="GitHub Contribution Graph of palloncino"
-                        class="mx-auto w-full rounded-lg">
-                </div>
-                
-                <!-- GitHub Stats -->
-                <div class="flex flex-col md:flex-row justify-center items-center gap-6">
-                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=palloncino&theme=tokyonight&show_icons=true&hide_border=true&layout=compact&bg_color=1A1A1A"
-                        alt="Top Languages" class="max-w-xs rounded-lg">
-                    <img src="https://github-readme-stats.vercel.app/api?username=palloncino&theme=tokyonight&show_icons=true&hide_border=true&bg_color=1A1A1A"
-                        alt="GitHub Stats" class="max-w-xs rounded-lg" style="transform: scale(0.85);">
-                </div>
-
-                <!-- Tech Badges -->
-                <style>
-                    .marquee {
-                        width: 100%;
-                        position: relative;
-                        animation: marquee 60s linear infinite;
-                    }
-
-                    @keyframes marquee {
-                        0% { transform: translateX(0); }
-                        100% { transform: translateX(-1000%); }
-                    }
-
-                    .marquee-content {
-                        display: flex;
-                        flex-wrap: nowrap;
-                        gap: 1rem;
-                    }
-                </style>
-                <div class="mt-8 flex flex-wrap justify-center items-center gap-2 whitespace-nowrap marquee">
-                    <div class="marquee-content">
-                        <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black"
-                            alt="JavaScript" style="height: 2rem;">
-                        <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white"
-                            alt="TypeScript" style="height: 2rem;">
-                        <img src="https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white"
-                            alt="Node.js" style="height: 2rem;">
-                        <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black"
-                            alt="React.js" style="height: 2rem;">
-                        <img src="https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white"
-                            alt="Angular" style="height: 2rem;">
-                        <img src="https://img.shields.io/badge/AWS-FF9900?style=flat&logo=amazon-aws&logoColor=white"
-                            alt="AWS" style="height: 2rem;">
-                        <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white"
-                            alt="Docker" style="height: 2rem;">
-                        <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white"
-                            alt="Python" style="height: 2rem;">
-                        <img src="https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white" alt="PHP"
-                            style="height: 2rem;">
-                        <!-- Duplicate for infinite scroll -->
-                        <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black"
-                            alt="JavaScript" style="height: 2rem;">
-                        <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white"
-                            alt="TypeScript" style="height: 2rem;">
-                        <img src="https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white"
-                            alt="Node.js" style="height: 2rem;">
-                        <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black"
-                            alt="React.js" style="height: 2rem;">
-                        <img src="https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white"
-                            alt="Angular" style="height: 2rem;">
-                        <img src="https://img.shields.io/badge/AWS-FF9900?style=flat&logo=amazon-aws&logoColor=white"
-                            alt="AWS" style="height: 2rem;">
-                        <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white"
-                            alt="Docker" style="height: 2rem;">
-                        <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white"
-                            alt="Python" style="height: 2rem;">
-                        <img src="https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white" alt="PHP"
-                            style="height: 2rem;">
-                    </div>
-                </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="container mx-auto px-4 mb-6">
-            <div class="section-card">
-                <h2 class="section-title">Get in Touch</h2>
-                <p class="text-gray-400 mb-6">
-                    Open to new opportunities and collaborations.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <a href="mailto:powerhydratoni@gmail.com"
-                       class="flex-1 text-center bg-indigo-500 hover:bg-indigo-600 text-white px-5 py-3 rounded-lg font-medium transition-colors">
-                        Email Me
-                    </a>
-                    <a href="https://www.linkedin.com/in/antonioguiotto"
-                       class="flex-1 text-center bg-white/5 hover:bg-white/10 text-white px-5 py-3 rounded-lg font-medium transition-colors">
-                        LinkedIn
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Instaplug Widget Section -->
-        <section class="container mx-auto px-4 mb-6">
-            <div class="section-card">
-                <h2 class="section-title">Instagram</h2>
-                <div id="7e1d7260-3f22-437d-8d2c-46771c2c3662"></div>
-            </div>
-        </section>
-
-        <!-- Collaboration & Rates Section -->
-        <section id="pricing" class="container mx-auto px-4 mb-6">
-            <div class="section-card">
-                <h2 class="section-title">Rates</h2>
-
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                    <div class="bg-white/5 rounded-xl p-4 text-center">
-                        <p class="text-2xl font-bold text-white">€36</p>
-                        <p class="text-sm text-gray-500">per hour</p>
-                    </div>
-                    <div class="bg-white/5 rounded-xl p-4 text-center">
-                        <p class="text-2xl font-bold text-white">€216</p>
-                        <p class="text-sm text-gray-500">per day</p>
-                    </div>
-                    <div class="bg-white/5 rounded-xl p-4 text-center">
-                        <p class="text-2xl font-bold text-white">€1.5k</p>
-                        <p class="text-sm text-gray-500">per week</p>
-                    </div>
-                    <div class="bg-white/5 rounded-xl p-4 text-center">
-                        <p class="text-2xl font-bold text-white">€6k</p>
-                        <p class="text-sm text-gray-500">per month</p>
-                    </div>
-                </div>
-
-                <div class="text-sm text-gray-500 space-y-2">
-                    <p>• Flexible collaboration with consistent rates</p>
-                    <p>• Monthly invoicing based on actual hours</p>
-                    <p>• Contracts renewable based on project needs</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="border-t border-white/5 py-8 no-print">
-        <div class="container mx-auto text-center">
-            <p class="text-sm text-gray-600">2026 Antonio Guiotto</p>
+    <section class="container mx-auto px-4 mb-6">
+      <div class="section-card">
+        <h2 class="section-title">Strengths</h2>
+        <div class="grid gap-3">
+          <div>
+            <p class="font-medium">Product‑minded full‑stack</p>
+            <p class="text-sm text-[color:var(--muted)]">UI → API → DB with pragmatic defaults and smooth UX.</p>
+          </div>
+          <div>
+            <p class="font-medium">UX + polish bias</p>
+            <p class="text-sm text-[color:var(--muted)]">Consistent patterns, careful spacing, thoughtful interactions.</p>
+          </div>
+          <div>
+            <p class="font-medium">Pragmatic engineering</p>
+            <p class="text-sm text-[color:var(--muted)]">Ships fast, keeps abstractions lightweight, iterates safely.</p>
+          </div>
+          <div>
+            <p class="font-medium">Security‑aware</p>
+            <p class="text-sm text-[color:var(--muted)]">Auth threats in mind: hashing, sessions, OTP, CAPTCHA gating.</p>
+          </div>
+          <div>
+            <p class="font-medium">Operational ownership</p>
+            <p class="text-sm text-[color:var(--muted)]">Comfortable owning deployment, backups, data lifecycle.</p>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <!-- Swiper JS CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script>
-        // Projects Data
-        var projectsData = [];
+    <section id="skills" class="container mx-auto px-4 mb-6">
+      <div class="section-card">
+        <h2 class="section-title">Skills</h2>
 
-        // Generate projects data
-        function generateProjectsData() {
-            var baseProjects = [
-                {
-                    title: "GUCCI - Leather Stocks Commerce Platform",
-                    technologies: "TypeScript, Node.js",
-                    description: "Developed a private commerce platform for managing leather stock transactions between Gucci and Saint Laurent. Implemented secure authentication, inventory management, and real-time data synchronization.",
-                    images: ["../media/gucci.png"]
-                },
-                {
-                    title: "SERMIXER - Quotation App",
-                    technologies: "React, TypeScript, SQL Server",
-                    description: "Built a frontend application for generating complex quotations. Developed custom SQL Server backend for data management. Implemented features like dynamic pricing, PDF generation, and user authentication.",
-                    images: ["../media/sermixer-1.png", "../media/sermixer-2.png"]
-                },
-                {
-                    title: "SATIFILTRI - IoT devices management",
-                    technologies: "Laravel, MariaDB, MQTT hosted on Linux VPS",
-                    description: "Developed a Laravel-based dashboard app for IoT device monitoring and management. Integrated an MQTT client to communicate with devices, supporting secure TLS connections and real-time data updates. Built out user roles, logging, and queue-driven background processing for reliability. Key features include interactive device status visualization, alert management, and direct publish/subscribe controls for device registers.",
-                    images: ["../media/satifiltri-1.png", "../media/satifiltri-2.png"]
-                },
-                {
-                    title: "TERMOPAROTTO",
-                    technologies: "React, Tailwind, MongoDB",
-                    description: "",
-                    images: ["../media/termo-1.png", "../media/termo-2.png"]
-                },
-                {
-                    title: "OVALX - Trading platform, Account Management Panel App",
-                    technologies: "React",
-                    description: "",
-                    images: ["../media/ovalx-2.png"]
-                },
-                {
-                    title: "EDGE - Fully customized and animated website",
-                    technologies: "WordPress",
-                    description: "",
-                    images: ["../media/edge-1.png", "../media/edge-2.png"]
-                },
-                {
-                    title: "NOWTV - Vodafone's App for TVs",
-                    technologies: "React",
-                    description: "Developed and maintained NOWTV application software running on console platforms, gaining experience in video streaming techniques and cross-platform development.",
-                    images: ["../media/nowtv-1.png", "../media/nowtv-2.png"]
-                },
-            ];
-            projectsData = baseProjects;
-        }
+        <div class="mb-5">
+          <h3 class="text-xs font-semibold tracking-widest uppercase text-[color:var(--muted)] mb-3">Languages & Frameworks</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">PHP</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Symfony</span>
+            <span class="skill-tag">Laravel</span>
+          </div>
+        </div>
 
-        // Render projects
-        function renderProjects() {
-            var projectsContainer = document.querySelector('.projects-swiper .swiper-wrapper');
-            projectsContainer.innerHTML = '';
+        <div class="mb-5">
+          <h3 class="text-xs font-semibold tracking-widest uppercase text-[color:var(--muted)] mb-3">Tools & Infrastructure</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">CI/CD</span>
+            <span class="skill-tag">Playwright</span>
+            <span class="skill-tag">Vitest</span>
+            <span class="skill-tag">GitHub Actions</span>
+          </div>
+        </div>
 
-            projectsData.forEach(function (project) {
-                var projectSlide = document.createElement('div');
-                projectSlide.className = 'swiper-slide w-full';
+        <div>
+          <h3 class="text-xs font-semibold tracking-widest uppercase text-[color:var(--muted)] mb-3">Design & Delivery</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">UI/UX</span>
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Architecture</span>
+            <span class="skill-tag">API design</span>
+            <span class="skill-tag">Observability (Sentry)</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                var projectContent = `
-            <div class="bg-[#242424] p-5 rounded-xl">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">
-                    <!-- Project Description -->
-                    <div>
-                        <h3 class="text-lg font-semibold mb-2 text-white">${project.title}</h3>
-                        <p class="text-sm text-indigo-400 mb-3">${project.technologies}</p>
-                        <p class="text-sm text-gray-400 leading-relaxed">${project.description}</p>
-                    </div>
-                    <!-- Swiper Slider for Images -->
-                    <div>
-                        <div class="swiper-container images-swiper overflow-hidden rounded-lg">
-                            <div class="swiper-wrapper">
-                                ${project.images.map(image => `
-                                    <div class="swiper-slide w-full">
-                                        <img src="${image}" alt="Project Image" class="w-full h-auto object-cover rounded-lg">
-                                    </div>
-                                `).join('')}
-                            </div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    </div>
-                </div>
+    <section id="projects" class="container mx-auto px-4 mb-6">
+      <div class="section-card">
+        <h2 class="section-title">Notable Projects</h2>
+        <div class="swiper-container projects-swiper overflow-hidden rounded-xl">
+          <div class="swiper-wrapper"></div>
+          <div class="swiper-pagination mt-4"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="container mx-auto px-4 mb-6">
+      <div class="section-card">
+        <h2 class="section-title">Experience</h2>
+
+        <div class="exp-item">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-start gap-3 min-w-0">
+              <span class="company-badge" aria-hidden="true">C</span>
+              <div class="min-w-0">
+                <p class="font-semibold text-white leading-tight">Software Developer</p>
+                <p class="text-sm text-[color:var(--muted)]">Cospex Ltd · Full‑time · Il‑Gżira, Malta</p>
+              </div>
             </div>
+            <span class="meta-chip sand">May 2025 — Present</span>
+          </div>
+          <ul class="mt-3 text-sm text-[color:var(--muted)] list-disc list-inside space-y-1">
+            <li>Built a multi‑domain SaaS spanning 7 verticals (50+ domains) including conversion, tracking, photo editing, and SMS masking.</li>
+            <li>React + TypeScript frontends with real‑time image processing and face detection.</li>
+            <li>Symfony 7.2 / PHP 8.3 backend: JWT auth, multi‑tenant management, API docs.</li>
+            <li>Payments with multi‑provider support and 3D Secure; CI/CD with GitHub Actions.</li>
+            <li>Integrations: AWS S3, Google Cloud Translation, Firebase, Sentry.</li>
+          </ul>
+          <p class="mt-3 text-xs text-[color:var(--muted)]">Tech: React, TypeScript, Symfony, PHP 8.3, MySQL, Docker, AWS, Vite, Material‑UI, Playwright, Vitest</p>
+        </div>
+
+        <div class="exp-item">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-start gap-3 min-w-0">
+              <span class="company-badge" aria-hidden="true">AG</span>
+              <div class="min-w-0">
+                <p class="font-semibold text-white leading-tight">Freelance</p>
+                <p class="text-sm text-[color:var(--muted)]">Antonio Guiotto · Self‑employed · Italy / Remote</p>
+              </div>
+            </div>
+            <span class="meta-chip">Sep 2023 — Present</span>
+          </div>
+          <p class="mt-3 text-sm text-[color:var(--muted)] leading-relaxed">
+            UX + software architecture, custom business apps, B2B e‑commerce, and highly customized sites.
+          </p>
+          <ul class="mt-3 text-sm text-[color:var(--muted)] list-disc list-inside space-y-1">
+            <li>Construction quotation app (React TS, Express, MySQL)</li>
+            <li>Storage / activity register app (React TS, Express, MongoDB)</li>
+            <li>Surgeons register PWA (React TS, Express, MongoDB)</li>
+            <li>IoT dashboard with MQTT (Laravel, MariaDB)</li>
+            <li>5+ customized WordPress sites with custom plugins</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-start gap-3 min-w-0">
+              <span class="company-badge" aria-hidden="true">OM</span>
+              <div class="min-w-0">
+                <p class="font-semibold text-white leading-tight">Software Developer</p>
+                <p class="text-sm text-[color:var(--muted)]">Oval Money · Full‑time · London Area</p>
+              </div>
+            </div>
+            <span class="meta-chip">Nov 2021 — Feb 2023</span>
+          </div>
+          <ul class="mt-3 text-sm text-[color:var(--muted)] list-disc list-inside space-y-1">
+            <li>Built secure web apps with React + TypeScript; shipped onboarding/profile features.</li>
+            <li>Worked across CI/CD pipelines; collaborated with designers and QA for quality delivery.</li>
+            <li>Operated in Agile with JIRA/Confluence; owned project updates and priorities.</li>
+          </ul>
+          <p class="mt-3 text-xs text-[color:var(--muted)]">Tech: React, TypeScript, Webpack, Redux, ESLint, Babel, Yarn, AWS</p>
+        </div>
+
+        <div class="exp-item">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-start gap-3 min-w-0">
+              <span class="company-badge" aria-hidden="true">SK</span>
+              <div class="min-w-0">
+                <p class="font-semibold text-white leading-tight">Frontend Developer</p>
+                <p class="text-sm text-[color:var(--muted)]">Sky Italia · Full‑time · Greater Milan</p>
+              </div>
+            </div>
+            <span class="meta-chip">Feb 2020 — Aug 2021</span>
+          </div>
+          <ul class="mt-3 text-sm text-[color:var(--muted)] list-disc list-inside space-y-1">
+            <li>Developed NOWTV app for console (Opera browser); feature delivery for Italian market.</li>
+            <li>Learned streaming constraints and performance trade‑offs in TV/console environments.</li>
+          </ul>
+          <p class="mt-3 text-xs text-[color:var(--muted)]">Tech: React (classes), Webpack, Redux, SASS, OIPF Video Standard</p>
+        </div>
+
+        <div class="exp-item">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-start gap-3 min-w-0">
+              <span class="company-badge" aria-hidden="true">AS</span>
+              <div class="min-w-0">
+                <p class="font-semibold text-white leading-tight">Frontend Developer</p>
+                <p class="text-sm text-[color:var(--muted)]">A.S. Watson Group · Full‑time · Milan</p>
+              </div>
+            </div>
+            <span class="meta-chip">Dec 2018 — Jan 2020</span>
+          </div>
+          <ul class="mt-3 text-sm text-[color:var(--muted)] list-disc list-inside space-y-1">
+            <li>Built e‑commerce frontends with Polymer.js in an Agile workflow.</li>
+            <li>Monorepo, internal modules/design system, strict quality processes and accessibility checks.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 mb-6 overflow-x-hidden">
+      <div class="section-card">
+        <h2 class="section-title">GitHub</h2>
+        <div class="text-center">
+          <div class="mb-8">
+            <p class="text-xs font-semibold tracking-widest uppercase text-[color:var(--muted)] mb-4">Contribution Graph</p>
+            <img src="https://ghchart.rshah.org/6366f1/palloncino" alt="GitHub Contribution Graph of palloncino" class="mx-auto w-full rounded-lg">
+          </div>
+
+          <div class="flex flex-col md:flex-row justify-center items-center gap-6">
+            <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=palloncino&theme=tokyonight&show_icons=true&hide_border=true&layout=compact&bg_color=161616" alt="Top Languages" class="max-w-xs rounded-lg">
+            <img src="https://github-readme-stats.vercel.app/api?username=palloncino&theme=tokyonight&show_icons=true&hide_border=true&bg_color=161616" alt="GitHub Stats" class="max-w-xs rounded-lg" style="transform: scale(0.88);">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="container mx-auto px-4 mb-6">
+      <div class="section-card">
+        <h2 class="section-title">Contact</h2>
+        <p class="text-[color:var(--muted)] mb-5">Open to new opportunities and collaborations.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="mailto:powerhydratoni@gmail.com" class="pill primary" style="justify-content:center;">Email</a>
+          <a href="https://www.linkedin.com/in/antonioguiotto" target="_blank" rel="noopener noreferrer" class="pill" style="justify-content:center;">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 mb-6">
+      <div class="section-card">
+        <h2 class="section-title">Instagram</h2>
+        <div id="7e1d7260-3f22-437d-8d2c-46771c2c3662"></div>
+      </div>
+    </section>
+
+    <section id="pricing" class="container mx-auto px-4 mb-6">
+      <div class="section-card">
+        <h2 class="section-title">Rates</h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+          <div class="bg-white/5 rounded-xl p-4 text-center border border-white/5">
+            <p class="text-2xl font-bold text-white">€36</p>
+            <p class="text-sm text-[color:var(--muted)]">per hour</p>
+          </div>
+          <div class="bg-white/5 rounded-xl p-4 text-center border border-white/5">
+            <p class="text-2xl font-bold text-white">€216</p>
+            <p class="text-sm text-[color:var(--muted)]">per day</p>
+          </div>
+          <div class="bg-white/5 rounded-xl p-4 text-center border border-white/5">
+            <p class="text-2xl font-bold text-white">€1.5k</p>
+            <p class="text-sm text-[color:var(--muted)]">per week</p>
+          </div>
+          <div class="bg-white/5 rounded-xl p-4 text-center border border-white/5">
+            <p class="text-2xl font-bold text-white">€6k</p>
+            <p class="text-sm text-[color:var(--muted)]">per month</p>
+          </div>
+        </div>
+
+        <div class="text-sm text-[color:var(--muted)] space-y-2">
+          <p>• Flexible collaboration with consistent rates</p>
+          <p>• Monthly invoicing based on actual hours</p>
+          <p>• Contracts renewable based on project needs</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/5 py-8 no-print">
+    <div class="container mx-auto text-center px-4">
+      <p class="text-xs text-[color:var(--muted)] tracking-widest uppercase">2026 Antonio Guiotto</p>
+    </div>
+  </footer>
+
+  <!-- Swiper JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script>
+    var projectsData = [];
+
+    function generateProjectsData() {
+      var baseProjects = [
+        {
+          title: "GUCCI - Leather Stocks Commerce Platform",
+          technologies: "TypeScript, Node.js",
+          description: "Developed a private commerce platform for managing leather stock transactions between Gucci and Saint Laurent. Implemented secure authentication, inventory management, and real-time data synchronization.",
+          images: ["../media/gucci.png"]
+        },
+        {
+          title: "SERMIXER - Quotation App",
+          technologies: "React, TypeScript, SQL Server",
+          description: "Built a frontend application for generating complex quotations. Developed custom SQL Server backend for data management. Implemented features like dynamic pricing, PDF generation, and user authentication.",
+          images: ["../media/sermixer-1.png", "../media/sermixer-2.png"]
+        },
+        {
+          title: "SATIFILTRI - IoT devices management",
+          technologies: "Laravel, MariaDB, MQTT hosted on Linux VPS",
+          description: "Developed a Laravel-based dashboard app for IoT device monitoring and management. Integrated an MQTT client to communicate with devices, supporting secure TLS connections and real-time data updates. Built out user roles, logging, and queue-driven background processing for reliability.",
+          images: ["../media/satifiltri-1.png", "../media/satifiltri-2.png"]
+        },
+        {
+          title: "TERMOPAROTTO",
+          technologies: "React, Tailwind, MongoDB",
+          description: "",
+          images: ["../media/termo-1.png", "../media/termo-2.png"]
+        },
+        {
+          title: "OVALX - Trading platform, Account Management Panel App",
+          technologies: "React",
+          description: "",
+          images: ["../media/ovalx-2.png"]
+        },
+        {
+          title: "EDGE - Fully customized and animated website",
+          technologies: "WordPress",
+          description: "",
+          images: ["../media/edge-1.png", "../media/edge-2.png"]
+        },
+        {
+          title: "NOWTV - Vodafone's App for TVs",
+          technologies: "React",
+          description: "Developed and maintained NOWTV application software running on console platforms, gaining experience in video streaming techniques and cross-platform development.",
+          images: ["../media/nowtv-1.png", "../media/nowtv-2.png"]
+        },
+      ];
+      projectsData = baseProjects;
+    }
+
+    function renderProjects() {
+      var projectsContainer = document.querySelector('.projects-swiper .swiper-wrapper');
+      projectsContainer.innerHTML = '';
+
+      projectsData.forEach(function (project) {
+        var projectSlide = document.createElement('div');
+        projectSlide.className = 'swiper-slide w-full';
+
+        var projectContent = `
+          <div style="background: var(--surface2); border: 1px solid var(--border);" class="p-5 rounded-xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">
+              <div>
+                <h3 class="text-lg font-semibold mb-2 text-white">${project.title}</h3>
+                <p class="text-sm" style="color: rgba(212,163,115,0.95); margin-bottom: 0.75rem;">${project.technologies}</p>
+                <p class="text-sm" style="color: var(--muted); line-height: 1.65;">${project.description}</p>
+              </div>
+              <div>
+                <div class="swiper-container images-swiper overflow-hidden rounded-lg">
+                  <div class="swiper-wrapper">
+                    ${project.images.map(image => `
+                      <div class="swiper-slide w-full">
+                        <img src="${image}" alt="Project Image" class="w-full h-auto object-cover rounded-lg" style="border:1px solid var(--border);">
+                      </div>
+                    `).join('')}
+                  </div>
+                  <div class="swiper-pagination"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         `;
 
-                projectSlide.innerHTML = projectContent;
-                projectsContainer.appendChild(projectSlide);
-            });
+        projectSlide.innerHTML = projectContent;
+        projectsContainer.appendChild(projectSlide);
+      });
 
-            // Initialize Swipers after rendering
-            initializeSwipers();
-        }
+      initializeSwipers();
+    }
 
-        // Initialize Swiper sliders
-        function initializeSwipers() {
-            // Initialize Projects Swiper
-            new Swiper('.projects-swiper', {
-                loop: false,
-                slidesPerView: 1,
-                centeredSlides: true,
-                spaceBetween: 0,
-                pagination: {
-                    el: '.projects-swiper .swiper-pagination',
-                    clickable: true,
-                },
-            });
+    function initializeSwipers() {
+      new Swiper('.projects-swiper', {
+        loop: false,
+        slidesPerView: 1,
+        centeredSlides: true,
+        spaceBetween: 0,
+        pagination: {
+          el: '.projects-swiper .swiper-pagination',
+          clickable: true,
+        },
+      });
 
-            // Initialize Images Swipers
-            var imagesSwipers = document.querySelectorAll('.images-swiper');
-            imagesSwipers.forEach(function (container) {
-                new Swiper(container, {
-                    loop: true,
-                    slidesPerView: 1,
-                    centeredSlides: true,
-                    spaceBetween: 0,
-                    autoplay: {
-                        delay: 4000,
-                        disableOnInteraction: true,
-                    },
-                    pagination: {
-                        el: container.querySelector('.swiper-pagination'),
-                        clickable: true,
-                    },
-                    nested: true, // Important for nested Swipers
-                });
-            });
-        }
+      var imagesSwipers = document.querySelectorAll('.images-swiper');
+      imagesSwipers.forEach(function (container) {
+        new Swiper(container, {
+          loop: true,
+          slidesPerView: 1,
+          centeredSlides: true,
+          spaceBetween: 0,
+          autoplay: {
+            delay: 4000,
+            disableOnInteraction: true,
+          },
+          pagination: {
+            el: container.querySelector('.swiper-pagination'),
+            clickable: true,
+          },
+          nested: true,
+        });
+      });
+    }
 
-        // Initialize the projects on page load
-        generateProjectsData();
-        renderProjects();
-    </script>
+    generateProjectsData();
+    renderProjects();
+  </script>
 </body>
 
 </html>
