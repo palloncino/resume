@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/palloncino/cv.git"
+    "url": "git+https://github.com/palloncino/resume.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/palloncino/cv/issues"
+    "url": "https://github.com/palloncino/resume/issues"
   },
-  "homepage": "https://github.com/palloncino/cv#readme",
+  "homepage": "https://github.com/palloncino/resume#readme",
   "dependencies": {
     "puppeteer": "^24.6.1"
   }

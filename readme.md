@@ -3,7 +3,7 @@
 A lightweight personal website hosted on GitHub Pages.
 
 ## Live Site
-Visit at [https://palloncino.github.io/cv](https://palloncino.github.io/cv)
+Visit at [https://palloncino.github.io/resume](https://palloncino.github.io/resume)
 
 ## Development
 
