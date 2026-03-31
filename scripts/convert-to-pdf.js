@@ -6,7 +6,7 @@ const path = require('path');
   const page = await browser.newPage();
   
   // Load the HTML file
-  await page.goto(`file:${path.join(__dirname, 'storage-poster.html')}`, {
+  await page.goto(`file:${path.join(__dirname, '..', 'posters', 'storage-poster.html')}`, {
     waitUntil: 'networkidle0'
   });
 
@@ -101,7 +101,7 @@ const path = require('path');
 
   // Generate PDF
   await page.pdf({
-    path: 'storage-poster.pdf',
+    path: path.join(__dirname, '..', 'posters', 'storage-poster.pdf'),
     format: 'A4',
     printBackground: true,
     margin: {

@@ -308,7 +308,7 @@
   <div class="container">
     <!-- Profile -->
     <div class="profile">
-      <img src="./me.jpeg" alt="Antonio Guiotto" class="profile-pic">
+      <img src="./assets/me.jpeg" alt="Antonio Guiotto" class="profile-pic">
       <h1>Antonio Guiotto</h1>
       <p>Developer & Designer</p>
     </div>
@@ -366,9 +366,9 @@
         <h2>BuildFast</h2>
       </div>
       <div class="section-content">
-        <a href="#" class="link-btn buildfast-accent" data-url="https://instagram.com/fastbuildsoftware">
-          <i class="fas fa-bolt"></i>
-          @fastbuildsoftware
+        <a href="#" class="link-btn instagram-gradient" data-url="https://instagram.com/fastbuildsoftware">
+          <i class="fab fa-instagram"></i>
+          Instagram @fastbuildsoftware
         </a>
         <a href="#" class="link-btn" data-url="https://buildfast.it">
           <i class="fas fa-globe"></i>
@@ -390,12 +390,12 @@
         <h2>Properties</h2>
       </div>
       <div class="section-content">
-        <a href="apartment.html" class="link-btn">
+        <a href="pages/apartment.html" class="link-btn">
           <i class="fas fa-home"></i>
           Modern Apartment
           <span class="meta">450€/m</span>
         </a>
-        <a href="storage.html" class="link-btn">
+        <a href="pages/storage.html" class="link-btn">
           <i class="fas fa-box"></i>
           Storage Space
           <span class="meta">For Sale</span>
@@ -434,7 +434,7 @@
         e.preventDefault();
 
         if (this.id === 'cv-button') {
-          const path = /Mobi|Android/i.test(navigator.userAgent) ? './cv-mobile.html' : './cv-desktop.html';
+          const path = /Mobi|Android/i.test(navigator.userAgent) ? './pages/cv-mobile.html' : './pages/cv-desktop.html';
           window.open(path, '_blank');
           return;
         }

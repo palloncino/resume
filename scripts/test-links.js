@@ -4,7 +4,7 @@ const https = require('https');
 const http = require('http');
 
 // Read the index.html file
-const htmlContent = fs.readFileSync('index.html', 'utf8');
+const htmlContent = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
 
 // Extract all links from the HTML
 const links = new Set(); // Using Set to avoid duplicates
@@ -45,7 +45,7 @@ function checkUrl(url) {
     return new Promise((resolve) => {
         // Handle relative URLs
         if (url.startsWith('./') || url.startsWith('/') || !url.startsWith('http')) {
-            const filePath = path.join(process.cwd(), url);
+            const filePath = path.join(__dirname, '..', url);
             fs.access(filePath, fs.constants.F_OK, (err) => {
                 resolve({
                     url,
@@ -74,9 +74,9 @@ function checkUrl(url) {
                 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
             }
         }, (res) => {
-            // Consider redirects (301, 302) as successful
+            // Consider redirects as successful
             const status = res.statusCode;
-            const isSuccess = status === 200 || status === 301 || status === 302;
+            const isSuccess = status === 200 || status === 301 || status === 302 || status === 303 || status === 307 || status === 308;
             resolve({
                 url,
                 status: isSuccess ? '200' : status,
