@@ -634,46 +634,14 @@
         .filter(Boolean);
 
       let idx = 0;
-      const setProfile = (nextIdx) => {
+      const setIdx = (nextIdx) => {
         if (!images.length) return;
         idx = (nextIdx + images.length) % images.length;
-        profileImg.src = images[idx];
       };
 
-      // Autoplay only if there is more than 1 image
-      const AUTOPLAY_MS = 4500;
-      let timer = null;
-      const start = () => {
-        if (images.length <= 1) return;
-        stop();
-        timer = window.setInterval(() => setProfile(idx + 1), AUTOPLAY_MS);
-      };
-      const stop = () => {
-        if (timer) window.clearInterval(timer);
-        timer = null;
-      };
-
-      start();
-
-      // Swipe on the profile image
-      let startX = null;
-      profileImg.addEventListener('pointerdown', (e) => {
-        startX = e.clientX;
-        stop();
-      });
-      profileImg.addEventListener('pointerup', (e) => {
-        if (startX == null) return;
-        const dx = e.clientX - startX;
-        startX = null;
-        if (Math.abs(dx) > 35 && images.length > 1) {
-          setProfile(dx < 0 ? idx + 1 : idx - 1);
-        }
-        start();
-      });
-      profileImg.addEventListener('pointercancel', () => {
-        startX = null;
-        start();
-      });
+      // Always show the first image in the header; browsing happens in the preview.
+      if (images.length) profileImg.src = images[0];
+      setIdx(0);
 
       // Lightbox preview with minimal controls
       const lightbox = document.getElementById('lightbox');
@@ -699,7 +667,6 @@
       const open = () => {
         if (!lightbox) return;
         lbOpen = true;
-        stop();
         renderLightbox();
         lightbox.classList.add('open');
         lightbox.setAttribute('aria-hidden', 'false');
@@ -710,7 +677,6 @@
         lbOpen = false;
         lightbox.classList.remove('open');
         lightbox.setAttribute('aria-hidden', 'true');
-        start();
       };
 
       profileImg.addEventListener('click', () => open());
@@ -721,12 +687,12 @@
 
       lbPrev?.addEventListener('click', () => {
         if (images.length <= 1) return;
-        setProfile(idx - 1);
+        setIdx(idx - 1);
         renderLightbox();
       });
       lbNext?.addEventListener('click', () => {
         if (images.length <= 1) return;
-        setProfile(idx + 1);
+        setIdx(idx + 1);
         renderLightbox();
       });
 
@@ -738,7 +704,7 @@
         const dx = e.clientX - lbStartX;
         lbStartX = null;
         if (Math.abs(dx) > 45) {
-          setProfile(dx < 0 ? idx + 1 : idx - 1);
+          setIdx(dx < 0 ? idx + 1 : idx - 1);
           renderLightbox();
         }
       });
@@ -748,7 +714,7 @@
         if (!lbOpen) return;
         if (e.key === 'Escape') close();
         if (images.length > 1 && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
-          setProfile(e.key === 'ArrowRight' ? idx + 1 : idx - 1);
+          setIdx(e.key === 'ArrowRight' ? idx + 1 : idx - 1);
           renderLightbox();
         }
       });
