@@ -18,21 +18,23 @@
     :root {
       /* Accent Colors */
       --personal: #E8725A;
-      --personal-light: rgba(232, 114, 90, 0.12);
+      --personal-light: rgba(232, 114, 90, 0.10);
       --professional: #4A90D9;
-      --professional-light: rgba(74, 144, 217, 0.12);
+      --professional-light: rgba(74, 144, 217, 0.10);
       --buildfast: #29D366;
-      --buildfast-light: rgba(41, 211, 102, 0.12);
+      --buildfast-light: rgba(41, 211, 102, 0.10);
       --neutral: #6B7280;
-      --neutral-light: rgba(107, 114, 128, 0.12);
+      --neutral-light: rgba(107, 114, 128, 0.10);
       
       /* Base Colors */
-      --bg: #0F0F0F;
-      --surface: #1A1A1A;
-      --surface-hover: #242424;
-      --border: rgba(255, 255, 255, 0.08);
-      --text: #FFFFFF;
-      --text-secondary: rgba(255, 255, 255, 0.6);
+      --bg: #F7F8FA;
+      --surface: #FFFFFF;
+      --surface-2: #FAFAFB;
+      --surface-hover: #F1F3F5;
+      --border: rgba(17, 24, 39, 0.10);
+      --text: #0B1220;
+      --text-secondary: rgba(11, 18, 32, 0.60);
+      --shadow: none;
     }
 
     * {
@@ -63,40 +65,68 @@
 
     /* Profile Header */
     .profile {
-      display: flex;
-      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: none;
+      overflow: hidden;
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      grid-template-rows: auto auto;
+      column-gap: 14px;
+      row-gap: 4px;
       align-items: center;
-      padding: 32px 24px;
-      text-align: center;
+      position: relative;
+    }
+
+    .profile::before {
+      content: none;
     }
 
     .profile-pic {
-      width: 88px;
-      height: 88px;
-      border-radius: 50%;
-      border: 2px solid var(--border);
-      margin-bottom: 16px;
+      width: 92px;
+      height: 92px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
       object-fit: cover;
+      grid-row: 1 / span 2;
+      grid-column: 1;
+      position: relative;
+      z-index: 1;
+      background: var(--surface-2);
     }
 
     .profile h1 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 4px;
+      font-size: 1.25rem;
+      font-weight: 650;
+      margin: 0;
       letter-spacing: -0.02em;
+      line-height: 1.15;
+      grid-column: 2;
+      grid-row: 1;
+      position: relative;
+      z-index: 1;
     }
 
     .profile p {
-      font-size: 0.875rem;
+      font-size: 0.9rem;
       color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.25;
+      grid-column: 2;
+      grid-row: 2;
+      position: relative;
+      z-index: 1;
     }
 
     /* Section Groups */
     .section {
       background: var(--surface);
-      border-radius: 16px;
+      border-radius: 14px;
       border: 1px solid var(--border);
       overflow: hidden;
+      box-shadow: none;
     }
 
     .section-header {
@@ -105,6 +135,21 @@
       gap: 10px;
       padding: 14px 16px;
       border-bottom: 1px solid var(--border);
+      background: transparent;
+    }
+
+    .section-header .spacer {
+      margin-left: auto;
+    }
+
+    .section-header .section-label {
+      margin-left: auto;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      white-space: nowrap;
     }
 
     .section-header .icon {
@@ -115,6 +160,7 @@
       align-items: center;
       justify-content: center;
       font-size: 14px;
+      border: 1px solid var(--border);
     }
 
     .section-header h2 {
@@ -176,11 +222,13 @@
       font-size: 0.9rem;
       font-weight: 500;
       cursor: pointer;
-      transition: background 0.15s ease;
+      border: 1px solid transparent;
+      transition: background 0.15s ease, border-color 0.15s ease;
     }
 
     .link-btn:hover {
       background: var(--surface-hover);
+      border-color: var(--border);
     }
 
     .link-btn i {
@@ -189,6 +237,16 @@
       font-size: 16px;
       text-align: center;
       opacity: 0.7;
+    }
+
+    .link-btn .icon-img {
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+      border-radius: 4px;
+      object-fit: contain;
+      opacity: 0.85;
+      flex: 0 0 auto;
     }
 
     .link-btn .meta {
@@ -206,23 +264,31 @@
 
     /* Special Buttons */
     .link-btn.instagram-gradient {
-      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      /* Minimal IG: neutral button, brand cue via icon only */
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
     }
     .link-btn.instagram-gradient:hover {
-      opacity: 0.9;
-      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      background: var(--surface-hover);
+      border-color: var(--border);
     }
     .link-btn.instagram-gradient i {
       opacity: 1;
-      color: #fff;
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .link-btn.instagram-dark {
-      background: #000;
-      border: 1px solid #333;
+      /* Minimal IG alt: neutral button with subtle border + gradient icon */
+      background: var(--surface);
+      border: 1px solid var(--border);
     }
     .link-btn.instagram-dark:hover {
-      background: #111;
+      background: var(--surface-hover);
+      border-color: var(--border);
     }
     .link-btn.instagram-dark i {
       background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
@@ -233,36 +299,39 @@
     }
 
     .link-btn.whatsapp {
-      background: #25D366;
+      background: transparent;
+      border: 1px solid var(--border);
     }
     .link-btn.whatsapp:hover {
-      background: #20bd5a;
+      background: var(--surface-hover);
     }
     .link-btn.whatsapp i {
       opacity: 1;
-      color: #fff;
+      color: #25D366;
     }
 
     .link-btn.buildfast-accent {
-      background: var(--buildfast);
+      background: transparent;
+      border: 1px solid var(--border);
     }
     .link-btn.buildfast-accent:hover {
-      background: #24be5c;
+      background: var(--surface-hover);
     }
     .link-btn.buildfast-accent i {
       opacity: 1;
-      color: #FFD700;
+      color: var(--buildfast);
     }
 
     .link-btn.linkedin {
-      background: #0A66C2;
+      background: transparent;
+      border: 1px solid var(--border);
     }
     .link-btn.linkedin:hover {
-      background: #0958a8;
+      background: var(--surface-hover);
     }
     .link-btn.linkedin i {
       opacity: 1;
-      color: #fff;
+      color: #0A66C2;
     }
 
     /* QR Codes Grid */
@@ -294,6 +363,98 @@
       border-radius: 8px;
     }
 
+    /* Profile Carousel Preview (Lightbox) */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 18, 32, 0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 50;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-inner {
+      width: min(920px, 100%);
+      max-height: min(84vh, 820px);
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 14px;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: grid;
+      grid-template-rows: 1fr auto;
+    }
+
+    .lightbox-stage {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .lightbox-stage img {
+      width: 100%;
+      height: 100%;
+      max-height: min(74vh, 720px);
+      object-fit: contain;
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .lightbox-controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      border-top: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.88);
+    }
+
+    .lightbox-controls .group {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .icon-btn:hover {
+      background: var(--surface-hover);
+    }
+
+    .lightbox-counter {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      padding: 0 6px;
+      user-select: none;
+    }
+
+    .profile-pic {
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     /* Footer */
     .footer {
       padding: 24px 0 8px;
@@ -308,7 +469,7 @@
   <div class="container">
     <!-- Profile -->
     <div class="profile">
-      <img src="./assets/me.jpeg" alt="Antonio Guiotto" class="profile-pic">
+      <img src="./assets/me.jpeg" data-images="./assets/me.jpeg,./assets/me-2.png" alt="Antonio Guiotto" class="profile-pic">
       <h1>Antonio Guiotto</h1>
       <p>Developer & Designer</p>
     </div>
@@ -341,6 +502,7 @@
       <div class="section-header">
         <div class="icon"><i class="fas fa-briefcase"></i></div>
         <h2>Professional</h2>
+        <span class="section-label">Resumes</span>
       </div>
       <div class="section-content">
         <a href="#" class="link-btn linkedin" data-url="https://linkedin.com/in/antonioguiotto">
@@ -364,19 +526,25 @@
       <div class="section-header">
         <div class="icon"><i class="fas fa-bolt"></i></div>
         <h2>BuildFast</h2>
+        <span class="section-label">Web engineering</span>
       </div>
       <div class="section-content">
         <a href="#" class="link-btn instagram-gradient" data-url="https://instagram.com/fastbuildsoftware">
           <i class="fab fa-instagram"></i>
           Instagram @fastbuildsoftware
         </a>
+        <a href="#" class="link-btn" data-url="https://finance.buildfast.it">
+          <img class="icon-img" src="./assets/life-panel.png" alt="Life Panel icon" />
+          Life Panel app
+          <span class="meta">finance.buildfast.it</span>
+        </a>
         <a href="#" class="link-btn" data-url="https://buildfast.it">
-          <i class="fas fa-globe"></i>
+          <img class="icon-img" src="./assets/buildfast.png" alt="BuildFast icon" />
           buildfast.it
           <span class="meta">Main Site</span>
         </a>
         <a href="#" class="link-btn" data-url="https://blueprint.buildfast.it">
-          <i class="fas fa-drafting-compass"></i>
+          <img class="icon-img" src="./assets/blueprint.png" alt="Blueprint icon" />
           blueprint.buildfast.it
           <span class="meta">Demo</span>
         </a>
@@ -388,6 +556,7 @@
       <div class="section-header">
         <div class="icon"><i class="fas fa-building"></i></div>
         <h2>Properties</h2>
+        <span class="section-label">Real estate</span>
       </div>
       <div class="section-content">
         <a href="pages/apartment.html" class="link-btn">
@@ -426,7 +595,165 @@
     </div>
   </div>
 
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-inner" role="dialog" aria-modal="true" aria-label="Image preview">
+      <div class="lightbox-stage" id="lightbox-stage">
+        <img id="lightbox-img" alt="Preview" />
+      </div>
+      <div class="lightbox-controls">
+        <div class="group">
+          <button class="icon-btn" id="lightbox-prev" type="button" aria-label="Previous image">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="icon-btn" id="lightbox-next" type="button" aria-label="Next image">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <span class="lightbox-counter" id="lightbox-counter"></span>
+        </div>
+        <div class="group">
+          <button class="icon-btn" id="lightbox-close" type="button" aria-label="Close preview">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // Profile image carousel (auto-advance + swipe + lightbox preview)
+    (function () {
+      const profileImg = document.querySelector('.profile-pic');
+      if (!profileImg) return;
+
+      // Provide images via attribute if desired:
+      // <img class="profile-pic" data-images="./assets/me.jpeg,./assets/other.jpeg" ... />
+      const raw = profileImg.getAttribute('data-images') || profileImg.getAttribute('src') || '';
+      const images = raw
+        .split(',')
+        .map(s => s.trim())
+        .filter(Boolean);
+
+      let idx = 0;
+      const setProfile = (nextIdx) => {
+        if (!images.length) return;
+        idx = (nextIdx + images.length) % images.length;
+        profileImg.src = images[idx];
+      };
+
+      // Autoplay only if there is more than 1 image
+      const AUTOPLAY_MS = 4500;
+      let timer = null;
+      const start = () => {
+        if (images.length <= 1) return;
+        stop();
+        timer = window.setInterval(() => setProfile(idx + 1), AUTOPLAY_MS);
+      };
+      const stop = () => {
+        if (timer) window.clearInterval(timer);
+        timer = null;
+      };
+
+      start();
+
+      // Swipe on the profile image
+      let startX = null;
+      profileImg.addEventListener('pointerdown', (e) => {
+        startX = e.clientX;
+        stop();
+      });
+      profileImg.addEventListener('pointerup', (e) => {
+        if (startX == null) return;
+        const dx = e.clientX - startX;
+        startX = null;
+        if (Math.abs(dx) > 35 && images.length > 1) {
+          setProfile(dx < 0 ? idx + 1 : idx - 1);
+        }
+        start();
+      });
+      profileImg.addEventListener('pointercancel', () => {
+        startX = null;
+        start();
+      });
+
+      // Lightbox preview with minimal controls
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      const lbPrev = document.getElementById('lightbox-prev');
+      const lbNext = document.getElementById('lightbox-next');
+      const lbClose = document.getElementById('lightbox-close');
+      const lbCounter = document.getElementById('lightbox-counter');
+      const lbStage = document.getElementById('lightbox-stage');
+
+      let lbOpen = false;
+      const renderLightbox = () => {
+        if (!images.length) return;
+        lbImg.src = images[idx];
+        lbCounter.textContent = images.length > 1 ? `${idx + 1} / ${images.length}` : '';
+        const disabled = images.length <= 1;
+        lbPrev.disabled = disabled;
+        lbNext.disabled = disabled;
+        lbPrev.style.opacity = disabled ? '0.4' : '1';
+        lbNext.style.opacity = disabled ? '0.4' : '1';
+      };
+
+      const open = () => {
+        if (!lightbox) return;
+        lbOpen = true;
+        stop();
+        renderLightbox();
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+      };
+
+      const close = () => {
+        if (!lightbox) return;
+        lbOpen = false;
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        start();
+      };
+
+      profileImg.addEventListener('click', () => open());
+      lbClose?.addEventListener('click', () => close());
+      lightbox?.addEventListener('click', (e) => {
+        if (e.target === lightbox) close();
+      });
+
+      lbPrev?.addEventListener('click', () => {
+        if (images.length <= 1) return;
+        setProfile(idx - 1);
+        renderLightbox();
+      });
+      lbNext?.addEventListener('click', () => {
+        if (images.length <= 1) return;
+        setProfile(idx + 1);
+        renderLightbox();
+      });
+
+      // Swipe inside lightbox
+      let lbStartX = null;
+      lbStage?.addEventListener('pointerdown', (e) => { lbStartX = e.clientX; });
+      lbStage?.addEventListener('pointerup', (e) => {
+        if (lbStartX == null || images.length <= 1) return;
+        const dx = e.clientX - lbStartX;
+        lbStartX = null;
+        if (Math.abs(dx) > 45) {
+          setProfile(dx < 0 ? idx + 1 : idx - 1);
+          renderLightbox();
+        }
+      });
+      lbStage?.addEventListener('pointercancel', () => { lbStartX = null; });
+
+      document.addEventListener('keydown', (e) => {
+        if (!lbOpen) return;
+        if (e.key === 'Escape') close();
+        if (images.length > 1 && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+          setProfile(e.key === 'ArrowRight' ? idx + 1 : idx - 1);
+          renderLightbox();
+        }
+      });
+    })();
+
     document.querySelectorAll('.link-btn').forEach(button => {
       button.addEventListener('click', function(e) {
         if (this.hasAttribute('download')) return;
