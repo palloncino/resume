@@ -296,26 +296,123 @@
       padding: 6px;
     }
 
-    .qr-item {
-      background: var(--surface-2);
-      border-radius: var(--radius-sm);
-      padding: 12px;
-      text-align: center;
+    /* Payments: one button per cell (label + thumb, tap opens lightbox) */
+    .qr-tap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      margin: 0;
+      padding: 12px 10px;
       border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface-2);
+      cursor: pointer;
+      text-align: center;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .qr-item h3 {
+    .qr-tap:hover {
+      background: var(--surface-hover);
+    }
+
+    .qr-tap:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .qr-name {
       font-size: 0.7rem;
       font-weight: 500;
       color: var(--text-secondary);
-      margin-bottom: 8px;
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
 
-    .qr-item img {
+    .qr-thumb {
+      max-height: 112px;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      border-radius: 6px;
+    }
+
+    /* QR full-screen lightbox */
+    .qr-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.82);
+    }
+
+    .qr-lightbox.open {
+      display: flex;
+    }
+
+    .qr-lightbox-panel {
+      position: relative;
+      width: min(420px, 100%);
+      max-height: min(90vh, 560px);
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius);
+      padding: 16px 16px 20px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    .qr-lightbox-title {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: center;
+      margin: 0 36px 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .qr-lightbox-img-wrap {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qr-lightbox-img-wrap img {
       width: 100%;
-      border-radius: 8px;
+      max-width: 320px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .qr-lightbox-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .qr-lightbox-close:hover {
+      background: var(--surface-hover);
     }
 
     /* ─── Lightbox ─── */
@@ -474,12 +571,12 @@
       </div>
     </div>
 
-    <!-- BuildFast -->
+    <!-- Software products -->
     <div class="section buildfast">
       <div class="section-header">
-        <div class="icon"><i class="fas fa-bolt"></i></div>
-        <h2>BuildFast</h2>
-        <span class="section-label">Web engineering</span>
+        <div class="icon"><i class="fas fa-layer-group"></i></div>
+        <h2>Software products</h2>
+        <span class="section-label">Live</span>
       </div>
       <div class="section-content">
         <a href="#" class="link-btn" data-url="https://finance.buildfast.it">
@@ -532,19 +629,39 @@
         <h2>Payments</h2>
       </div>
       <div class="qr-grid">
-        <div class="qr-item">
-          <h3>Revolut</h3>
-          <img src="./media/revolut-qr.jpg" alt="Revolut QR">
-        </div>
-        <div class="qr-item">
-          <h3>PayPal</h3>
-          <img src="./media/paypal-qr.jpg" alt="PayPal QR">
-        </div>
+        <button type="button" class="qr-tap" data-qr-src="./media/revolut-qr.jpg" data-qr-label="Revolut" data-qr-alt="Revolut payment QR code" aria-label="Open Revolut QR full size">
+          <span class="qr-name">Revolut</span>
+          <img src="./media/revolut-qr.jpg" alt="" class="qr-thumb" loading="lazy" width="120" height="120">
+        </button>
+        <button type="button" class="qr-tap" data-qr-src="./media/paypal-qr.jpg" data-qr-label="PayPal" data-qr-alt="PayPal payment QR code" aria-label="Open PayPal QR full size">
+          <span class="qr-name">PayPal</span>
+          <img src="./media/paypal-qr.jpg" alt="" class="qr-thumb" loading="lazy" width="120" height="120">
+        </button>
+        <button type="button" class="qr-tap" data-qr-src="./media/BTC-address-QR-code.png" data-qr-label="Bitcoin" data-qr-alt="Bitcoin address QR code" aria-label="Open Bitcoin QR full size">
+          <span class="qr-name">Bitcoin</span>
+          <img src="./media/BTC-address-QR-code.png" alt="" class="qr-thumb" loading="lazy" width="120" height="120">
+        </button>
+        <button type="button" class="qr-tap" data-qr-src="./media/ETH-address-QR-code.png" data-qr-label="Ethereum" data-qr-alt="Ethereum address QR code" aria-label="Open Ethereum QR full size">
+          <span class="qr-name">Ethereum</span>
+          <img src="./media/ETH-address-QR-code.png" alt="" class="qr-thumb" loading="lazy" width="120" height="120">
+        </button>
       </div>
     </div>
 
     <div class="footer">
       2026
+    </div>
+  </div>
+
+  <div class="qr-lightbox" id="qr-lightbox" aria-hidden="true">
+    <div class="qr-lightbox-panel" role="dialog" aria-modal="true" aria-labelledby="qr-lightbox-title">
+      <button type="button" class="qr-lightbox-close" id="qr-lightbox-close" aria-label="Close QR">
+        <i class="fas fa-xmark"></i>
+      </button>
+      <h2 id="qr-lightbox-title" class="qr-lightbox-title"></h2>
+      <div class="qr-lightbox-img-wrap">
+        <img id="qr-lightbox-img" src="" alt="">
+      </div>
     </div>
   </div>
 
@@ -661,6 +778,44 @@
           setIdx(e.key === 'ArrowRight' ? idx + 1 : idx - 1);
           renderLightbox();
         }
+      });
+    })();
+
+    (function () {
+      const root = document.getElementById('qr-lightbox');
+      const img = document.getElementById('qr-lightbox-img');
+      const title = document.getElementById('qr-lightbox-title');
+      const closeBtn = document.getElementById('qr-lightbox-close');
+      if (!root || !img || !title) return;
+
+      const open = (src, label, alt) => {
+        img.src = src;
+        img.alt = alt || label || 'Payment QR code';
+        title.textContent = label || 'Payment';
+        root.classList.add('open');
+        root.setAttribute('aria-hidden', 'false');
+      };
+
+      const close = () => {
+        root.classList.remove('open');
+        root.setAttribute('aria-hidden', 'true');
+        img.removeAttribute('src');
+        img.alt = '';
+      };
+
+      document.querySelectorAll('.qr-tap').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          open(btn.dataset.qrSrc, btn.dataset.qrLabel, btn.dataset.qrAlt);
+        });
+      });
+
+      closeBtn?.addEventListener('click', close);
+      root.addEventListener('click', (e) => {
+        if (e.target === root) close();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && root.classList.contains('open')) close();
       });
     })();
 
