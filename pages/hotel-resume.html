@@ -14,9 +14,7 @@
       --text-soft: #57534e;
       --text-faint: #78716c;
       --rule: #d6d3d1;
-      --accent: #44403c;
       --accent-strong: #1c1917;
-      /* One system: major divider (header only), light rules elsewhere */
       --rule-major: #1c1917;
       --rule-light: #c4c2be;
     }
@@ -36,7 +34,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Screen: page-sized column; print/PDF: full bleed of printable area */
     .page {
       width: 100%;
       max-width: 210mm;
@@ -51,8 +48,8 @@
       }
       body {
         background: #fff;
-        font-size: 9pt;
-        line-height: 1.34;
+        font-size: 8.65pt;
+        line-height: 1.3;
         print-color-adjust: exact;
         -webkit-print-color-adjust: exact;
       }
@@ -84,38 +81,39 @@
     header {
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 0.65rem 1rem;
+      gap: 0.75rem 1rem;
       align-items: start;
-      padding-bottom: 0.55rem;
-      margin-bottom: 0.65rem;
+      padding-bottom: 0.6rem;
+      margin-bottom: 0.75rem;
       border-bottom: 1pt solid var(--rule-major);
     }
 
     h1 {
       font-size: 1.38rem;
       font-weight: 700;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.02em;
       color: var(--accent-strong);
-      line-height: 1.12;
+      line-height: 1.15;
+      word-spacing: 0.12em;
     }
 
     .tagline {
       font-size: 0.84rem;
       font-weight: 600;
       color: var(--text-soft);
-      margin-top: 0.35rem;
-      line-height: 1.35;
+      margin-top: 0.4rem;
+      line-height: 1.38;
     }
 
     .contact-block {
-      margin-top: 0.45rem;
+      margin-top: 0.5rem;
       font-size: 0.76rem;
       color: var(--text-soft);
       line-height: 1.5;
     }
 
     .contact-block .row {
-      margin-top: 0.16rem;
+      margin-top: 0.18rem;
     }
 
     .contact-block .row:first-child {
@@ -169,11 +167,13 @@
       }
     }
 
-    section {
-      margin-bottom: 0.55rem;
+    /* One section = one visual block */
+    section.cv-block {
+      margin-bottom: 0.58rem;
+      clear: both;
     }
 
-    section:last-of-type {
+    section.cv-block:last-of-type {
       margin-bottom: 0;
     }
 
@@ -183,35 +183,48 @@
       text-transform: uppercase;
       letter-spacing: 0.11em;
       color: var(--accent-strong);
-      margin: 0 0 0.28rem 0;
-      padding: 0 0 0.2rem 0;
+      margin: 0 0 0.4rem 0;
+      padding: 0 0 0.22rem 0;
       border-bottom: 1pt solid var(--rule-light);
     }
 
     .summary p {
       font-size: 0.86rem;
       line-height: 1.45;
-      hyphens: auto;
+      hyphens: none;
+      word-break: normal;
+      overflow-wrap: break-word;
     }
 
-    .strengths ul {
+    .nb-hyphen {
+      white-space: nowrap;
+    }
+
+    /* Strengths: list directly under heading */
+    section.strengths h2 {
+      margin-bottom: 0.32rem;
+    }
+
+    section.strengths ul {
       margin: 0;
+      padding: 0;
+      list-style: none;
     }
 
-    .strengths li {
+    section.strengths li {
       position: relative;
       padding-left: 0.85rem;
-      margin-bottom: 0.12rem;
+      margin-bottom: 0.18rem;
       font-size: 0.82rem;
-      line-height: 1.36;
+      line-height: 1.4;
       color: var(--text);
     }
 
-    .strengths li:last-child {
+    section.strengths li:last-child {
       margin-bottom: 0;
     }
 
-    .strengths li::before {
+    section.strengths li::before {
       content: "–";
       position: absolute;
       left: 0;
@@ -224,60 +237,74 @@
       padding: 0;
     }
 
-    .job {
-      margin-bottom: 0.3rem;
-      padding-bottom: 0.3rem;
-      border-bottom: 1pt solid var(--rule-light);
+    /* Experience: title → org → dates → bullets (same for every role) */
+    section.experience h2 {
+      margin-bottom: 0.45rem;
     }
 
-    .job:last-child {
+    .job-list {
+      display: block;
+    }
+
+    article.job {
+      margin-bottom: 0.32rem;
+      padding-bottom: 0.32rem;
+      border-bottom: 1pt solid var(--rule-light);
+      display: block;
+    }
+
+    article.job:last-child {
       margin-bottom: 0;
       padding-bottom: 0;
       border-bottom: none;
     }
 
-    .job-head {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 0.15rem 0.75rem;
-      align-items: baseline;
-    }
-
-    .job-title {
+    .job-role {
+      display: block;
       font-weight: 700;
       font-size: 0.86rem;
       color: var(--accent-strong);
+      line-height: 1.28;
+      margin: 0 0 0.14rem 0;
     }
 
-    .job-meta {
+    .job-org-line {
+      display: block;
+      font-size: 0.76rem;
+      color: var(--text-soft);
+      font-weight: 500;
+      line-height: 1.35;
+      margin: 0 0 0.1rem 0;
+    }
+
+    .job-dates {
+      display: block;
       font-size: 0.72rem;
       font-weight: 600;
       color: var(--text-faint);
-      white-space: nowrap;
+      line-height: 1.35;
+      margin: 0 0 0.2rem 0;
     }
 
-    .job-org {
-      font-size: 0.76rem;
-      color: var(--text-soft);
-      margin-bottom: 0.22rem;
-      font-weight: 500;
+    article.job ul {
+      margin: 0;
+      padding: 0;
     }
 
-    .job ul {
-      margin-top: 0.22rem;
-    }
-
-    .job li {
+    article.job li {
       position: relative;
       padding-left: 0.75rem;
-      margin-bottom: 0.14rem;
+      margin-bottom: 0.16rem;
       font-size: 0.8rem;
-      line-height: 1.4;
+      line-height: 1.42;
       color: var(--text);
     }
 
-    .job li::before {
+    article.job li:last-child {
+      margin-bottom: 0;
+    }
+
+    article.job li::before {
       content: "–";
       position: absolute;
       left: 0;
@@ -285,46 +312,10 @@
       font-weight: 600;
     }
 
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.65rem 1.1rem;
-      align-items: start;
-    }
-
-    .two-col section {
-      margin-bottom: 0;
-    }
-
-    .two-col .job {
-      border-bottom: none;
-      padding-bottom: 0;
-      margin-bottom: 0;
-    }
-
-    .cert-block p {
-      font-size: 0.8rem;
-      color: var(--text);
-      line-height: 1.4;
-    }
-
-    .cert-block .muted {
-      color: var(--text-soft);
-      font-size: 0.74rem;
-      margin-top: 0.15rem;
-      display: block;
-      line-height: 1.35;
-    }
-
     .footer-meta {
       font-size: 0.78rem;
       color: var(--text-soft);
       line-height: 1.45;
-    }
-
-    .footer-meta strong {
-      color: var(--text);
-      font-weight: 600;
     }
 
     @media (max-width: 560px) {
@@ -336,9 +327,6 @@
       }
       .photo-wrap {
         justify-self: start;
-      }
-      .two-col {
-        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -354,7 +342,7 @@
         <p class="tagline">Banqueting &amp; Events – Evening / Weekend Availability</p>
         <div class="contact-block">
           <p class="row">Il-Gżira, Malta · Open to on-site roles across Malta</p>
-          <p class="row"><span class="label">E-mail</span><span class="value">powerhydratoni@gmail.com</span></p>
+          <p class="row"><span class="label">Email</span><span class="value">powerhydratoni@gmail.com</span></p>
           <p class="row"><span class="label">LinkedIn</span><span class="value">linkedin.com/in/antonioguiotto</span></p>
           <p class="row">
             <span class="label">Languages</span><span class="value value-stack">English — Fluent<br />Italian — Native<br />Spanish — Fluent</span>
@@ -366,15 +354,15 @@
       </div>
     </header>
 
-    <section class="summary">
+    <section class="cv-block summary">
       <h2>Profile</h2>
       <p>
-        Reliable professional used to structured, fast-paced environments. Calm under pressure, detail-oriented, and comfortable following service procedures.
-        Available evenings and weekends for banqueting, events, or front-of-house roles.
+        Reliable professional used to structured, <span class="nb-hyphen">fast-paced</span> environments. Calm under pressure, detail-oriented, and comfortable following service procedures.
+        Available evenings and weekends for banqueting, events, or <span class="nb-hyphen">front-of-house</span> roles.
       </p>
     </section>
 
-    <section class="strengths">
+    <section class="cv-block strengths">
       <h2>Strengths</h2>
       <ul>
         <li>Reliability &amp; punctuality</li>
@@ -385,103 +373,69 @@
       </ul>
     </section>
 
-    <section>
+    <section class="cv-block experience">
       <h2>Experience</h2>
+      <div class="job-list">
 
-      <article class="job">
-        <div class="job-head">
-          <span class="job-title">Operations &amp; Delivery (Full-time role)</span>
-          <span class="job-meta">May 2025 — present</span>
-        </div>
-        <div class="job-org">Cospex Ltd · Full-time · Il-Gżira, Malta</div>
-        <ul>
-          <li>Coordinates priorities, documentation, and handovers across parallel workstreams; reliable delivery with strict quality standards.</li>
-        </ul>
-      </article>
-
-      <article class="job">
-        <div class="job-head">
-          <span class="job-title">Independent professional services</span>
-          <span class="job-meta">Sep 2023 — present</span>
-        </div>
-        <div class="job-org">Freelance · Italy / remote</div>
-        <ul>
-          <li>Manages multiple clients and deadlines; clear scoping, updates, and delivery.</li>
-        </ul>
-      </article>
-
-      <article class="job">
-        <div class="job-head">
-          <span class="job-title">Software developer</span>
-          <span class="job-meta">Nov 2021 — Feb 2023</span>
-        </div>
-        <div class="job-org">Oval Money · Full-time · London area, UK</div>
-        <ul>
-          <li>Regulated fintech: account/profile services, accuracy, discretion, customer-facing flows; Agile with design and QA.</li>
-        </ul>
-      </article>
-
-      <article class="job">
-        <div class="job-head">
-          <span class="job-title">Frontend developer</span>
-          <span class="job-meta">Dec 2018 — Aug 2021</span>
-        </div>
-        <div class="job-org">A.S. Watson Group &amp; Sky Italia · Full-time · Greater Milan area, Italy</div>
-        <ul>
-          <li>Watson (retail e-commerce) and Sky (broadcast): brand standards, deadlines, large-organisation teamwork, collaboration with testing.</li>
-        </ul>
-      </article>
-
-      <article class="job">
-        <div class="job-head">
-          <span class="job-title">Bar / Floor Staff</span>
-          <span class="job-meta">May 2017 — Aug 2018</span>
-        </div>
-        <div class="job-org">PURE · Restaurant &amp; bar · Sliema, Malta (venue closed)</div>
-        <ul>
-          <li>Guest-facing service in a busy bar/restaurant.</li>
-          <li>Worked under peak pressure while maintaining service standards.</li>
-        </ul>
-      </article>
-
-      <article class="job">
-        <div class="job-head">
-          <span class="job-title">Restaurant Team Member</span>
-          <span class="job-meta">Mar 2016 — Feb 2017</span>
-        </div>
-        <div class="job-org">Pizza Hut · Quick-service restaurant · Sliema, Malta</div>
-        <ul>
-          <li>Supported daily service operations in fast-paced environment.</li>
-          <li>Assisted with food service, setup, and customer interaction.</li>
-        </ul>
-      </article>
-    </section>
-
-    <div class="two-col">
-      <section>
-        <h2>Volunteering</h2>
         <article class="job">
-          <div class="job-head">
-            <span class="job-title">Volunteer</span>
-            <span class="job-meta">Mar 2014 — Mar 2015</span>
-          </div>
-          <div class="job-org">Krila Terapijsko Jahanje · Zagreb, Croatia (EVS)</div>
+          <span class="job-role">Operations &amp; Delivery (Full-time role)</span>
+          <span class="job-org-line">Cospex Ltd · Il-Gżira, Malta</span>
+          <span class="job-dates">May 2025 — present</span>
           <ul>
-            <li>Therapeutic riding centre: upkeep, teamwork, structured activities with children with cerebral palsy; EVS placement — reliability and adapting abroad.</li>
+            <li>Coordinates priorities, documentation, and handovers across parallel workstreams.</li>
+            <li>Reliable delivery with strict quality standards.</li>
           </ul>
         </article>
-      </section>
 
-      <section>
-        <h2>Certifications</h2>
-        <div class="cert-block">
-          <p><strong>Youthpass</strong> — European Commission · Apr 2015</p>
-          <span class="muted">European voluntary service learning recognition</span>
-        </div>
-      </section>
-    </div>
+        <article class="job">
+          <span class="job-role">Independent professional services</span>
+          <span class="job-org-line">Freelance · Italy / remote</span>
+          <span class="job-dates">Sep 2023 — present</span>
+          <ul>
+            <li>Manages multiple clients and deadlines; clear scoping, updates, and delivery.</li>
+          </ul>
+        </article>
 
-    <section>
+        <article class="job">
+          <span class="job-role">Software developer</span>
+          <span class="job-org-line">Oval Money · London area, UK</span>
+          <span class="job-dates">Nov 2021 — Feb 2023</span>
+          <ul>
+            <li>Regulated fintech: account/profile services, accuracy, discretion, customer-facing flows; Agile with design and QA.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <span class="job-role">Frontend developer</span>
+          <span class="job-org-line">A.S. Watson Group &amp; Sky Italia · Greater Milan area, Italy</span>
+          <span class="job-dates">Dec 2018 — Aug 2021</span>
+          <ul>
+            <li>Watson (retail e-commerce) and Sky (broadcast): brand standards, deadlines, large-organisation teamwork, collaboration with testing.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <span class="job-role">Bar / Floor Staff</span>
+          <span class="job-org-line">PURE · Restaurant &amp; bar · Sliema, Malta (venue closed)</span>
+          <span class="job-dates">May 2017 — Aug 2018</span>
+          <ul>
+            <li>Guest-facing service in a busy bar/restaurant; peak pressure with consistent service standards.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <span class="job-role">Restaurant Team Member</span>
+          <span class="job-org-line">Pizza Hut · Quick-service restaurant · Sliema, Malta</span>
+          <span class="job-dates">Mar 2016 — Feb 2017</span>
+          <ul>
+            <li>Daily service in a <span class="nb-hyphen">fast-paced</span> environment; food service, setup, and customer interaction.</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="cv-block">
       <h2>References</h2>
       <p class="footer-meta">Available on request.</p>
     </section>
