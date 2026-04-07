@@ -207,19 +207,20 @@
       margin-bottom: 0.28rem;
     }
 
+    /* Native list markers: Headless Chrome PDF often mis-orders custom ::before bullets */
     ul.strengths-list {
       display: block;
       width: 100%;
-      list-style: none;
+      list-style-type: disc;
+      list-style-position: outside;
       margin: 0;
-      padding: 0;
+      padding-left: 1.15em;
     }
 
     ul.strengths-list > li {
-      display: block;
-      position: relative;
-      padding-left: 0.85rem;
+      display: list-item;
       margin-bottom: 0.16rem;
+      padding-left: 0.35em;
       font-size: 0.82rem;
       line-height: 1.4;
       color: var(--text);
@@ -227,15 +228,6 @@
 
     ul.strengths-list > li:last-child {
       margin-bottom: 0;
-    }
-
-    ul.strengths-list > li::before {
-      content: "–";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--text-faint);
-      font-weight: 600;
     }
 
     section.experience h2 {
@@ -247,12 +239,8 @@
       width: 100%;
     }
 
-    /*
-      Each job is a single containing block (flow-root) so bullets cannot
-      visually escape to another section in print/PDF engines.
-    */
     div.job {
-      display: flow-root;
+      display: block;
       width: 100%;
       margin-bottom: 0.28rem;
       padding-bottom: 0.28rem;
@@ -298,17 +286,17 @@
     ul.job-bullets {
       display: block;
       width: 100%;
-      list-style: none;
+      list-style-type: disc;
+      list-style-position: outside;
       margin: 0;
-      padding: 0;
+      padding-left: 1.1em;
     }
 
     ul.job-bullets > li {
-      display: block;
-      position: relative;
+      display: list-item;
       width: 100%;
-      padding-left: 0.75rem;
       margin-bottom: 0.12rem;
+      padding-left: 0.3em;
       font-size: 0.8rem;
       line-height: 1.42;
       color: var(--text);
@@ -316,15 +304,6 @@
 
     ul.job-bullets > li:last-child {
       margin-bottom: 0;
-    }
-
-    ul.job-bullets > li::before {
-      content: "–";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--text-faint);
-      font-weight: 600;
     }
 
     .footer-meta {
@@ -359,7 +338,7 @@
         <div class="contact-block">
           <p class="row">Il-Gżira, Malta · Open to on-site roles across Malta</p>
           <p class="row"><span class="label">Email</span><span class="value">powerhydratoni@gmail.com</span></p>
-          <p class="row"><span class="label">LinkedIn</span><span class="value">linkedin.com/in/antonioguiotto</span></p>
+          <p class="row"><span class="label">Phone</span><span class="value">+356 79641219</span></p>
           <p class="row">
             <span class="label">Languages</span><span class="value value-stack">English — Fluent<br />Italian — Native<br />Spanish — Fluent</span>
           </p>
@@ -398,8 +377,8 @@
           <div class="job-org">Cospex Ltd · Il-Gżira, Malta</div>
           <div class="job-dates">May 2025 — present</div>
           <ul class="job-bullets">
-            <li>Coordinates priorities and handovers across parallel workstreams.</li>
-            <li>Reliable delivery with strict quality standards.</li>
+            <li>Coordinates priorities and handovers across workstreams</li>
+            <li>Reliable delivery with strict quality standards</li>
           </ul>
         </div>
 
@@ -408,35 +387,26 @@
           <div class="job-org">Freelance · Italy / remote</div>
           <div class="job-dates">Sep 2023 — present</div>
           <ul class="job-bullets">
-            <li>Manages multiple clients and deadlines; clear scoping, updates, and delivery.</li>
+            <li>Manages multiple clients and deadlines</li>
           </ul>
         </div>
 
         <div class="job">
-          <div class="job-title">Software developer</div>
+          <div class="job-title">Software Developer</div>
           <div class="job-org">Oval Money · London area, UK</div>
           <div class="job-dates">Nov 2021 — Feb 2023</div>
           <ul class="job-bullets">
-            <li>Regulated fintech: account/profile services, accuracy, discretion, customer-facing flows; Agile with design and QA.</li>
-          </ul>
-        </div>
-
-        <div class="job">
-          <div class="job-title">Frontend developer</div>
-          <div class="job-org">A.S. Watson Group &amp; Sky Italia · Greater Milan area, Italy</div>
-          <div class="job-dates">Dec 2018 — Aug 2021</div>
-          <ul class="job-bullets">
-            <li>Watson (retail e-commerce) and Sky (broadcast): brand standards, deadlines, large-organisation teamwork, collaboration with testing.</li>
+            <li>Accuracy, discretion, customer-facing systems</li>
           </ul>
         </div>
 
         <div class="job">
           <div class="job-title">Bar / Floor Staff</div>
-          <div class="job-org">PURE · Sliema, Malta (venue closed)</div>
+          <div class="job-org">PURE · Sliema, Malta</div>
           <div class="job-dates">May 2017 — Aug 2018</div>
           <ul class="job-bullets">
-            <li>Guest-facing service in a busy bar/restaurant.</li>
-            <li>Worked under peak pressure while maintaining service standards.</li>
+            <li>Guest-facing service in a busy bar/restaurant</li>
+            <li>Worked under peak pressure while maintaining standards</li>
           </ul>
         </div>
 
@@ -445,8 +415,8 @@
           <div class="job-org">Pizza Hut · Sliema, Malta</div>
           <div class="job-dates">Mar 2016 — Feb 2017</div>
           <ul class="job-bullets">
-            <li>Supported daily service operations in a <span class="nb-hyphen">fast-paced</span> environment.</li>
-            <li>Assisted with food service, setup, and customer interaction.</li>
+            <li>Supported daily service operations</li>
+            <li>Assisted with food service and setup</li>
           </ul>
         </div>
 
