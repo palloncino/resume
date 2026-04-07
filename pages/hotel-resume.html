@@ -44,12 +44,12 @@
     @media print {
       @page {
         size: A4;
-        margin: 8mm;
+        margin: 7mm;
       }
       body {
         background: #fff;
-        font-size: 8.65pt;
-        line-height: 1.3;
+        font-size: 8.15pt;
+        line-height: 1.27;
         print-color-adjust: exact;
         -webkit-print-color-adjust: exact;
       }
@@ -162,15 +162,15 @@
 
     @media print {
       .photo {
-        max-width: 90px;
-        max-height: 108px;
+        max-width: 88px;
+        max-height: 104px;
       }
     }
 
-    /* One section = one visual block */
     section.cv-block {
-      margin-bottom: 0.58rem;
+      margin-bottom: 0.48rem;
       clear: both;
+      display: block;
     }
 
     section.cv-block:last-of-type {
@@ -183,9 +183,10 @@
       text-transform: uppercase;
       letter-spacing: 0.11em;
       color: var(--accent-strong);
-      margin: 0 0 0.4rem 0;
+      margin: 0 0 0.35rem 0;
       padding: 0 0 0.22rem 0;
       border-bottom: 1pt solid var(--rule-light);
+      display: block;
     }
 
     .summary p {
@@ -194,120 +195,134 @@
       hyphens: none;
       word-break: normal;
       overflow-wrap: break-word;
+      display: block;
     }
 
     .nb-hyphen {
       white-space: nowrap;
     }
 
-    /* Strengths: list directly under heading */
+    /* Strengths: heading + list = one block (no float / no stray globals) */
     section.strengths h2 {
-      margin-bottom: 0.32rem;
+      margin-bottom: 0.28rem;
     }
 
-    section.strengths ul {
+    ul.strengths-list {
+      display: block;
+      width: 100%;
+      list-style: none;
       margin: 0;
       padding: 0;
-      list-style: none;
     }
 
-    section.strengths li {
+    ul.strengths-list > li {
+      display: block;
       position: relative;
       padding-left: 0.85rem;
-      margin-bottom: 0.18rem;
+      margin-bottom: 0.16rem;
       font-size: 0.82rem;
       line-height: 1.4;
       color: var(--text);
     }
 
-    section.strengths li:last-child {
+    ul.strengths-list > li:last-child {
       margin-bottom: 0;
     }
 
-    section.strengths li::before {
+    ul.strengths-list > li::before {
       content: "–";
       position: absolute;
       left: 0;
+      top: 0;
       color: var(--text-faint);
       font-weight: 600;
     }
 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    /* Experience: title → org → dates → bullets (same for every role) */
     section.experience h2 {
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.4rem;
     }
 
     .job-list {
       display: block;
+      width: 100%;
     }
 
-    article.job {
-      margin-bottom: 0.32rem;
-      padding-bottom: 0.32rem;
+    /*
+      Each job is a single containing block (flow-root) so bullets cannot
+      visually escape to another section in print/PDF engines.
+    */
+    div.job {
+      display: flow-root;
+      width: 100%;
+      margin-bottom: 0.28rem;
+      padding-bottom: 0.28rem;
       border-bottom: 1pt solid var(--rule-light);
-      display: block;
     }
 
-    article.job:last-child {
+    div.job:last-child {
       margin-bottom: 0;
       padding-bottom: 0;
       border-bottom: none;
     }
 
-    .job-role {
+    .job-title {
       display: block;
+      width: 100%;
       font-weight: 700;
       font-size: 0.86rem;
       color: var(--accent-strong);
       line-height: 1.28;
-      margin: 0 0 0.14rem 0;
+      margin: 0 0 0.12rem 0;
     }
 
-    .job-org-line {
+    .job-org {
       display: block;
+      width: 100%;
       font-size: 0.76rem;
       color: var(--text-soft);
       font-weight: 500;
       line-height: 1.35;
-      margin: 0 0 0.1rem 0;
+      margin: 0 0 0.08rem 0;
     }
 
     .job-dates {
       display: block;
+      width: 100%;
       font-size: 0.72rem;
       font-weight: 600;
       color: var(--text-faint);
       line-height: 1.35;
-      margin: 0 0 0.2rem 0;
+      margin: 0 0 0.22rem 0;
     }
 
-    article.job ul {
+    ul.job-bullets {
+      display: block;
+      width: 100%;
+      list-style: none;
       margin: 0;
       padding: 0;
     }
 
-    article.job li {
+    ul.job-bullets > li {
+      display: block;
       position: relative;
+      width: 100%;
       padding-left: 0.75rem;
-      margin-bottom: 0.16rem;
+      margin-bottom: 0.12rem;
       font-size: 0.8rem;
       line-height: 1.42;
       color: var(--text);
     }
 
-    article.job li:last-child {
+    ul.job-bullets > li:last-child {
       margin-bottom: 0;
     }
 
-    article.job li::before {
+    ul.job-bullets > li::before {
       content: "–";
       position: absolute;
       left: 0;
+      top: 0;
       color: var(--text-faint);
       font-weight: 600;
     }
@@ -316,6 +331,7 @@
       font-size: 0.78rem;
       color: var(--text-soft);
       line-height: 1.45;
+      display: block;
     }
 
     @media (max-width: 560px) {
@@ -364,7 +380,7 @@
 
     <section class="cv-block strengths">
       <h2>Strengths</h2>
-      <ul>
+      <ul class="strengths-list">
         <li>Reliability &amp; punctuality</li>
         <li>Calm under pressure</li>
         <li>Teamwork and clear communication</li>
@@ -377,60 +393,62 @@
       <h2>Experience</h2>
       <div class="job-list">
 
-        <article class="job">
-          <span class="job-role">Operations &amp; Delivery (Full-time role)</span>
-          <span class="job-org-line">Cospex Ltd · Il-Gżira, Malta</span>
-          <span class="job-dates">May 2025 — present</span>
-          <ul>
-            <li>Coordinates priorities, documentation, and handovers across parallel workstreams.</li>
+        <div class="job">
+          <div class="job-title">Operations &amp; Delivery (Full-time role)</div>
+          <div class="job-org">Cospex Ltd · Il-Gżira, Malta</div>
+          <div class="job-dates">May 2025 — present</div>
+          <ul class="job-bullets">
+            <li>Coordinates priorities and handovers across parallel workstreams.</li>
             <li>Reliable delivery with strict quality standards.</li>
           </ul>
-        </article>
+        </div>
 
-        <article class="job">
-          <span class="job-role">Independent professional services</span>
-          <span class="job-org-line">Freelance · Italy / remote</span>
-          <span class="job-dates">Sep 2023 — present</span>
-          <ul>
+        <div class="job">
+          <div class="job-title">Independent professional services</div>
+          <div class="job-org">Freelance · Italy / remote</div>
+          <div class="job-dates">Sep 2023 — present</div>
+          <ul class="job-bullets">
             <li>Manages multiple clients and deadlines; clear scoping, updates, and delivery.</li>
           </ul>
-        </article>
+        </div>
 
-        <article class="job">
-          <span class="job-role">Software developer</span>
-          <span class="job-org-line">Oval Money · London area, UK</span>
-          <span class="job-dates">Nov 2021 — Feb 2023</span>
-          <ul>
+        <div class="job">
+          <div class="job-title">Software developer</div>
+          <div class="job-org">Oval Money · London area, UK</div>
+          <div class="job-dates">Nov 2021 — Feb 2023</div>
+          <ul class="job-bullets">
             <li>Regulated fintech: account/profile services, accuracy, discretion, customer-facing flows; Agile with design and QA.</li>
           </ul>
-        </article>
+        </div>
 
-        <article class="job">
-          <span class="job-role">Frontend developer</span>
-          <span class="job-org-line">A.S. Watson Group &amp; Sky Italia · Greater Milan area, Italy</span>
-          <span class="job-dates">Dec 2018 — Aug 2021</span>
-          <ul>
+        <div class="job">
+          <div class="job-title">Frontend developer</div>
+          <div class="job-org">A.S. Watson Group &amp; Sky Italia · Greater Milan area, Italy</div>
+          <div class="job-dates">Dec 2018 — Aug 2021</div>
+          <ul class="job-bullets">
             <li>Watson (retail e-commerce) and Sky (broadcast): brand standards, deadlines, large-organisation teamwork, collaboration with testing.</li>
           </ul>
-        </article>
+        </div>
 
-        <article class="job">
-          <span class="job-role">Bar / Floor Staff</span>
-          <span class="job-org-line">PURE · Restaurant &amp; bar · Sliema, Malta (venue closed)</span>
-          <span class="job-dates">May 2017 — Aug 2018</span>
-          <ul>
-            <li>Guest-facing service in a busy bar/restaurant; peak pressure with consistent service standards.</li>
+        <div class="job">
+          <div class="job-title">Bar / Floor Staff</div>
+          <div class="job-org">PURE · Sliema, Malta (venue closed)</div>
+          <div class="job-dates">May 2017 — Aug 2018</div>
+          <ul class="job-bullets">
+            <li>Guest-facing service in a busy bar/restaurant.</li>
+            <li>Worked under peak pressure while maintaining service standards.</li>
           </ul>
-        </article>
+        </div>
 
-        <article class="job">
-          <span class="job-role">Restaurant Team Member</span>
-          <span class="job-org-line">Pizza Hut · Quick-service restaurant · Sliema, Malta</span>
-          <span class="job-dates">Mar 2016 — Feb 2017</span>
-          <ul>
-            <li>Daily service in a <span class="nb-hyphen">fast-paced</span> environment; food service, setup, and customer interaction.</li>
+        <div class="job">
+          <div class="job-title">Restaurant Team Member</div>
+          <div class="job-org">Pizza Hut · Sliema, Malta</div>
+          <div class="job-dates">Mar 2016 — Feb 2017</div>
+          <ul class="job-bullets">
+            <li>Supported daily service operations in a <span class="nb-hyphen">fast-paced</span> environment.</li>
+            <li>Assisted with food service, setup, and customer interaction.</li>
           </ul>
-        </article>
+        </div>
 
       </div>
     </section>
