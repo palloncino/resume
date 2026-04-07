@@ -16,6 +16,9 @@
       --rule: #d6d3d1;
       --accent: #44403c;
       --accent-strong: #1c1917;
+      /* One system: major divider (header only), light rules elsewhere */
+      --rule-major: #1c1917;
+      --rule-light: #c4c2be;
     }
 
     * {
@@ -48,8 +51,8 @@
       }
       body {
         background: #fff;
-        font-size: 9.35pt;
-        line-height: 1.38;
+        font-size: 9pt;
+        line-height: 1.34;
         print-color-adjust: exact;
         -webkit-print-color-adjust: exact;
       }
@@ -83,9 +86,9 @@
       grid-template-columns: 1fr auto;
       gap: 0.65rem 1rem;
       align-items: start;
-      padding-bottom: 0.5rem;
-      margin-bottom: 0.6rem;
-      border-bottom: 2pt solid var(--accent-strong);
+      padding-bottom: 0.55rem;
+      margin-bottom: 0.65rem;
+      border-bottom: 1pt solid var(--rule-major);
     }
 
     h1 {
@@ -122,38 +125,52 @@
     .contact-block .label {
       font-weight: 600;
       color: var(--text);
-      margin-right: 0.4em;
+    }
+
+    .contact-block .label::after {
+      content: "\00a0";
     }
 
     .contact-block .value {
-      color: var(--text);
+      color: var(--text-soft);
       font-weight: 500;
     }
 
-    .lang-inline {
-      font-size: 0.76rem;
-      color: var(--text-soft);
-      line-height: 1.5;
-      margin-top: 0.4rem;
-      padding-top: 0.35rem;
-      border-top: 0.5pt solid var(--rule);
+    .contact-block .value.value-stack {
+      display: inline-block;
+      vertical-align: top;
+      line-height: 1.45;
     }
 
-    .lang-inline strong {
-      color: var(--text);
-      font-weight: 600;
+    .photo-wrap {
+      flex-shrink: 0;
+      align-self: start;
+      padding: 2px;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      background: #fff;
+      line-height: 0;
     }
 
     .photo {
-      width: 101px;
-      height: 101px;
-      border-radius: 2px;
-      object-fit: cover;
-      border: 1px solid var(--rule);
+      display: block;
+      max-width: 101px;
+      max-height: 128px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      object-position: top center;
+    }
+
+    @media print {
+      .photo {
+        max-width: 90px;
+        max-height: 108px;
+      }
     }
 
     section {
-      margin-bottom: 0.62rem;
+      margin-bottom: 0.55rem;
     }
 
     section:last-of-type {
@@ -161,14 +178,14 @@
     }
 
     h2 {
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.11em;
       color: var(--accent-strong);
-      margin-bottom: 0.32rem;
-      padding-bottom: 0.18rem;
-      border-bottom: 0.75pt solid var(--accent-strong);
+      margin: 0 0 0.28rem 0;
+      padding: 0 0 0.2rem 0;
+      border-bottom: 1pt solid var(--rule-light);
     }
 
     .summary p {
@@ -208,9 +225,9 @@
     }
 
     .job {
-      margin-bottom: 0.38rem;
-      padding-bottom: 0.38rem;
-      border-bottom: 0.5pt solid var(--rule);
+      margin-bottom: 0.3rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1pt solid var(--rule-light);
     }
 
     .job:last-child {
@@ -317,7 +334,7 @@
       header {
         grid-template-columns: 1fr;
       }
-      .photo {
+      .photo-wrap {
         justify-self: start;
       }
       .two-col {
@@ -339,20 +356,21 @@
           <p class="row">Il-Gżira, Malta · Open to on-site roles across Malta</p>
           <p class="row"><span class="label">E-mail</span><span class="value">powerhydratoni@gmail.com</span></p>
           <p class="row"><span class="label">LinkedIn</span><span class="value">linkedin.com/in/antonioguiotto</span></p>
+          <p class="row">
+            <span class="label">Languages</span><span class="value value-stack">English — Fluent<br />Italian — Native<br />Spanish — Fluent</span>
+          </p>
         </div>
-        <p class="lang-inline">
-          <strong>Languages</strong> — Italian (native); English &amp; Spanish (fluent)
-        </p>
       </div>
-      <img class="photo" src="../assets/me-id.png" width="101" height="101" alt="" />
+      <div class="photo-wrap">
+        <img class="photo" src="../assets/me-id.png" alt="" />
+      </div>
     </header>
 
     <section class="summary">
       <h2>Profile</h2>
       <p>
-        Reliable professional with experience working in structured, fast-paced environments. Calm under pressure,
-        detail-oriented, and comfortable following service procedures. Available for evening and weekend shifts in banqueting,
-        events, or front-of-house roles.
+        Reliable professional used to structured, fast-paced environments. Calm under pressure, detail-oriented, and comfortable following service procedures.
+        Available evenings and weekends for banqueting, events, or front-of-house roles.
       </p>
     </section>
 
@@ -377,8 +395,7 @@
         </div>
         <div class="job-org">Cospex Ltd · Full-time · Il-Gżira, Malta</div>
         <ul>
-          <li>Coordinates work across many parallel “properties” (multi-domain platform): priorities, documentation, and clear handovers between teams.</li>
-          <li>Delivers reliably in a high-tempo product environment with strict quality and service standards.</li>
+          <li>Coordinates priorities, documentation, and handovers across parallel workstreams; reliable delivery with strict quality standards.</li>
         </ul>
       </article>
 
@@ -400,30 +417,42 @@
         </div>
         <div class="job-org">Oval Money · Full-time · London area, UK</div>
         <ul>
-          <li>Account and profile services in a regulated context: accuracy, discretion, and customer-facing flows.</li>
-          <li>Weekly stakeholder updates; Agile teamwork with design and QA.</li>
+          <li>Regulated fintech: account/profile services, accuracy, discretion, customer-facing flows; Agile with design and QA.</li>
         </ul>
       </article>
 
       <article class="job">
         <div class="job-head">
           <span class="job-title">Frontend developer</span>
-          <span class="job-meta">Feb 2020 — Aug 2021</span>
+          <span class="job-meta">Dec 2018 — Aug 2021</span>
         </div>
-        <div class="job-org">Sky Italia · Full-time · Greater Milan area</div>
+        <div class="job-org">A.S. Watson Group &amp; Sky Italia · Full-time · Greater Milan area, Italy</div>
         <ul>
-          <li>Broadcast-style product delivery: deadlines, live constraints, collaboration with testing teams.</li>
+          <li>Watson (retail e-commerce) and Sky (broadcast): brand standards, deadlines, large-organisation teamwork, collaboration with testing.</li>
         </ul>
       </article>
 
       <article class="job">
         <div class="job-head">
-          <span class="job-title">Frontend developer</span>
-          <span class="job-meta">Dec 2018 — Jan 2020</span>
+          <span class="job-title">Bar / Floor Staff</span>
+          <span class="job-meta">May 2017 — Aug 2018</span>
         </div>
-        <div class="job-org">A.S. Watson Group · Full-time · Milan, Italy</div>
+        <div class="job-org">PURE · Restaurant &amp; bar · Sliema, Malta (venue closed)</div>
         <ul>
-          <li>Retail e-commerce: brand standards, accessibility, teamwork in a large organisation.</li>
+          <li>Guest-facing service in a busy bar/restaurant.</li>
+          <li>Worked under peak pressure while maintaining service standards.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <span class="job-title">Restaurant Team Member</span>
+          <span class="job-meta">Mar 2016 — Feb 2017</span>
+        </div>
+        <div class="job-org">Pizza Hut · Quick-service restaurant · Sliema, Malta</div>
+        <ul>
+          <li>Supported daily service operations in fast-paced environment.</li>
+          <li>Assisted with food service, setup, and customer interaction.</li>
         </ul>
       </article>
     </section>
@@ -438,8 +467,7 @@
           </div>
           <div class="job-org">Krila Terapijsko Jahanje · Zagreb, Croatia (EVS)</div>
           <ul>
-            <li>Supported a therapeutic riding centre: site upkeep, teamwork, and structured activity with children with cerebral palsy.</li>
-            <li>International placement: reliability, empathy, and adapting to new environments.</li>
+            <li>Therapeutic riding centre: upkeep, teamwork, structured activities with children with cerebral palsy; EVS placement — reliability and adapting abroad.</li>
           </ul>
         </article>
       </section>
