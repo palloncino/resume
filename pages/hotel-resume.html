@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Antonio Guiotto — Hospitality & Events (Malta)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --text: #1c1917;
+      --text-soft: #57534e;
+      --text-faint: #78716c;
+      --rule: #d6d3d1;
+      --accent: #44403c;
+      --accent-strong: #1c1917;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      font-size: 9.75pt;
+      line-height: 1.42;
+      color: var(--text);
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Screen: page-sized column; print/PDF: full bleed of printable area */
+    .page {
+      width: 100%;
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 12mm 14mm 10mm;
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 8mm;
+      }
+      body {
+        background: #fff;
+        font-size: 9.35pt;
+        line-height: 1.38;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+      .page {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+
+    .back {
+      margin-bottom: 0.65rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .back a {
+      color: var(--text-soft);
+      text-decoration: none;
+    }
+
+    .back a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.65rem 1rem;
+      align-items: start;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
+      border-bottom: 2pt solid var(--accent-strong);
+    }
+
+    h1 {
+      font-size: 1.38rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--accent-strong);
+      line-height: 1.12;
+    }
+
+    .tagline {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-soft);
+      margin-top: 0.35rem;
+      line-height: 1.35;
+    }
+
+    .contact-block {
+      margin-top: 0.45rem;
+      font-size: 0.76rem;
+      color: var(--text-soft);
+      line-height: 1.5;
+    }
+
+    .contact-block .row {
+      margin-top: 0.16rem;
+    }
+
+    .contact-block .row:first-child {
+      margin-top: 0;
+    }
+
+    .contact-block .label {
+      font-weight: 600;
+      color: var(--text);
+      margin-right: 0.4em;
+    }
+
+    .contact-block .value {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .lang-inline {
+      font-size: 0.76rem;
+      color: var(--text-soft);
+      line-height: 1.5;
+      margin-top: 0.4rem;
+      padding-top: 0.35rem;
+      border-top: 0.5pt solid var(--rule);
+    }
+
+    .lang-inline strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .photo {
+      width: 101px;
+      height: 101px;
+      border-radius: 2px;
+      object-fit: cover;
+      border: 1px solid var(--rule);
+    }
+
+    section {
+      margin-bottom: 0.62rem;
+    }
+
+    section:last-of-type {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-strong);
+      margin-bottom: 0.32rem;
+      padding-bottom: 0.18rem;
+      border-bottom: 0.75pt solid var(--accent-strong);
+    }
+
+    .summary p {
+      font-size: 0.86rem;
+      line-height: 1.45;
+      hyphens: auto;
+    }
+
+    .strengths ul {
+      margin: 0;
+    }
+
+    .strengths li {
+      position: relative;
+      padding-left: 0.85rem;
+      margin-bottom: 0.12rem;
+      font-size: 0.82rem;
+      line-height: 1.36;
+      color: var(--text);
+    }
+
+    .strengths li:last-child {
+      margin-bottom: 0;
+    }
+
+    .strengths li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--text-faint);
+      font-weight: 600;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .job {
+      margin-bottom: 0.38rem;
+      padding-bottom: 0.38rem;
+      border-bottom: 0.5pt solid var(--rule);
+    }
+
+    .job:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .job-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.15rem 0.75rem;
+      align-items: baseline;
+    }
+
+    .job-title {
+      font-weight: 700;
+      font-size: 0.86rem;
+      color: var(--accent-strong);
+    }
+
+    .job-meta {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-faint);
+      white-space: nowrap;
+    }
+
+    .job-org {
+      font-size: 0.76rem;
+      color: var(--text-soft);
+      margin-bottom: 0.22rem;
+      font-weight: 500;
+    }
+
+    .job ul {
+      margin-top: 0.22rem;
+    }
+
+    .job li {
+      position: relative;
+      padding-left: 0.75rem;
+      margin-bottom: 0.14rem;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .job li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--text-faint);
+      font-weight: 600;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem 1.1rem;
+      align-items: start;
+    }
+
+    .two-col section {
+      margin-bottom: 0;
+    }
+
+    .two-col .job {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .cert-block p {
+      font-size: 0.8rem;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .cert-block .muted {
+      color: var(--text-soft);
+      font-size: 0.74rem;
+      margin-top: 0.15rem;
+      display: block;
+      line-height: 1.35;
+    }
+
+    .footer-meta {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      line-height: 1.45;
+    }
+
+    .footer-meta strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        padding: 10mm 10mm;
+      }
+      header {
+        grid-template-columns: 1fr;
+      }
+      .photo {
+        justify-self: start;
+      }
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <p class="back no-print"><a href="../index.html">← Back to link hub</a></p>
+
+    <header>
+      <div>
+        <h1>Antonio Guiotto</h1>
+        <p class="tagline">Banqueting &amp; Events – Evening / Weekend Availability</p>
+        <div class="contact-block">
+          <p class="row">Il-Gżira, Malta · Open to on-site roles across Malta</p>
+          <p class="row"><span class="label">E-mail</span><span class="value">powerhydratoni@gmail.com</span></p>
+          <p class="row"><span class="label">LinkedIn</span><span class="value">linkedin.com/in/antonioguiotto</span></p>
+        </div>
+        <p class="lang-inline">
+          <strong>Languages</strong> — Italian (native); English &amp; Spanish (fluent)
+        </p>
+      </div>
+      <img class="photo" src="../assets/me-id.png" width="101" height="101" alt="" />
+    </header>
+
+    <section class="summary">
+      <h2>Profile</h2>
+      <p>
+        Reliable professional with experience working in structured, fast-paced environments. Calm under pressure,
+        detail-oriented, and comfortable following service procedures. Available for evening and weekend shifts in banqueting,
+        events, or front-of-house roles.
+      </p>
+    </section>
+
+    <section class="strengths">
+      <h2>Strengths</h2>
+      <ul>
+        <li>Reliability &amp; punctuality</li>
+        <li>Calm under pressure</li>
+        <li>Teamwork and clear communication</li>
+        <li>Attention to detail</li>
+        <li>Flexible availability (evenings / weekends)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+
+      <article class="job">
+        <div class="job-head">
+          <span class="job-title">Operations &amp; Delivery (Full-time role)</span>
+          <span class="job-meta">May 2025 — present</span>
+        </div>
+        <div class="job-org">Cospex Ltd · Full-time · Il-Gżira, Malta</div>
+        <ul>
+          <li>Coordinates work across many parallel “properties” (multi-domain platform): priorities, documentation, and clear handovers between teams.</li>
+          <li>Delivers reliably in a high-tempo product environment with strict quality and service standards.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <span class="job-title">Independent professional services</span>
+          <span class="job-meta">Sep 2023 — present</span>
+        </div>
+        <div class="job-org">Freelance · Italy / remote</div>
+        <ul>
+          <li>Manages multiple clients and deadlines; clear scoping, updates, and delivery.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <span class="job-title">Software developer</span>
+          <span class="job-meta">Nov 2021 — Feb 2023</span>
+        </div>
+        <div class="job-org">Oval Money · Full-time · London area, UK</div>
+        <ul>
+          <li>Account and profile services in a regulated context: accuracy, discretion, and customer-facing flows.</li>
+          <li>Weekly stakeholder updates; Agile teamwork with design and QA.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <span class="job-title">Frontend developer</span>
+          <span class="job-meta">Feb 2020 — Aug 2021</span>
+        </div>
+        <div class="job-org">Sky Italia · Full-time · Greater Milan area</div>
+        <ul>
+          <li>Broadcast-style product delivery: deadlines, live constraints, collaboration with testing teams.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <span class="job-title">Frontend developer</span>
+          <span class="job-meta">Dec 2018 — Jan 2020</span>
+        </div>
+        <div class="job-org">A.S. Watson Group · Full-time · Milan, Italy</div>
+        <ul>
+          <li>Retail e-commerce: brand standards, accessibility, teamwork in a large organisation.</li>
+        </ul>
+      </article>
+    </section>
+
+    <div class="two-col">
+      <section>
+        <h2>Volunteering</h2>
+        <article class="job">
+          <div class="job-head">
+            <span class="job-title">Volunteer</span>
+            <span class="job-meta">Mar 2014 — Mar 2015</span>
+          </div>
+          <div class="job-org">Krila Terapijsko Jahanje · Zagreb, Croatia (EVS)</div>
+          <ul>
+            <li>Supported a therapeutic riding centre: site upkeep, teamwork, and structured activity with children with cerebral palsy.</li>
+            <li>International placement: reliability, empathy, and adapting to new environments.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section>
+        <h2>Certifications</h2>
+        <div class="cert-block">
+          <p><strong>Youthpass</strong> — European Commission · Apr 2015</p>
+          <span class="muted">European voluntary service learning recognition</span>
+        </div>
+      </section>
+    </div>
+
+    <section>
+      <h2>References</h2>
+      <p class="footer-meta">Available on request.</p>
+    </section>
+  </div>
+</body>
+
+</html>

@@ -7,9 +7,16 @@ Visit at [https://palloncino.github.io/resume](https://palloncino.github.io/resu
 
 ## Development
 
+Use **Node 20** and **pnpm** (see `.nvmrc`).
+
+```bash
+nvm use
+corepack enable
+pnpm install
+```
+
 ### PDF Generation
-The site includes functionality to generate PDF posters using:
-- `convert-to-pdf.js` script
-- Required Node.js dependencies in `node_modules/`
+- Hospitality resume PDF: `pnpm run pdf:hotel` → `media/hotel-resume.pdf`
+- Posters: `scripts/convert-to-pdf.js` (Puppeteer)
 
 

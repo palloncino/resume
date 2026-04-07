@@ -565,8 +565,13 @@
         </a>
         <a href="./media/cv-2025.pdf" class="link-btn" download>
           <i class="fas fa-download"></i>
-          Download CV
+          Download software CV
           <span class="meta">PDF</span>
+        </a>
+        <a href="pages/hotel-resume.html" class="link-btn">
+          <i class="fas fa-champagne-glasses"></i>
+          Events &amp; hospitality resume
+          <span class="meta">Web</span>
         </a>
       </div>
     </div>
@@ -822,7 +827,14 @@
     document.querySelectorAll('.link-btn').forEach(button => {
       button.addEventListener('click', function(e) {
         if (this.hasAttribute('download')) return;
-        
+
+        const href = this.getAttribute('href') || '';
+        const hasDataUrl = this.hasAttribute('data-url');
+        // Let the browser navigate for real internal pages (e.g. hotel resume, property pages)
+        if (href && href !== '#' && !hasDataUrl) {
+          return;
+        }
+
         e.preventDefault();
 
         if (this.id === 'cv-button') {
