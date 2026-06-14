@@ -1,302 +1,496 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lovely Apartment in Central Valdagno</title>
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" 
-    rel="stylesheet"
-  />
-
-  <!-- Font Awesome CDN -->
-  <link 
-    rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#000000" />
+  <title>Mini Apartment — Valdagno Centro · €60,000</title>
+  <meta name="description" content="51 m² mini apartment for sale in central Valdagno (VI). Ref. c676 — €60,000." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root {
+      --bg: #000000;
+      --grouped-bg: #1c1c1e;
+      --grouped-bg-elevated: #2c2c2e;
+      --label: #8e8e93;
+      --text: #ffffff;
+      --separator: rgba(84, 84, 88, 0.65);
+      --accent: #0a84ff;
+      --row-pressed: rgba(255, 255, 255, 0.08);
+      --radius: 10px;
+      --sale: #34c759;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      color-scheme: dark;
     }
 
     body {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 20px;
-      font-family: 'Roboto', sans-serif;
-      color: #222;
-      background: #fff;
+      padding: max(12px, env(safe-area-inset-top)) 16px calc(24px + env(safe-area-inset-bottom));
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
     }
 
     .container {
-      width: 95%;
-      max-width: 1200px;
+      width: 100%;
+      max-width: 428px;
       margin: 0 auto;
     }
 
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
-      padding: 20px;
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 16px;
+      padding: 8px 12px 8px 8px;
+      border-radius: 999px;
+      background: var(--grouped-bg);
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 1rem;
     }
 
-    .header h1 {
-      font-size: 2rem;
+    .back:active { opacity: 0.7; }
+
+    .hero {
+      padding: 4px 4px 16px;
+    }
+
+    .hero h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
       margin-bottom: 10px;
-      color: #222;
     }
 
-    .header p {
-      font-size: 1.1rem;
-      color: #666;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .badge-sale {
+      background: rgba(52, 199, 89, 0.18);
+      color: #34c759;
+    }
+
+    .badge-price {
+      background: var(--grouped-bg-elevated);
+      color: var(--text);
+      font-size: 1.0625rem;
+      font-weight: 700;
+    }
+
+    .badge-ref {
+      background: var(--grouped-bg);
+      color: var(--label);
+      font-weight: 500;
     }
 
     .location {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 20px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      margin: 10px 0;
-      color: #666;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      color: var(--label);
+      font-size: 0.9375rem;
+      line-height: 1.4;
+    }
+
+    .location i {
+      margin-top: 2px;
+      color: #ff9500;
+    }
+
+    .section-label {
+      font-size: 0.8125rem;
+      color: var(--label);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      padding: 0 16px 7px;
+      margin-top: 22px;
+    }
+
+    .group {
+      background: var(--grouped-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
     }
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-
-    .gallery-item {
-      position: relative;
-      border-radius: 8px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--separator);
+      border-radius: var(--radius);
       overflow: hidden;
-      border: 1px solid #ddd;
-      aspect-ratio: 4/3;
     }
 
-    .gallery-item img {
+    .gallery button {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      background: #111;
+      overflow: hidden;
+    }
+
+    .gallery button:first-child {
+      grid-column: span 2;
+      aspect-ratio: 16 / 10;
+    }
+
+    .gallery img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
 
-    .info-section {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-
-    .info-column {
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-    }
-
-    .info-column h2 {
-      margin-bottom: 15px;
-      font-size: 1.2rem;
-      color: #222;
+    .gallery .more {
+      position: absolute;
+      inset: 0;
       display: flex;
       align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.45);
+      color: #fff;
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+
+    .fact-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 16px;
+      font-size: 1.0625rem;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+
+    .fact-row + .fact-row::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 16px;
+      right: 0;
+      height: 0.5px;
+      background: var(--separator);
+    }
+
+    .fact-label { color: var(--label); flex-shrink: 0; }
+
+    .fact-value {
+      text-align: right;
+      color: var(--text);
+    }
+
+    .prose {
+      padding: 14px 16px 16px;
+      font-size: 0.9375rem;
+      line-height: 1.55;
+      color: #d1d1d6;
+    }
+
+    .prose p + p { margin-top: 10px; }
+
+    .cta-stack {
+      display: flex;
+      flex-direction: column;
       gap: 10px;
+      margin-top: 22px;
     }
 
-    .info-list {
-      list-style: none;
-    }
-
-    .info-list li {
-      margin-bottom: 15px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid #eee;
-    }
-
-    .info-list li:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: none;
-    }
-
-    .label {
-      font-size: 0.9rem;
-      color: #666;
-      text-transform: uppercase;
-      margin-bottom: 5px;
-    }
-
-    .value {
-      font-size: 1rem;
-      color: #222;
-      font-weight: 500;
-    }
-
-    .buttons-container {
+    .cta {
       display: flex;
-      flex-direction: row;
-      justify-content: center;
-      gap: 20px;
-      margin: 30px 0;
-      flex-wrap: wrap;
-    }
-
-    .airbnb-button {
-      display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 15px 30px;
-      background: #FF5A5F;
-      color: white;
+      gap: 10px;
+      min-height: 50px;
+      padding: 12px 16px;
+      border-radius: var(--radius);
       text-decoration: none;
-      border-radius: 8px;
+      font-size: 1.0625rem;
       font-weight: 500;
-      min-width: 200px;
+      letter-spacing: -0.02em;
     }
 
-    .airbnb-button img {
-      width: 30px;
-      height: 30px;
-      margin-right: 12px;
-      filter: brightness(0) invert(1);
+    .cta:active { opacity: 0.75; }
+
+    .cta-whatsapp {
+      background: #25d366;
+      color: #fff;
     }
 
-    .whatsapp-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 15px 30px;
-      background: #25D366;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 500;
-      min-width: 200px;
+    .cta-listing {
+      background: var(--grouped-bg);
+      color: var(--accent);
     }
 
-    .whatsapp-button i {
-      margin-right: 10px;
-      font-size: 20px;
+    .footer {
+      margin-top: 28px;
+      text-align: center;
+      font-size: 0.8125rem;
+      color: var(--label);
+      line-height: 1.5;
     }
 
-    .back-button {
+    .lightbox {
       position: fixed;
-      top: 20px;
-      left: 20px;
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
+      inset: 0;
+      z-index: 80;
+      display: none;
       align-items: center;
       justify-content: center;
-      color: #222;
-      text-decoration: none;
+      background: rgba(0, 0, 0, 0.92);
+      padding: 16px;
     }
 
-    @media (max-width: 768px) {
-      .gallery {
-        grid-template-columns: 1fr;
-      }
-      
-      .buttons-container {
-        flex-direction: column;
-      }
-      
-      .airbnb-button,
-      .whatsapp-button {
-        width: 100%;
-      }
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: max(12px, env(safe-area-inset-top));
+      right: 12px;
+      width: 44px;
+      height: 44px;
+      border: none;
+      border-radius: 50%;
+      background: var(--grouped-bg-elevated);
+      color: var(--text);
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      bottom: max(16px, env(safe-area-inset-bottom));
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .lightbox-nav button {
+      width: 44px;
+      height: 44px;
+      border: none;
+      border-radius: 50%;
+      background: var(--grouped-bg-elevated);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .lightbox-counter {
+      min-width: 4rem;
+      text-align: center;
+      font-size: 0.9375rem;
+      color: var(--label);
     }
   </style>
 </head>
+
 <body>
-  <a href="../index.html" class="back-button">
-    <i class="fas fa-arrow-left"></i>
-  </a>
-
   <div class="container">
-    <div class="header">
-      <h1>Lovely Apartment in Central Valdagno</h1>
-      <p>Perfect for short & long-term stays</p>
-      <div class="location">
-        <i class="fas fa-map-marker-alt"></i>
-        Via Don Bosco 17, 36078, Valdagno (VI)
+    <a href="../index.html" class="back" aria-label="Back to links">
+      <i class="fas fa-chevron-left"></i>
+      Links
+    </a>
+
+    <header class="hero">
+      <h1>Mini Apartment — Valdagno Centro</h1>
+      <div class="hero-meta">
+        <span class="badge badge-sale"><i class="fas fa-tag"></i> For Sale</span>
+        <span class="badge badge-price">€60,000</span>
+        <span class="badge badge-ref">Ref. c676</span>
+      </div>
+      <p class="location">
+        <i class="fas fa-location-dot"></i>
+        <span>CENTRO — Valdagno (VI) · 3rd floor · 51 m² commercial</span>
+      </p>
+    </header>
+
+    <p class="section-label" style="margin-top:0">Photos</p>
+    <div class="gallery" id="gallery">
+      <button type="button" data-index="0" aria-label="Photo 1"><img src="../media/apt/photo-01.jpg" alt="Living area" loading="eager" width="800" height="500"></button>
+      <button type="button" data-index="1" aria-label="Photo 2"><img src="../media/apt/photo-02.jpg" alt="Interior" loading="lazy" width="400" height="300"></button>
+      <button type="button" data-index="2" aria-label="Photo 3"><img src="../media/apt/photo-03.jpg" alt="Kitchen corner" loading="lazy" width="400" height="300"></button>
+      <button type="button" data-index="3" aria-label="Photo 4"><img src="../media/apt/photo-04.jpg" alt="Bedroom" loading="lazy" width="400" height="300"></button>
+      <button type="button" data-index="4" aria-label="Photo 5"><img src="../media/apt/photo-05.jpg" alt="Bathroom" loading="lazy" width="400" height="300"></button>
+      <button type="button" data-index="5" aria-label="View all photos"><img src="../media/apt/photo-06.jpg" alt="Balcony" loading="lazy" width="400" height="300"><span class="more">+9</span></button>
+    </div>
+
+    <p class="section-label">Description</p>
+    <div class="group">
+      <div class="prose">
+        <p><strong>EN</strong> — Steps from Corso in central Valdagno: cosy renovated mini flat of 51 m² with balcony, attic storage and small garage suitable for a compact car, motorbike or bicycles. Available now. Layout: entrance to open living area with kitchenette, double bedroom and windowed bathroom with shower.</p>
+        <p><strong>IT</strong> — Valdagno centro, a due passi dal Corso: accogliente mini ristrutturato di 51 mq con terrazzo, soffitta e piccolo garage per moto e bici. Libero da subito. Ingresso su zona giorno, camera matrimoniale e bagno finestrato.</p>
       </div>
     </div>
 
-    <div class="gallery">
-      <div class="gallery-item">
-        <img src="../media/apt/apt-exterior.avif" alt="Exterior">
-      </div>
-      <div class="gallery-item">
-        <img src="../media/apt/apt-salotto.avif" alt="Living Room">
-      </div>
-      <div class="gallery-item">
-        <img src="../media/apt/apt-bedroom.avif" alt="Bedroom">
+    <p class="section-label">Key Details</p>
+    <div class="group">
+      <div class="fact-row"><span class="fact-label">Type</span><span class="fact-value">Mini apartment</span></div>
+      <div class="fact-row"><span class="fact-label">Contract</span><span class="fact-value">Sale</span></div>
+      <div class="fact-row"><span class="fact-label">Rooms</span><span class="fact-value">4 vani</span></div>
+      <div class="fact-row"><span class="fact-label">Floor</span><span class="fact-value">3 · central</span></div>
+      <div class="fact-row"><span class="fact-label">Energy class</span><span class="fact-value">F · 146 kWh/m²a</span></div>
+      <div class="fact-row"><span class="fact-label">Condition</span><span class="fact-value">Good · furnished</span></div>
+    </div>
+
+    <p class="section-label">Interior</p>
+    <div class="group">
+      <div class="fact-row"><span class="fact-label">Living area</span><span class="fact-value">21.8 m² · kitchenette</span></div>
+      <div class="fact-row"><span class="fact-label">Bedroom</span><span class="fact-value">12.4 m² double</span></div>
+      <div class="fact-row"><span class="fact-label">Bathroom</span><span class="fact-value">Windowed · shower</span></div>
+      <div class="fact-row"><span class="fact-label">Attic</span><span class="fact-value">14 m²</span></div>
+    </div>
+
+    <p class="section-label">Exterior</p>
+    <div class="group">
+      <div class="fact-row"><span class="fact-label">Balcony</span><span class="fact-value">9.8 m²</span></div>
+      <div class="fact-row"><span class="fact-label">Garage</span><span class="fact-value">Single · small car / moto</span></div>
+      <div class="fact-row"><span class="fact-label">Parking</span><span class="fact-value">Free nearby</span></div>
+      <div class="fact-row"><span class="fact-label">Exposure</span><span class="fact-value">Dual aspect</span></div>
+    </div>
+
+    <p class="section-label">Systems</p>
+    <div class="group">
+      <div class="fact-row"><span class="fact-label">Heating</span><span class="fact-value">Autonomous gas · radiators</span></div>
+      <div class="fact-row"><span class="fact-label">Electrical</span><span class="fact-value">Compliant</span></div>
+      <div class="fact-row"><span class="fact-label">Plumbing</span><span class="fact-value">Compliant</span></div>
+    </div>
+
+    <p class="section-label">Notes</p>
+    <div class="group">
+      <div class="prose">
+        <p>Building from 1962; 2008 upgrades to windows and systems, floors redone later. Furnished with full kitchen, sofa and double bedroom (open hanging rails, no built-in wardrobes). Condominium fees approx. €20/month · €240/year.</p>
       </div>
     </div>
 
-    <div class="info-section">
-      <div class="info-column">
-        <h2><i class="fas fa-info-circle"></i>English</h2>
-        <ul class="info-list">
-          <li>
-            <div class="label">Location</div>
-            <div class="value">Via Don Bosco 17, Floor 1</div>
-          </li>
-          <li>
-            <div class="label">Size</div>
-            <div class="value">60 m²</div>
-          </li>
-          <li>
-            <div class="label">Rooms</div>
-            <div class="value">2 bedrooms, 1 bathroom, living room, kitchen</div>
-          </li>
-        </ul>
-      </div>
-      <div class="info-column">
-        <h2><i class="fas fa-info-circle"></i>Italiano</h2>
-        <ul class="info-list">
-          <li>
-            <div class="label">Ubicazione</div>
-            <div class="value">Via Don Bosco 17, Piano 1</div>
-          </li>
-          <li>
-            <div class="label">Superficie</div>
-            <div class="value">60 m²</div>
-          </li>
-          <li>
-            <div class="label">Stanze</div>
-            <div class="value">2 camere da letto, 1 bagno, soggiorno, cucina</div>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="buttons-container">
-      <a href="https://www.airbnb.com/l/TOYw4MCF" class="airbnb-button" target="_blank">
-        <img src="../media/airbnb-logo.png" alt="Airbnb">
-        View on Airbnb
-      </a>
-      <a href="https://wa.me/393474943221" class="whatsapp-button" target="_blank">
+    <div class="cta-stack">
+      <a href="https://wa.me/35679641219?text=Hi%20Antonio%2C%20I%27m%20interested%20in%20the%20Valdagno%20apartment%20(ref.%20c676)." class="cta cta-whatsapp" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-whatsapp"></i>
-        Contact via WhatsApp
+        Contact on WhatsApp
       </a>
+      <a href="https://public.agimonline.com/immobili?t=13049655-c4f24902aaeb51a2aad87ba1e3a653aa" class="cta cta-listing" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-arrow-up-right-from-square"></i>
+        Full listing on Agim
+      </a>
+    </div>
+
+    <p class="footer">Listing data from Immobiliare House One · Valdagno<br>Price shown: €60,000 sale</p>
+  </div>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close"><i class="fas fa-xmark"></i></button>
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-nav">
+      <button type="button" id="lightbox-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+      <span class="lightbox-counter" id="lightbox-counter"></span>
+      <button type="button" id="lightbox-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
     </div>
   </div>
+
+  <script>
+    (function () {
+      const photos = [
+        { src: '../media/apt/photo-01.jpg', alt: 'Living area' },
+        { src: '../media/apt/photo-02.jpg', alt: 'Interior' },
+        { src: '../media/apt/photo-03.jpg', alt: 'Kitchen corner' },
+        { src: '../media/apt/photo-04.jpg', alt: 'Bedroom' },
+        { src: '../media/apt/photo-05.jpg', alt: 'Bathroom' },
+        { src: '../media/apt/photo-06.jpg', alt: 'Balcony' },
+        { src: '../media/apt/photo-07.jpg', alt: 'View' },
+        { src: '../media/apt/photo-08.jpg', alt: 'Room' },
+        { src: '../media/apt/photo-09.jpg', alt: 'Detail' },
+        { src: '../media/apt/photo-10.jpg', alt: 'Exterior' },
+        { src: '../media/apt/photo-11.jpg', alt: 'Space' },
+        { src: '../media/apt/photo-12.jpg', alt: 'Corner' },
+        { src: '../media/apt/photo-13.jpg', alt: 'Area' },
+        { src: '../media/apt/photo-14.jpg', alt: 'Room detail' },
+        { src: '../media/apt/floorplan.jpg', alt: 'Floor plan' },
+      ];
+
+      let idx = 0;
+      const root = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      const counter = document.getElementById('lightbox-counter');
+
+      const render = () => {
+        img.src = photos[idx].src;
+        img.alt = photos[idx].alt;
+        counter.textContent = `${idx + 1} / ${photos.length}`;
+      };
+
+      const open = (i) => {
+        idx = i;
+        render();
+        root.classList.add('open');
+        root.setAttribute('aria-hidden', 'false');
+      };
+
+      const close = () => {
+        root.classList.remove('open');
+        root.setAttribute('aria-hidden', 'true');
+        img.removeAttribute('src');
+      };
+
+      document.getElementById('gallery').addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-index]');
+        if (!btn) return;
+        open(Number(btn.dataset.index) || 0);
+      });
+
+      document.getElementById('lightbox-close').addEventListener('click', close);
+      document.getElementById('lightbox-prev').addEventListener('click', () => {
+        idx = (idx - 1 + photos.length) % photos.length;
+        render();
+      });
+      document.getElementById('lightbox-next').addEventListener('click', () => {
+        idx = (idx + 1) % photos.length;
+        render();
+      });
+      root.addEventListener('click', (e) => { if (e.target === root) close(); });
+      document.addEventListener('keydown', (e) => {
+        if (!root.classList.contains('open')) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowLeft') { idx = (idx - 1 + photos.length) % photos.length; render(); }
+        if (e.key === 'ArrowRight') { idx = (idx + 1) % photos.length; render(); }
+      });
+    })();
+  </script>
 </body>
-</html> 
+
+</html>
