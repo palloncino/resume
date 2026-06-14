@@ -3,39 +3,29 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#000000" />
   <title>Antonio Guiotto — 2026</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome CDN -->
+  <!-- System font only — matches iOS Settings -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
     :root {
-      --personal: #D4A373;
-      --personal-light: rgba(212, 163, 115, 0.12);
-      --professional: #7EB8DA;
-      --professional-light: rgba(126, 184, 218, 0.10);
-      --buildfast: #A8E6A3;
-      --buildfast-light: rgba(168, 230, 163, 0.08);
-      --neutral: #9CA3AF;
-      --neutral-light: rgba(156, 163, 175, 0.08);
-
-      --bg: #0D0D0D;
-      --surface: #161616;
-      --surface-2: #1C1C1C;
-      --surface-hover: #222222;
-      --border: rgba(255, 255, 255, 0.07);
-      --border-strong: rgba(255, 255, 255, 0.12);
-      --text: #F5F0EB;
-      --text-secondary: rgba(245, 240, 235, 0.50);
-      --accent: #D4A373;
-      --radius: 16px;
-      --radius-sm: 12px;
+      /* iOS dark mode system colors */
+      --bg: #000000;
+      --grouped-bg: #1c1c1e;
+      --grouped-bg-elevated: #2c2c2e;
+      --label: #8e8e93;
+      --text: #ffffff;
+      --text-secondary: #8e8e93;
+      --separator: rgba(84, 84, 88, 0.65);
+      --chevron: #636366;
+      --accent: #0a84ff;
+      --accent-pressed: rgba(10, 132, 255, 0.15);
+      --row-pressed: rgba(255, 255, 255, 0.08);
+      --radius: 10px;
     }
 
     * {
@@ -44,312 +34,245 @@
       padding: 0;
     }
 
+    html {
+      -webkit-text-size-adjust: 100%;
+      color-scheme: dark;
+    }
+
     body {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40px 16px;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 8px 16px 40px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
       color: var(--text);
       background: var(--bg);
       -webkit-font-smoothing: antialiased;
-      letter-spacing: -0.01em;
+      font-feature-settings: "kern" 1;
     }
 
     .container {
       width: 100%;
-      max-width: 440px;
+      max-width: 428px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      padding-top: 12px;
     }
 
-    /* ─── Profile ─── */
-    .profile {
-      background: var(--surface);
-      border: 1px solid var(--border);
+    /* ─── Section labels ─── */
+    .section-label {
+      font-size: 0.8125rem;
+      font-weight: 400;
+      color: var(--label);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      padding: 0 16px 7px;
+      margin-top: 22px;
+    }
+
+    /* ─── Grouped list ─── */
+    .group {
+      background: var(--grouped-bg);
       border-radius: var(--radius);
-      padding: 20px;
-      display: grid;
-      grid-template-columns: 72px 1fr;
-      grid-template-rows: auto auto;
-      column-gap: 16px;
-      row-gap: 2px;
-      align-items: center;
-    }
-
-    .profile-pic {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      border: 2px solid var(--border-strong);
-      object-fit: cover;
-      grid-row: 1 / span 2;
-      grid-column: 1;
-      background: var(--surface-2);
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .profile h1 {
-      font-family: 'Space Grotesk', 'Inter', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin: 0;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      grid-column: 2;
-      grid-row: 1;
-      align-self: end;
-    }
-
-    .profile p {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      margin: 0;
-      line-height: 1.3;
-      grid-column: 2;
-      grid-row: 2;
-      align-self: start;
-      letter-spacing: 0.02em;
-    }
-
-    /* ─── Sections ─── */
-    .section {
-      background: var(--surface);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
       overflow: hidden;
     }
 
-    .section-header {
+    /* ─── Profile row (Apple ID style) ─── */
+    .profile-row {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border);
+      gap: 12px;
+      padding: 8px 16px;
+      min-height: 60px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      border: none;
+      background: transparent;
+      width: 100%;
+      text-align: left;
+      color: inherit;
+      font: inherit;
     }
 
-    .section-header .icon {
-      width: 32px;
-      height: 32px;
+    .profile-row:active {
+      background: var(--row-pressed);
+    }
+
+    .profile-avatar {
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: var(--grouped-bg-elevated);
+    }
+
+    .profile-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .profile-name {
+      font-size: 1.25rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .profile-subtitle {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      margin-top: 1px;
+      line-height: 1.3;
+    }
+
+    /* ─── List rows ─── */
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 16px;
+      min-height: 44px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 1.0625rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      width: 100%;
+      text-align: left;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+    }
+
+    .row:active {
+      background: var(--row-pressed);
+    }
+
+    .row + .row::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 57px;
+      right: 0;
+      height: 0.5px;
+      background: var(--separator);
+    }
+
+    .row-icon {
+      width: 29px;
+      height: 29px;
+      border-radius: 7px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
-    }
-
-    .section-header h2 {
-      font-family: 'Space Grotesk', 'Inter', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
-
-    .section-header .section-label {
-      margin-left: auto;
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      white-space: nowrap;
-    }
-
-    .section-content {
-      padding: 6px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    /* Section accent colors */
-    .section.personal .section-header .icon {
-      background: var(--personal-light);
-      color: var(--personal);
-    }
-    .section.personal .section-header h2 { color: var(--personal); }
-
-    .section.professional .section-header .icon {
-      background: var(--professional-light);
-      color: var(--professional);
-    }
-    .section.professional .section-header h2 { color: var(--professional); }
-
-    .section.buildfast .section-header .icon {
-      background: var(--buildfast-light);
-      color: var(--buildfast);
-    }
-    .section.buildfast .section-header h2 { color: var(--buildfast); }
-
-    .section.neutral .section-header .icon {
-      background: var(--neutral-light);
-      color: var(--neutral);
-    }
-    .section.neutral .section-header h2 { color: var(--neutral); }
-
-    /* ─── Link Buttons ─── */
-    .link-btn {
-      display: flex;
-      align-items: center;
-      padding: 11px 12px;
-      background: transparent;
-      color: var(--text);
-      text-decoration: none;
-      border-radius: var(--radius-sm);
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      border: 1px solid transparent;
-      transition: background 0.2s ease, border-color 0.2s ease;
-    }
-
-    .link-btn:hover {
-      background: var(--surface-hover);
-    }
-
-    .link-btn i {
-      width: 20px;
-      margin-right: 10px;
+      flex-shrink: 0;
       font-size: 15px;
-      text-align: center;
-      opacity: 0.5;
+      color: #fff;
     }
 
-    .link-btn .icon-img {
-      width: 20px;
-      height: 20px;
-      margin-right: 10px;
-      border-radius: 6px;
-      object-fit: contain;
-      opacity: 0.85;
-      flex: 0 0 auto;
+    .row-icon img {
+      width: 29px;
+      height: 29px;
+      border-radius: 7px;
+      object-fit: cover;
+      display: block;
     }
 
-    .link-btn .meta {
-      margin-left: auto;
-      font-size: 0.7rem;
+    .row-label {
+      flex: 1;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .row-detail {
+      font-size: 1.0625rem;
       color: var(--text-secondary);
-      font-weight: 400;
-      letter-spacing: 0.02em;
+      flex-shrink: 0;
+      max-width: 50%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    /* Section-specific hover tints */
-    .section.personal .link-btn:hover { background: var(--personal-light); }
-    .section.professional .link-btn:hover { background: var(--professional-light); }
-    .section.buildfast .link-btn:hover { background: var(--buildfast-light); }
-    .section.neutral .link-btn:hover { background: var(--neutral-light); }
-
-    /* Brand icon colors (icon-only cue) */
-    .link-btn.instagram-gradient i,
-    .link-btn.instagram-dark i {
-      opacity: 1;
-      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .chevron {
+      flex-shrink: 0;
+      width: 7px;
+      height: 12px;
+      margin-left: 6px;
+      opacity: 0.45;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 13'%3E%3Cpath fill='%23636366' d='M1.5 0L0 1.5 5 6.5 0 11.5 1.5 13 8 6.5z'/%3E%3C/svg%3E") center / contain no-repeat;
     }
 
-    .link-btn.whatsapp i {
-      opacity: 1;
-      color: #25D366;
+    .row.no-chevron .chevron {
+      display: none;
     }
 
-    .link-btn.linkedin i {
-      opacity: 1;
-      color: #5B9BD5;
+    /* Icon tile colors (iOS Settings palette) */
+    .tile-green   { background: #34c759; }
+    .tile-pink    { background: #ff2d55; }
+    .tile-purple  { background: #af52de; }
+    .tile-blue    { background: #007aff; }
+    .tile-indigo  { background: #5856d6; }
+    .tile-teal    { background: #5ac8fa; }
+    .tile-orange  { background: #ff9500; }
+    .tile-gray    { background: #8e8e93; }
+    .tile-red     { background: #ff3b30; }
+    .tile-yellow  { background: #ffcc00; color: #1c1c1e; }
+    .tile-brown   { background: #a2845e; }
+
+    /* Instagram gradient tile */
+    .tile-instagram {
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
     }
 
-    .link-btn.buildfast-accent i {
-      opacity: 1;
-      color: var(--buildfast);
-    }
-
-    /* Pinned / highlighted link */
-    .link-btn.pinned {
-      border-color: rgba(212, 163, 115, 0.35);
-      animation: pinnedPulse 1.8s ease-in-out infinite;
-    }
-
-    .link-btn.pinned:hover {
-      border-color: rgba(212, 163, 115, 0.55);
-      animation: none;
-    }
-
-    .link-btn.pinned i {
-      opacity: 1;
+    /* Pinned row accent */
+    .row.pinned .row-label {
       color: var(--accent);
     }
 
-    @keyframes pinnedPulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(212, 163, 115, 0.00); }
-      45% { box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.12); }
+    .row.pinned .row-icon {
+      background: var(--accent);
     }
 
-    /* ─── QR Grid ─── */
-    .qr-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
-      padding: 6px;
-    }
-
-    /* Payments: one button per cell (label + thumb, tap opens lightbox) */
-    .qr-tap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      width: 100%;
-      margin: 0;
-      padding: 12px 10px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      background: var(--surface-2);
-      cursor: pointer;
-      text-align: center;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .qr-tap:hover {
-      background: var(--surface-hover);
-    }
-
-    .qr-tap:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
-
-    .qr-name {
-      font-size: 0.7rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .qr-thumb {
-      max-height: 112px;
-      max-width: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      display: block;
+    /* ─── QR payment rows ─── */
+    .row-qr-thumb {
+      width: 36px;
+      height: 36px;
       border-radius: 6px;
+      object-fit: contain;
+      background: #fff;
+      flex-shrink: 0;
     }
 
-    /* QR full-screen lightbox */
+    .row-qr .row + .row::before {
+      left: 16px;
+    }
+
+    /* ─── Footer ─── */
+    .footer {
+      padding: 28px 16px 8px;
+      text-align: center;
+      font-size: 0.8125rem;
+      color: var(--label);
+    }
+
+    /* ─── QR lightbox (iOS sheet style) ─── */
     .qr-lightbox {
       position: fixed;
       inset: 0;
       z-index: 60;
       display: none;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.82);
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
     }
 
     .qr-lightbox.open {
@@ -358,29 +281,38 @@
 
     .qr-lightbox-panel {
       position: relative;
-      width: min(420px, 100%);
-      max-height: min(90vh, 560px);
-      background: var(--surface);
-      border: 1px solid var(--border-strong);
-      border-radius: var(--radius);
-      padding: 16px 16px 20px;
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      width: min(428px, 100%);
+      background: var(--grouped-bg);
+      border-radius: 14px 14px 0 0;
+      padding: 20px 20px calc(20px + env(safe-area-inset-bottom));
+      animation: sheetUp 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    @keyframes sheetUp {
+      from { transform: translateY(100%); }
+      to   { transform: translateY(0); }
+    }
+
+    .qr-lightbox-handle {
+      width: 36px;
+      height: 5px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.25);
+      margin: 0 auto 16px;
     }
 
     .qr-lightbox-title {
-      font-family: 'Space Grotesk', 'Inter', sans-serif;
-      font-size: 1rem;
+      font-size: 1.0625rem;
       font-weight: 600;
-      color: var(--text);
       text-align: center;
-      margin: 0 36px 12px;
+      margin: 0 0 16px;
       letter-spacing: -0.02em;
     }
 
     .qr-lightbox-img-wrap {
       background: #fff;
       border-radius: 12px;
-      padding: 16px;
+      padding: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -388,42 +320,41 @@
 
     .qr-lightbox-img-wrap img {
       width: 100%;
-      max-width: 320px;
+      max-width: 280px;
       height: auto;
       object-fit: contain;
       display: block;
     }
 
     .qr-lightbox-close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      background: var(--surface-2);
-      color: var(--text);
+      display: block;
+      width: 100%;
+      margin-top: 12px;
+      padding: 14px;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--grouped-bg-elevated);
+      color: var(--accent);
+      font-size: 1.0625rem;
+      font-weight: 400;
+      font-family: inherit;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
+      letter-spacing: -0.02em;
     }
 
-    .qr-lightbox-close:hover {
-      background: var(--surface-hover);
+    .qr-lightbox-close:active {
+      opacity: 0.7;
     }
 
-    /* ─── Lightbox ─── */
+    /* ─── Photo lightbox ─── */
     .lightbox {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.88);
+      background: #000;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 18px;
+      padding: 0;
       z-index: 50;
     }
 
@@ -432,11 +363,9 @@
     }
 
     .lightbox-inner {
-      width: min(920px, 100%);
-      max-height: min(84vh, 820px);
-      background: var(--surface);
-      border: 1px solid var(--border-strong);
-      border-radius: var(--radius);
+      width: 100%;
+      height: 100%;
+      background: #000;
       overflow: hidden;
       display: grid;
       grid-template-rows: 1fr auto;
@@ -447,13 +376,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255, 255, 255, 0.02);
     }
 
     .lightbox-stage img {
       width: 100%;
       height: 100%;
-      max-height: min(74vh, 720px);
+      max-height: 100vh;
       object-fit: contain;
       display: block;
       user-select: none;
@@ -465,200 +393,197 @@
       gap: 10px;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 14px;
-      border-top: 1px solid var(--border);
-      background: var(--surface-2);
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      background: rgba(28, 28, 30, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
     }
 
     .lightbox-controls .group {
       display: flex;
       gap: 8px;
       align-items: center;
+      background: transparent;
+      border-radius: 0;
+      overflow: visible;
     }
 
     .icon-btn {
-      width: 34px;
-      height: 34px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--text);
+      border: none;
+      background: var(--grouped-bg-elevated);
+      color: var(--accent);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: background 0.15s ease;
-      font-size: 13px;
+      font-size: 16px;
     }
 
-    .icon-btn:hover {
-      background: var(--surface-hover);
+    .icon-btn:active {
+      opacity: 0.6;
     }
 
     .lightbox-counter {
-      font-size: 0.8rem;
+      font-size: 0.9375rem;
       color: var(--text-secondary);
-      padding: 0 6px;
+      padding: 0 8px;
       user-select: none;
-      letter-spacing: 0.04em;
     }
 
-    /* ─── Footer ─── */
-    .footer {
-      padding: 32px 0 12px;
-      text-align: center;
-      font-size: 0.7rem;
-      color: var(--text-secondary);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    @media (min-width: 480px) {
+      body {
+        padding-top: 24px;
+      }
+
+      .qr-lightbox {
+        align-items: center;
+        padding: 20px;
+      }
+
+      .qr-lightbox-panel {
+        border-radius: 14px;
+        padding-bottom: 20px;
+      }
+
+      .qr-lightbox-handle {
+        display: none;
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <!-- Profile -->
-    <div class="profile">
-      <img src="./assets/me.jpeg" data-images="./assets/me.jpeg" alt="Antonio Guiotto" class="profile-pic">
-      <h1>Antonio Guiotto</h1>
-      <p>Developer & Designer</p>
+    <!-- Apple ID style profile -->
+    <div class="group">
+      <button type="button" class="profile-row" id="profile-trigger" aria-label="View profile photo">
+        <img src="./assets/me.jpeg" data-images="./assets/me.jpeg" alt="" class="profile-avatar profile-pic">
+        <div class="profile-info">
+          <div class="profile-name">Antonio Guiotto</div>
+          <div class="profile-subtitle">Developer &amp; Designer</div>
+        </div>
+        <span class="chevron" aria-hidden="true"></span>
+      </button>
     </div>
 
-    <!-- Personal -->
-    <div class="section personal">
-      <div class="section-header">
-        <div class="icon"><i class="fas fa-heart"></i></div>
-        <h2>Personal</h2>
-      </div>
-      <div class="section-content">
-        <a href="#" class="link-btn whatsapp" data-url="https://wa.me/35679641219">
-          <i class="fab fa-whatsapp"></i>
-          WhatsApp
-        </a>
-        <a href="#" class="link-btn instagram-gradient" data-url="https://instagram.com/antonio_guiotto">
-          <i class="fab fa-instagram"></i>
-          @antonio_guiotto
-        </a>
-        <a href="#" class="link-btn instagram-dark" data-url="https://instagram.com/black_combat_design">
-          <i class="fab fa-instagram"></i>
-          @black_combat_design
-          <span class="meta">Tattoo Art</span>
-        </a>
-      </div>
+    <p class="section-label">Personal</p>
+    <div class="group">
+      <a href="#" class="row link-btn whatsapp" data-url="https://wa.me/35679641219">
+        <span class="row-icon tile-green"><i class="fab fa-whatsapp"></i></span>
+        <span class="row-label">WhatsApp</span>
+        <span class="chevron" aria-hidden="true"></span>
+      </a>
+      <a href="#" class="row link-btn" data-url="https://instagram.com/antonio_guiotto">
+        <span class="row-icon tile-instagram"><i class="fab fa-instagram"></i></span>
+        <span class="row-label">@antonio_guiotto</span>
+        <span class="chevron" aria-hidden="true"></span>
+      </a>
+      <a href="#" class="row link-btn" data-url="https://instagram.com/black_combat_design">
+        <span class="row-icon tile-purple"><i class="fab fa-instagram"></i></span>
+        <span class="row-label">@black_combat_design</span>
+        <span class="row-detail">Tattoo Art</span>
+        <span class="chevron" aria-hidden="true"></span>
+      </a>
     </div>
 
-    <!-- Professional -->
-    <div class="section professional">
-      <div class="section-header">
-        <div class="icon"><i class="fas fa-briefcase"></i></div>
-        <h2>Professional</h2>
-        <span class="section-label">Resumes</span>
-      </div>
-      <div class="section-content">
-        <a href="#" class="link-btn pinned" id="cv-button">
-          <i class="fas fa-thumbtack"></i>
-          View Software Resume
-        </a>
-        <a href="#" class="link-btn linkedin" data-url="https://linkedin.com/in/antonioguiotto">
-          <i class="fab fa-linkedin"></i>
-          LinkedIn
-        </a>
-        <a href="./media/cv-2025.pdf" class="link-btn" download>
-          <i class="fas fa-download"></i>
-          Download software CV
-          <span class="meta">PDF</span>
-        </a>
-        <a href="pages/hotel-resume.html" class="link-btn">
-          <i class="fas fa-champagne-glasses"></i>
-          Events &amp; hospitality resume
-          <span class="meta">Web</span>
-        </a>
-      </div>
+    <p class="section-label">Professional</p>
+    <div class="group">
+      <a href="#" class="row link-btn pinned" id="cv-button">
+        <span class="row-icon tile-blue"><i class="fas fa-file-lines"></i></span>
+        <span class="row-label">Software Resume</span>
+        <span class="chevron" aria-hidden="true"></span>
+      </a>
+      <a href="#" class="row link-btn" data-url="https://linkedin.com/in/antonioguiotto">
+        <span class="row-icon tile-blue"><i class="fab fa-linkedin-in"></i></span>
+        <span class="row-label">LinkedIn</span>
+        <span class="chevron" aria-hidden="true"></span>
+      </a>
+      <a href="./media/cv-2025.pdf" class="row link-btn no-chevron" download>
+        <span class="row-icon tile-gray"><i class="fas fa-arrow-down"></i></span>
+        <span class="row-label">Download CV</span>
+        <span class="row-detail">PDF</span>
+      </a>
+      <a href="pages/hotel-resume.html" class="row link-btn">
+        <span class="row-icon tile-orange"><i class="fas fa-champagne-glasses"></i></span>
+        <span class="row-label">Events &amp; Hospitality</span>
+        <span class="row-detail">Web</span>
+        <span class="chevron" aria-hidden="true"></span>
+      </a>
     </div>
 
-    <!-- Software products -->
-    <div class="section buildfast">
-      <div class="section-header">
-        <div class="icon"><i class="fas fa-layer-group"></i></div>
-        <h2>Software products</h2>
-        <span class="section-label">Live</span>
-      </div>
-      <div class="section-content">
-        <a href="#" class="link-btn" data-url="https://finance.buildfast.it">
-          <img class="icon-img" src="./assets/life-panel.png" alt="Life Panel icon" />
-          Life Panel app
-          <span class="meta">finance.buildfast.it</span>
-        </a>
-        <a href="#" class="link-btn" data-url="https://buildfast.it">
-          <img class="icon-img" src="./assets/buildfast.png" alt="BuildFast icon" />
-          buildfast.it
-          <span class="meta">Main Site</span>
-        </a>
-        <a href="#" class="link-btn" data-url="https://blueprint.buildfast.it">
-          <img class="icon-img" src="./assets/blueprint.svg" alt="Blueprint icon" />
-          blueprint.buildfast.it
-          <span class="meta">Demo</span>
-        </a>
-        <a href="#" class="link-btn instagram-gradient" data-url="https://instagram.com/fastbuildsoftware">
-          <i class="fab fa-instagram"></i>
-          Instagram @fastbuildsoftware
-        </a>
-      </div>
+    <p class="section-label">Software Products</p>
+    <div class="group">
+      <a href="#" class="row link-btn" data-url="https://finance.buildfast.it">
+        <span class="row-icon"><img src="./assets/life-panel.png" alt="" /></span>
+        <span class="row-label">Life Panel</span>
+        <span class="row-detail">finance.buildfast.it</span>
+        <span class="chevron" aria-hidden="true"></span>
+      </a>
+      <a href="#" class="row link-btn" data-url="https://buildfast.it">
+        <span class="row-icon"><img src="./assets/buildfast.png" alt="" /></span>
+        <span class="row-label">buildfast.it</span>
+        <span class="row-detail">Main Site</span>
+        <span class="chevron" aria-hidden="true"></span>
+      </a>
+      <a href="#" class="row link-btn" data-url="https://blueprint.buildfast.it">
+        <span class="row-icon"><img src="./assets/blueprint.svg" alt="" /></span>
+        <span class="row-label">Blueprint</span>
+        <span class="row-detail">Demo</span>
+        <span class="chevron" aria-hidden="true"></span>
+      </a>
+      <a href="#" class="row link-btn" data-url="https://instagram.com/fastbuildsoftware">
+        <span class="row-icon tile-instagram"><i class="fab fa-instagram"></i></span>
+        <span class="row-label">@fastbuildsoftware</span>
+        <span class="chevron" aria-hidden="true"></span>
+      </a>
     </div>
 
-    <!-- Properties -->
-    <div class="section neutral">
-      <div class="section-header">
-        <div class="icon"><i class="fas fa-building"></i></div>
-        <h2>Properties</h2>
-        <span class="section-label">Real estate</span>
-      </div>
-      <div class="section-content">
-        <a href="pages/apartment.html" class="link-btn">
-          <i class="fas fa-home"></i>
-          Modern Apartment
-          <span class="meta">450€/m</span>
-        </a>
-        <a href="pages/storage.html" class="link-btn">
-          <i class="fas fa-box"></i>
-          Storage Space
-          <span class="meta">For Sale</span>
-        </a>
-      </div>
+    <p class="section-label">Properties</p>
+    <div class="group">
+      <a href="pages/apartment.html" class="row link-btn">
+        <span class="row-icon tile-teal"><i class="fas fa-house"></i></span>
+        <span class="row-label">Modern Apartment</span>
+        <span class="row-detail">450€/m</span>
+        <span class="chevron" aria-hidden="true"></span>
+      </a>
+      <a href="pages/storage.html" class="row link-btn">
+        <span class="row-icon tile-brown"><i class="fas fa-box"></i></span>
+        <span class="row-label">Storage Space</span>
+        <span class="row-detail">For Sale</span>
+        <span class="chevron" aria-hidden="true"></span>
+      </a>
     </div>
 
-    <!-- Payments -->
-    <div class="section neutral">
-      <div class="section-header">
-        <div class="icon"><i class="fas fa-wallet"></i></div>
-        <h2>Payments</h2>
-      </div>
-      <div class="qr-grid">
-        <button type="button" class="qr-tap" data-qr-src="./media/revolut-qr.jpg" data-qr-label="Revolut" data-qr-alt="Revolut payment QR code" aria-label="Open Revolut QR full size">
-          <span class="qr-name">Revolut</span>
-          <img src="./media/revolut-qr.jpg" alt="" class="qr-thumb" loading="lazy" width="120" height="120">
-        </button>
-        <button type="button" class="qr-tap" data-qr-src="./media/BTC-address-QR-code.png" data-qr-label="Bitcoin" data-qr-alt="Bitcoin address QR code" aria-label="Open Bitcoin QR full size">
-          <span class="qr-name">Bitcoin</span>
-          <img src="./media/BTC-address-QR-code.png" alt="" class="qr-thumb" loading="lazy" width="120" height="120">
-        </button>
-      </div>
+    <p class="section-label">Payments</p>
+    <div class="group row-qr">
+      <button type="button" class="row qr-tap" data-qr-src="./media/revolut-qr.jpg" data-qr-label="Revolut" data-qr-alt="Revolut payment QR code" aria-label="Open Revolut QR code">
+        <span class="row-icon tile-indigo"><i class="fas fa-qrcode"></i></span>
+        <span class="row-label">Revolut</span>
+        <img src="./media/revolut-qr.jpg" alt="" class="row-qr-thumb" loading="lazy" width="36" height="36">
+        <span class="chevron" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="row qr-tap" data-qr-src="./media/BTC-address-QR-code.png" data-qr-label="Bitcoin" data-qr-alt="Bitcoin address QR code" aria-label="Open Bitcoin QR code">
+        <span class="row-icon tile-orange"><i class="fab fa-bitcoin"></i></span>
+        <span class="row-label">Bitcoin</span>
+        <img src="./media/BTC-address-QR-code.png" alt="" class="row-qr-thumb" loading="lazy" width="36" height="36">
+        <span class="chevron" aria-hidden="true"></span>
+      </button>
     </div>
 
-    <div class="footer">
-      2026
-    </div>
+    <div class="footer">2026</div>
   </div>
 
   <div class="qr-lightbox" id="qr-lightbox" aria-hidden="true">
     <div class="qr-lightbox-panel" role="dialog" aria-modal="true" aria-labelledby="qr-lightbox-title">
-      <button type="button" class="qr-lightbox-close" id="qr-lightbox-close" aria-label="Close QR">
-        <i class="fas fa-xmark"></i>
-      </button>
+      <div class="qr-lightbox-handle" aria-hidden="true"></div>
       <h2 id="qr-lightbox-title" class="qr-lightbox-title"></h2>
       <div class="qr-lightbox-img-wrap">
         <img id="qr-lightbox-img" src="" alt="">
       </div>
+      <button type="button" class="qr-lightbox-close" id="qr-lightbox-close">Done</button>
     </div>
   </div>
 
@@ -688,8 +613,9 @@
 
   <script>
     (function () {
+      const profileTrigger = document.getElementById('profile-trigger');
       const profileImg = document.querySelector('.profile-pic');
-      if (!profileImg) return;
+      if (!profileTrigger || !profileImg) return;
 
       const raw = profileImg.getAttribute('data-images') || profileImg.getAttribute('src') || '';
       const images = raw.split(',').map(s => s.trim()).filter(Boolean);
@@ -738,7 +664,7 @@
         lightbox.setAttribute('aria-hidden', 'true');
       };
 
-      profileImg.addEventListener('click', () => open());
+      profileTrigger.addEventListener('click', () => open());
       lbClose?.addEventListener('click', () => close());
       lightbox?.addEventListener('click', (e) => {
         if (e.target === lightbox) close();
