@@ -241,19 +241,6 @@
     }
 
     /* ─── QR payment rows ─── */
-    .row-qr-thumb {
-      width: 36px;
-      height: 36px;
-      border-radius: 6px;
-      object-fit: contain;
-      background: #fff;
-      flex-shrink: 0;
-    }
-
-    .row-qr .row + .row::before {
-      left: 16px;
-    }
-
     /* ─── Footer ─── */
     .footer {
       padding: 28px 16px 8px;
@@ -516,10 +503,16 @@
 
     <p class="section-label">Software Products</p>
     <div class="group">
-      <a href="#" class="row link-btn" data-url="https://finance.buildfast.it">
+      <a href="#" class="row link-btn" data-url="https://health.buildfast.it">
         <span class="row-icon"><img src="./assets/life-panel.png" alt="" /></span>
         <span class="row-label">Life Panel</span>
-        <span class="row-detail">finance.buildfast.it</span>
+        <span class="row-detail">health.buildfast.it</span>
+        <span class="chevron" aria-hidden="true"></span>
+      </a>
+      <a href="#" class="row link-btn" data-url="https://tasse.buildfast.it">
+        <span class="row-icon"><img src="./assets/f24.png" alt="" /></span>
+        <span class="row-label">Tasse</span>
+        <span class="row-detail">tasse.buildfast.it</span>
         <span class="chevron" aria-hidden="true"></span>
       </a>
       <a href="#" class="row link-btn" data-url="https://buildfast.it">
@@ -558,17 +551,15 @@
     </div>
 
     <p class="section-label">Payments</p>
-    <div class="group row-qr">
+    <div class="group">
       <button type="button" class="row qr-tap" data-qr-src="./media/revolut-qr.jpg" data-qr-label="Revolut" data-qr-alt="Revolut payment QR code" aria-label="Open Revolut QR code">
         <span class="row-icon tile-indigo"><i class="fas fa-qrcode"></i></span>
         <span class="row-label">Revolut</span>
-        <img src="./media/revolut-qr.jpg" alt="" class="row-qr-thumb" loading="lazy" width="36" height="36">
         <span class="chevron" aria-hidden="true"></span>
       </button>
       <button type="button" class="row qr-tap" data-qr-src="./media/BTC-address-QR-code.png" data-qr-label="Bitcoin" data-qr-alt="Bitcoin address QR code" aria-label="Open Bitcoin QR code">
         <span class="row-icon tile-orange"><i class="fab fa-bitcoin"></i></span>
         <span class="row-label">Bitcoin</span>
-        <img src="./media/BTC-address-QR-code.png" alt="" class="row-qr-thumb" loading="lazy" width="36" height="36">
         <span class="chevron" aria-hidden="true"></span>
       </button>
     </div>
