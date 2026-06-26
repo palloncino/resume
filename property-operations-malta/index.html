@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#000000" />
+  <title>Property Operations Support in Malta — Antonio Guiotto</title>
+  <meta name="description" content="On-site inspections, photo reports, key handovers and maintenance supervision for landlords, agencies and property managers in Malta." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --bg: #000000;
+      --grouped-bg: #1c1c1e;
+      --grouped-bg-elevated: #2c2c2e;
+      --label: #a8a8ad;
+      --text: #ffffff;
+      --text-secondary: #e5e5ea;
+      --separator: rgba(120, 120, 128, 0.55);
+      --accent: #0a84ff;
+      --row-pressed: rgba(255, 255, 255, 0.08);
+      --radius: 10px;
+      --green: #34c759;
+      --whatsapp: #25d366;
+      --card-border: rgba(255, 255, 255, 0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      color-scheme: dark;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: max(12px, env(safe-area-inset-top)) 16px calc(32px + env(safe-area-inset-bottom));
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 428px;
+      margin: 0 auto;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 16px;
+      padding: 8px 12px 8px 8px;
+      border-radius: 999px;
+      background: var(--grouped-bg);
+      border: 1px solid var(--card-border);
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .back:active { opacity: 0.7; }
+
+    .hero {
+      padding: 4px 4px 8px;
+    }
+
+    .hero h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    .hero-positioning {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+      margin-bottom: 18px;
+    }
+
+    .hero-positioning i {
+      margin-top: 2px;
+      color: #ff9500;
+      flex-shrink: 0;
+    }
+
+    .cta-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 12px 16px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-size: 1.0625rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .cta:active { opacity: 0.75; }
+
+    .cta-whatsapp {
+      background: var(--whatsapp);
+      color: #fff;
+    }
+
+    .cta-email {
+      background: var(--grouped-bg-elevated);
+      color: #fff;
+      border: 1px solid var(--card-border);
+    }
+
+    .cta-email i {
+      color: var(--accent);
+    }
+
+    .section-label {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--label);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0 16px 7px;
+      margin-top: 22px;
+    }
+
+    .group {
+      background: var(--grouped-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+    }
+
+    .service-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 16px;
+      font-size: 1.0625rem;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+
+    .service-row + .service-row::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 16px;
+      right: 0;
+      height: 0.5px;
+      background: var(--separator);
+    }
+
+    .service-icon {
+      width: 29px;
+      height: 29px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+      color: #fff;
+      background: var(--grouped-bg-elevated);
+    }
+
+    .service-icon.teal { background: #5ac8fa; }
+    .service-icon.blue { background: #007aff; }
+    .service-icon.green { background: var(--green); }
+    .service-icon.orange { background: #ff9500; }
+    .service-icon.purple { background: #af52de; }
+    .service-icon.indigo { background: #5856d6; }
+    .service-icon.pink { background: #ff2d55; }
+    .service-icon.brown { background: #a2845e; }
+
+    .step-row {
+      display: flex;
+      gap: 14px;
+      padding: 14px 16px;
+      position: relative;
+    }
+
+    .step-row + .step-row::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 16px;
+      right: 0;
+      height: 0.5px;
+      background: var(--separator);
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-text {
+      font-size: 1rem;
+      line-height: 1.45;
+      color: var(--text);
+      padding-top: 3px;
+    }
+
+    .fact-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 16px;
+      font-size: 1.0625rem;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+
+    .fact-row + .fact-row::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 16px;
+      right: 0;
+      height: 0.5px;
+      background: var(--separator);
+    }
+
+    .fact-label { color: var(--text-secondary); flex: 1; min-width: 0; }
+
+    .fact-value {
+      text-align: right;
+      color: var(--text);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .fact-value.muted {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .addon-card {
+      padding: 16px;
+    }
+
+    .addon-card h3 {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .addon-card p {
+      font-size: 0.9375rem;
+      line-height: 1.55;
+      color: var(--text-secondary);
+    }
+
+    .contact-group .row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 16px;
+      min-height: 44px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 1.0625rem;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+
+    .contact-group .row:active {
+      background: var(--row-pressed);
+    }
+
+    .contact-group .row + .row::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 57px;
+      right: 0;
+      height: 0.5px;
+      background: var(--separator);
+    }
+
+    .row-icon {
+      width: 29px;
+      height: 29px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 15px;
+      color: #fff;
+    }
+
+    .tile-green { background: var(--green); }
+    .tile-blue { background: #007aff; }
+
+    .chevron {
+      flex-shrink: 0;
+      width: 7px;
+      height: 12px;
+      margin-left: auto;
+      opacity: 0.45;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 13'%3E%3Cpath fill='%23636366' d='M1.5 0L0 1.5 5 6.5 0 11.5 1.5 13 8 6.5z'/%3E%3C/svg%3E") center / contain no-repeat;
+    }
+
+    .footer {
+      margin-top: 28px;
+      text-align: center;
+      font-size: 0.8125rem;
+      color: var(--label);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <a href="../index.html" class="back" aria-label="Back to links">
+      <i class="fas fa-chevron-left"></i>
+      Links
+    </a>
+
+    <header class="hero">
+      <h1>Property Operations Support in Malta</h1>
+      <p class="hero-sub">On-site inspections, photo reports, key handovers and maintenance supervision for landlords, agencies and property managers.</p>
+      <p class="hero-positioning">
+        <i class="fas fa-location-dot"></i>
+        <span>Based in St Julian&rsquo;s. Motorcycle available. Fast response across Malta.</span>
+      </p>
+      <div class="cta-stack">
+        <a href="https://wa.me/35679641219?text=Hi%20Antonio%2C%20I%27m%20interested%20in%20property%20operations%20support%20in%20Malta." class="cta cta-whatsapp" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-whatsapp"></i>
+          WhatsApp Antonio
+        </a>
+        <a href="mailto:powerhydratoni@gmail.com?subject=Property%20operations%20enquiry%20(Malta)" class="cta cta-email">
+          <i class="fas fa-envelope"></i>
+          Email
+        </a>
+      </div>
+    </header>
+
+    <p class="section-label">Services</p>
+    <div class="group">
+      <div class="service-row">
+        <span class="service-icon teal"><i class="fas fa-magnifying-glass"></i></span>
+        Property inspections
+      </div>
+      <div class="service-row">
+        <span class="service-icon blue"><i class="fas fa-camera"></i></span>
+        Photo and video reports
+      </div>
+      <div class="service-row">
+        <span class="service-icon green"><i class="fas fa-key"></i></span>
+        Key handovers
+      </div>
+      <div class="service-row">
+        <span class="service-icon orange"><i class="fas fa-clipboard-list"></i></span>
+        Inventory checks
+      </div>
+      <div class="service-row">
+        <span class="service-icon purple"><i class="fas fa-gauge-high"></i></span>
+        Meter readings
+      </div>
+      <div class="service-row">
+        <span class="service-icon indigo"><i class="fas fa-helmet-safety"></i></span>
+        Contractor supervision
+      </div>
+      <div class="service-row">
+        <span class="service-icon pink"><i class="fas fa-images"></i></span>
+        Listing photography
+      </div>
+      <div class="service-row">
+        <span class="service-icon brown"><i class="fas fa-door-open"></i></span>
+        Move-in / move-out reports
+      </div>
+    </div>
+
+    <p class="section-label">How it works</p>
+    <div class="group">
+      <div class="step-row">
+        <span class="step-num">1</span>
+        <p class="step-text">Send property details</p>
+      </div>
+      <div class="step-row">
+        <span class="step-num">2</span>
+        <p class="step-text">I visit the property</p>
+      </div>
+      <div class="step-row">
+        <span class="step-num">3</span>
+        <p class="step-text">You receive a clear photo/video report</p>
+      </div>
+    </div>
+
+    <p class="section-label">Pricing examples</p>
+    <div class="group">
+      <div class="fact-row">
+        <span class="fact-label">Property visit + report</span>
+        <span class="fact-value">from &euro;49</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-label">Key handover</span>
+        <span class="fact-value">from &euro;40</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-label">Listing photo/video</span>
+        <span class="fact-value">from &euro;120</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-label">Monthly support</span>
+        <span class="fact-value muted">Custom</span>
+      </div>
+    </div>
+
+    <p class="section-label">Software add-on</p>
+    <div class="group">
+      <div class="addon-card">
+        <h3>Internal tools &amp; automations</h3>
+        <p>I also build internal tools, dashboards and automations for property workflows.</p>
+      </div>
+    </div>
+
+    <p class="section-label">Contact</p>
+    <div class="group contact-group">
+      <a href="https://wa.me/35679641219?text=Hi%20Antonio%2C%20I%27m%20interested%20in%20property%20operations%20support%20in%20Malta." class="row" target="_blank" rel="noopener noreferrer">
+        <span class="row-icon tile-green"><i class="fab fa-whatsapp"></i></span>
+        WhatsApp Antonio
+        <span class="chevron" aria-hidden="true"></span>
+      </a>
+      <a href="mailto:powerhydratoni@gmail.com?subject=Property%20operations%20enquiry%20(Malta)" class="row">
+        <span class="row-icon tile-blue"><i class="fas fa-envelope"></i></span>
+        Email
+        <span class="chevron" aria-hidden="true"></span>
+      </a>
+      <a href="https://linkedin.com/in/antonioguiotto" class="row" target="_blank" rel="noopener noreferrer">
+        <span class="row-icon tile-blue"><i class="fab fa-linkedin-in"></i></span>
+        LinkedIn
+        <span class="chevron" aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <p class="footer">Antonio Guiotto &middot; Malta</p>
+  </div>
+</body>
+
+</html>
