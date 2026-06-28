@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="color-scheme" content="dark" />
   <meta name="theme-color" content="#000000" />
-  <title>Property Operations Support in Malta — Antonio Guiotto</title>
-  <meta name="description" content="On-site inspections, photo reports, key handovers and maintenance supervision for landlords, agencies and property managers in Malta." />
+  <title>Your Trusted Representative in Malta — Antonio Guiotto</title>
+  <meta name="description" content="I help landlords, agencies and international companies manage properties in Malta without being physically present. Site inspections, reports, handovers and operational support." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
@@ -84,20 +84,11 @@
       margin-bottom: 14px;
     }
 
-    .hero-positioning {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
+    .hero-detail {
       font-size: 0.9375rem;
       color: var(--text-secondary);
       line-height: 1.45;
       margin-bottom: 18px;
-    }
-
-    .hero-positioning i {
-      margin-top: 2px;
-      color: #ff9500;
-      flex-shrink: 0;
     }
 
     .cta-stack {
@@ -154,11 +145,71 @@
       border: 1px solid var(--card-border);
     }
 
+    .trust-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 16px;
+      position: relative;
+    }
+
+    .trust-row + .trust-row::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 16px;
+      right: 0;
+      height: 0.5px;
+      background: var(--separator);
+    }
+
+    .trust-emoji {
+      font-size: 1.5rem;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 32px;
+      text-align: center;
+    }
+
+    .trust-text strong {
+      display: block;
+      font-size: 1.0625rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 2px;
+    }
+
+    .trust-text span {
+      font-size: 0.9375rem;
+      line-height: 1.4;
+      color: var(--text-secondary);
+    }
+
+    .service-category {
+      padding: 12px 16px 6px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      position: relative;
+    }
+
+    .service-category:not(:first-child)::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 16px;
+      right: 0;
+      height: 0.5px;
+      background: var(--separator);
+    }
+
     .service-row {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 11px 16px;
+      padding: 10px 16px 11px;
       font-size: 1.0625rem;
       letter-spacing: -0.02em;
       position: relative;
@@ -174,27 +225,14 @@
       background: var(--separator);
     }
 
-    .service-icon {
-      width: 29px;
-      height: 29px;
-      border-radius: 7px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .service-row .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--label);
       flex-shrink: 0;
-      font-size: 14px;
-      color: #fff;
-      background: var(--grouped-bg-elevated);
+      margin-left: 4px;
     }
-
-    .service-icon.teal { background: #5ac8fa; }
-    .service-icon.blue { background: #007aff; }
-    .service-icon.green { background: var(--green); }
-    .service-icon.orange { background: #ff9500; }
-    .service-icon.purple { background: #af52de; }
-    .service-icon.indigo { background: #5856d6; }
-    .service-icon.pink { background: #ff2d55; }
-    .service-icon.brown { background: #a2845e; }
 
     .step-row {
       display: flex;
@@ -354,58 +392,69 @@
     </a>
 
     <header class="hero">
-      <h1>Property Operations Support in Malta</h1>
-      <p class="hero-sub">On-site inspections, photo reports, key handovers and maintenance supervision for landlords, agencies and property managers.</p>
-      <p class="hero-positioning">
-        <i class="fas fa-location-dot"></i>
-        <span>Based in St Julian&rsquo;s. Motorcycle available. Fast response across Malta.</span>
-      </p>
+      <h1>Need Someone on the Ground in Malta?</h1>
+      <p class="hero-sub">I help landlords, agencies and international companies manage properties without having to be physically present.</p>
+      <p class="hero-detail">Site inspections, property reports, key handovers, contractor supervision and operational support across Malta.</p>
       <div class="cta-stack">
-        <a href="https://wa.me/35679641219?text=Hi%20Antonio%2C%20I%27m%20interested%20in%20property%20operations%20support%20in%20Malta." class="cta cta-whatsapp" target="_blank" rel="noopener noreferrer">
+        <a href="https://wa.me/35679641219?text=Hi%20Antonio%2C%20I%20need%20someone%20on%20the%20ground%20in%20Malta%20for%20a%20property." class="cta cta-whatsapp" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-whatsapp"></i>
           WhatsApp Antonio
         </a>
-        <a href="mailto:powerhydratoni@gmail.com?subject=Property%20operations%20enquiry%20(Malta)" class="cta cta-email">
+        <a href="mailto:powerhydratoni@gmail.com?subject=Property%20support%20in%20Malta" class="cta cta-email">
           <i class="fas fa-envelope"></i>
           Email
         </a>
       </div>
     </header>
 
+    <p class="section-label">Why work with me?</p>
+    <div class="group">
+      <div class="trust-row">
+        <span class="trust-emoji" aria-hidden="true">🇲🇹</span>
+        <div class="trust-text">
+          <strong>Based in Malta</strong>
+          <span>St Julian&rsquo;s &mdash; local, reachable, on the island year-round.</span>
+        </div>
+      </div>
+      <div class="trust-row">
+        <span class="trust-emoji" aria-hidden="true">🏍</span>
+        <div class="trust-text">
+          <strong>Island-wide mobility</strong>
+          <span>Motorcycle available for fast response anywhere in Malta.</span>
+        </div>
+      </div>
+      <div class="trust-row">
+        <span class="trust-emoji" aria-hidden="true">💻</span>
+        <div class="trust-text">
+          <strong>Software Engineer</strong>
+          <span>Reliable execution plus the ability to build tools when your ops need them.</span>
+        </div>
+      </div>
+      <div class="trust-row">
+        <span class="trust-emoji" aria-hidden="true">📷</span>
+        <div class="trust-text">
+          <strong>Detailed digital reports</strong>
+          <span>Clear photo and video documentation you can share with owners or teams.</span>
+        </div>
+      </div>
+    </div>
+
     <p class="section-label">Services</p>
     <div class="group">
-      <div class="service-row">
-        <span class="service-icon teal"><i class="fas fa-magnifying-glass"></i></span>
-        Property inspections
-      </div>
-      <div class="service-row">
-        <span class="service-icon blue"><i class="fas fa-camera"></i></span>
-        Photo and video reports
-      </div>
-      <div class="service-row">
-        <span class="service-icon green"><i class="fas fa-key"></i></span>
-        Key handovers
-      </div>
-      <div class="service-row">
-        <span class="service-icon orange"><i class="fas fa-clipboard-list"></i></span>
-        Inventory checks
-      </div>
-      <div class="service-row">
-        <span class="service-icon purple"><i class="fas fa-gauge-high"></i></span>
-        Meter readings
-      </div>
-      <div class="service-row">
-        <span class="service-icon indigo"><i class="fas fa-helmet-safety"></i></span>
-        Contractor supervision
-      </div>
-      <div class="service-row">
-        <span class="service-icon pink"><i class="fas fa-images"></i></span>
-        Listing photography
-      </div>
-      <div class="service-row">
-        <span class="service-icon brown"><i class="fas fa-door-open"></i></span>
-        Move-in / move-out reports
-      </div>
+      <p class="service-category">Property Visits</p>
+      <div class="service-row"><span class="dot" aria-hidden="true"></span> Site inspections</div>
+      <div class="service-row"><span class="dot" aria-hidden="true"></span> Photo &amp; video reports</div>
+      <div class="service-row"><span class="dot" aria-hidden="true"></span> Meter readings</div>
+
+      <p class="service-category">Tenant Support</p>
+      <div class="service-row"><span class="dot" aria-hidden="true"></span> Key handovers</div>
+      <div class="service-row"><span class="dot" aria-hidden="true"></span> Move-in / move-out inspections</div>
+      <div class="service-row"><span class="dot" aria-hidden="true"></span> Inventory checks</div>
+
+      <p class="service-category">Operations</p>
+      <div class="service-row"><span class="dot" aria-hidden="true"></span> Contractor supervision</div>
+      <div class="service-row"><span class="dot" aria-hidden="true"></span> Listing photography</div>
+      <div class="service-row"><span class="dot" aria-hidden="true"></span> Recurring property visits</div>
     </div>
 
     <p class="section-label">How it works</p>
@@ -444,22 +493,21 @@
       </div>
     </div>
 
-    <p class="section-label">Software add-on</p>
+    <p class="section-label">Need something more?</p>
     <div class="group">
       <div class="addon-card">
-        <h3>Internal tools &amp; automations</h3>
-        <p>I also build internal tools, dashboards and automations for property workflows.</p>
+        <p>I also design internal tools and automations for agencies and property managers who want to streamline inspections, reporting and operations.</p>
       </div>
     </div>
 
     <p class="section-label">Contact</p>
     <div class="group contact-group">
-      <a href="https://wa.me/35679641219?text=Hi%20Antonio%2C%20I%27m%20interested%20in%20property%20operations%20support%20in%20Malta." class="row" target="_blank" rel="noopener noreferrer">
+      <a href="https://wa.me/35679641219?text=Hi%20Antonio%2C%20I%20need%20someone%20on%20the%20ground%20in%20Malta%20for%20a%20property." class="row" target="_blank" rel="noopener noreferrer">
         <span class="row-icon tile-green"><i class="fab fa-whatsapp"></i></span>
         WhatsApp Antonio
         <span class="chevron" aria-hidden="true"></span>
       </a>
-      <a href="mailto:powerhydratoni@gmail.com?subject=Property%20operations%20enquiry%20(Malta)" class="row">
+      <a href="mailto:powerhydratoni@gmail.com?subject=Property%20support%20in%20Malta" class="row">
         <span class="row-icon tile-blue"><i class="fas fa-envelope"></i></span>
         Email
         <span class="chevron" aria-hidden="true"></span>
