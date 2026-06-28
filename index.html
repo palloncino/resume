@@ -478,11 +478,6 @@
 
     <p class="section-label">Professional</p>
     <div class="group">
-      <a href="#" class="row link-btn pinned" id="cv-button">
-        <span class="row-icon tile-blue"><i class="fas fa-file-lines"></i></span>
-        <span class="row-label">Software Resume</span>
-        <span class="chevron" aria-hidden="true"></span>
-      </a>
       <a href="#" class="row link-btn" data-url="https://linkedin.com/in/antonioguiotto">
         <span class="row-icon tile-blue"><i class="fab fa-linkedin-in"></i></span>
         <span class="row-label">LinkedIn</span>
@@ -745,12 +740,6 @@
         }
 
         e.preventDefault();
-
-        if (this.id === 'cv-button') {
-          const path = /Mobi|Android/i.test(navigator.userAgent) ? './pages/cv-mobile.html' : './pages/cv-desktop.html';
-          window.open(path, '_blank');
-          return;
-        }
 
         const url = this.getAttribute('data-url');
         if (url) {
