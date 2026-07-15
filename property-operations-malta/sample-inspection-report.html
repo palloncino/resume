@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sample Inspection Report — St Julian&rsquo;s Apartment</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+      background: #f2f2f7;
+      color: #1c1c1e;
+      line-height: 1.5;
+      padding: 24px 16px 40px;
+    }
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 32px 28px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #0a84ff;
+      background: rgba(10,132,255,0.1);
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .meta {
+      font-size: 0.9375rem;
+      color: #636366;
+      margin-bottom: 24px;
+    }
+    .meta p { margin-bottom: 4px; }
+    h2 {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #636366;
+      margin: 24px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #e5e5ea;
+    }
+    .summary { font-size: 0.9375rem; color: #3a3a3c; }
+    .issues { list-style: none; }
+    .issues li {
+      padding: 12px 0;
+      border-bottom: 1px solid #f2f2f7;
+      font-size: 0.9375rem;
+    }
+    .issues li strong { color: #ff3b30; }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .photo-cell {
+      aspect-ratio: 4/3;
+      background: #e5e5ea;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6875rem;
+      color: #8e8e93;
+      text-align: center;
+      padding: 8px;
+    }
+    .rec-list { padding-left: 1.1rem; font-size: 0.9375rem; color: #3a3a3c; }
+    .rec-list li { margin-bottom: 6px; }
+    .conclusion {
+      background: #f2f2f7;
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 0.9375rem;
+      color: #3a3a3c;
+    }
+    .footer-note {
+      margin-top: 28px;
+      font-size: 0.8125rem;
+      color: #8e8e93;
+      text-align: center;
+    }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <span class="badge">Sample report</span>
+    <h1>Property Inspection Report</h1>
+    <div class="meta">
+      <p><strong>Address:</strong> Triq Balluta, St Julian&rsquo;s, Malta (example)</p>
+      <p><strong>Date:</strong> 3 July 2026 &middot; 10:42&ndash;11:28</p>
+      <p><strong>Weather:</strong> Clear, 31&deg;C, light wind</p>
+      <p><strong>Inspector:</strong> Antonio Guiotto</p>
+      <p><strong>Requested by:</strong> Overseas landlord (example)</p>
+    </div>
+
+    <h2>Summary</h2>
+    <p class="summary">Apartment accessed without issue. General condition good. Three minor items flagged for owner attention. Meters photographed. Full walkthrough video and 18 photos attached.</p>
+
+    <h2>Issues found (3)</h2>
+    <ul class="issues">
+      <li><strong>1. Bathroom</strong> &mdash; Small water mark on ceiling near shower. No active leak observed. Recommend monitoring.</li>
+      <li><strong>2. Living room</strong> &mdash; Window latch stiff; opens and closes but may need lubrication or adjustment.</li>
+      <li><strong>3. Kitchen</strong> &mdash; AC filter due for cleaning. Unit operational.</li>
+    </ul>
+
+    <h2>Photo documentation (18)</h2>
+    <div class="photo-grid">
+      <div class="photo-cell">Entrance</div>
+      <div class="photo-cell">Living room</div>
+      <div class="photo-cell">Kitchen</div>
+      <div class="photo-cell">Bedroom</div>
+      <div class="photo-cell">Bathroom</div>
+      <div class="photo-cell">Balcony</div>
+      <div class="photo-cell">Water meter</div>
+      <div class="photo-cell">Electric meter</div>
+      <div class="photo-cell">Issue: ceiling</div>
+      <div class="photo-cell">Issue: window</div>
+      <div class="photo-cell">Issue: AC</div>
+      <div class="photo-cell">Sockets</div>
+      <div class="photo-cell">Appliances</div>
+      <div class="photo-cell">Keys</div>
+      <div class="photo-cell">Exterior</div>
+      <div class="photo-cell">Building</div>
+      <div class="photo-cell">Access</div>
+      <div class="photo-cell">Summary</div>
+    </div>
+
+    <h2>Recommendations</h2>
+    <ul class="rec-list">
+      <li>Schedule contractor to inspect bathroom ceiling if mark spreads.</li>
+      <li>Lubricate or service living room window latch before next tenant handover.</li>
+      <li>Clean or replace kitchen AC filter within 2 weeks.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p class="conclusion">Property is in acceptable condition for ongoing rental. No urgent safety issues. Owner may proceed with planned handover. Full video walkthrough and high-resolution photos delivered via Google Drive link same day.</p>
+
+    <p class="footer-note">This is an example report format. Real reports include actual photos, video and meter readings.<br>Antonio Guiotto &middot; Malta property inspections</p>
+  </div>
+</body>
+</html>
