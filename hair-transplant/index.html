@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Hair Transplant — Photos</title>
+  <link rel="icon" href="../favicon.png" type="image/png" sizes="32x32" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background: #000;
+    }
+
+    body {
+      min-height: 100dvh;
+      display: flex;
+      background: #000;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .photos {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      padding: 0;
+    }
+
+    .photos img {
+      display: block;
+      width: 100%;
+      max-width: 1250px;
+      height: auto;
+    }
+
+    .notes {
+      flex-shrink: 0;
+      width: 280px;
+      padding: 24px 20px calc(24px + env(safe-area-inset-bottom));
+      background: #0a0a0a;
+      border-left: 1px solid #1c1c1e;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      overflow-y: auto;
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+      max-height: 100dvh;
+    }
+
+    .notes h1 {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #636366;
+      margin-bottom: 16px;
+    }
+
+    .notes ol {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .notes li {
+      font-size: 14px;
+      line-height: 1.45;
+      color: #e5e5ea;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #1c1c1e;
+    }
+
+    .notes li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    @media (max-width: 800px) {
+      body {
+        flex-direction: column;
+      }
+
+      .notes {
+        width: 100%;
+        max-height: none;
+        position: static;
+        border-left: none;
+        border-top: 1px solid #1c1c1e;
+        order: 2;
+      }
+
+      .photos {
+        order: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="photos">
+    <img
+      src="./media/photos-current.png"
+      alt="Current hairline — side, front, and top views"
+      width="1024"
+      height="654"
+      decoding="sync"
+      fetchpriority="high"
+    />
+    <img
+      src="./media/photos-annotated.png"
+      alt="Annotated hairline map — temples, symmetry, vortex"
+      width="1024"
+      height="654"
+      decoding="sync"
+      fetchpriority="high"
+    />
+  </div>
+
+  <aside class="notes">
+    <h1>Notes</h1>
+    <ol>
+      <li>Conservative approach.</li>
+      <li>Happy to do one side only (Improve visual symmetry).</li>
+      <li>Prefer the minimum effective graft count.</li>
+      <li>Preserve donor hair for the future.</li>
+      <li>No hairline lowering or redesign.</li>
+      <li>Keep it natural and irregular.</li>
+      <li>No finasteride/minoxidil.</li>
+      <li>Is a partial/no-shave FUE possible?</li>
+    </ol>
+  </aside>
+</body>
+
+</html>
