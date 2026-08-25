@@ -25,7 +25,7 @@
       --warn-soft: #fdeceb;
       --dock: rgba(243, 244, 246, 0.94);
       --safe-top: env(safe-area-inset-top, 0px);
-      --dock-h: 148px;
+      --dock-h: 52px;
     }
 
     html {
@@ -52,99 +52,126 @@
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--rule);
-      padding: calc(6px + var(--safe-top)) 12px 6px;
+      padding: calc(4px + var(--safe-top)) 10px 4px;
     }
 
     .nav {
       display: flex;
       align-items: center;
-      gap: 8px;
-      min-height: 32px;
+      gap: 6px;
+      min-height: 40px;
+      width: min(1180px, 100%);
+      margin: 0 auto;
     }
 
-    .back, .print {
+    .back {
       flex-shrink: 0;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      min-height: 32px;
-      padding: 0 10px;
-      border-radius: 9px;
+      min-height: 36px;
+      padding: 0 8px;
       text-decoration: none;
-      font-size: 0.84rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--key);
-      background: #fff;
-      border: 1px solid var(--rule);
     }
 
-    .print { color: var(--ink); }
     .nav h1 {
-      flex: 1;
+      flex: 0 1 auto;
       min-width: 0;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 800;
       letter-spacing: -0.02em;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
-    .search-wrap { position: relative; margin-top: 6px; }
-    .search-wrap::before {
-      content: "";
-      position: absolute;
-      left: 11px;
-      top: 50%;
-      width: 13px;
-      height: 13px;
-      transform: translateY(-50%);
-      pointer-events: none;
-      background: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b939b' stroke-width='2.2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M21 21l-4.3-4.3'/%3E%3C/svg%3E");
+    .nav-btn {
+      flex-shrink: 0;
+      height: 36px;
+      padding: 0 12px;
+      border: 0;
+      border-radius: 9px;
+      background: var(--ink);
+      color: #fff;
+      font: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .sheet {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      background: #fff;
+      padding-top: var(--safe-top);
+    }
+    .sheet.open { display: flex; flex-direction: column; }
+
+    .sheet-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: min(560px, 100%);
+      margin: 0 auto;
+      padding: 8px 16px 6px;
+    }
+    .sheet-head h2 {
+      flex: 1;
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+    .sheet-close {
+      height: 36px;
+      padding: 0 12px;
+      border: 0;
+      border-radius: 9px;
+      background: var(--bg);
+      color: var(--key);
+      font: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .sheet-tools {
+      width: min(560px, 100%);
+      margin: 0 auto;
+      padding: 0 16px 8px;
     }
 
     #search {
       width: 100%;
-      height: 36px;
+      height: 44px;
       font: inherit;
-      font-size: 16px;
-      padding: 0 12px 0 32px;
+      font-size: 17px;
+      padding: 0 12px;
       border: 1px solid var(--rule);
       border-radius: 10px;
-      background: #fff;
+      background: var(--bg);
       color: var(--ink);
       outline: none;
     }
-
-    #search:focus {
-      border-color: var(--key);
-      box-shadow: 0 0 0 3px var(--key-soft);
-    }
+    #search:focus { border-color: var(--key); }
 
     .filters {
       display: flex;
+      flex-wrap: wrap;
       gap: 6px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      margin-top: 6px;
-      padding-bottom: 1px;
+      margin-top: 8px;
     }
-    .filters::-webkit-scrollbar { display: none; }
-
     .chip {
-      flex: 0 0 auto;
-      height: 28px;
-      padding: 0 11px;
+      height: 34px;
+      padding: 0 12px;
       border-radius: 999px;
       border: 1px solid var(--rule);
       background: #fff;
-      color: var(--soft);
+      color: var(--ink);
       font: inherit;
-      font-size: 0.78rem;
+      font-size: 0.9rem;
       font-weight: 700;
       cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
     }
     .chip.active {
       background: var(--ink);
@@ -152,32 +179,55 @@
       color: #fff;
     }
 
-    .jump-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 6px;
+    .jump-list {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      width: min(560px, 100%);
+      margin: 0 auto;
+      padding: 0 0 calc(16px + env(safe-area-inset-bottom, 0px));
     }
-    .jump-row label {
-      flex-shrink: 0;
-      font-size: 0.72rem;
+    .jump-group {
+      padding: 10px 16px 4px;
+      font-size: 0.78rem;
       font-weight: 800;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       color: var(--faint);
     }
-    #jump {
-      flex: 1;
-      min-width: 0;
-      height: 36px;
-      font: inherit;
-      font-size: 0.84rem;
-      font-weight: 600;
-      padding: 0 10px;
-      border: 1px solid var(--rule);
-      border-radius: 9px;
+    .jump-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      min-height: 56px;
+      padding: 12px 16px;
+      border: 0;
+      border-bottom: 1px solid var(--rule);
       background: #fff;
       color: var(--ink);
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+    .jump-item:active { background: var(--bg); }
+    .jump-item .n {
+      flex-shrink: 0;
+      width: 2.1em;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--key);
+    }
+    .jump-item .t {
+      font-size: 1.2rem;
+      font-weight: 650;
+      line-height: 1.3;
+    }
+    .jump-empty {
+      padding: 32px 16px;
+      text-align: center;
+      color: var(--faint);
+      font-size: 1rem;
     }
 
     main {
@@ -349,7 +399,6 @@
     @media (min-width: 1024px) {
       .board { grid-template-columns: 1fr 1fr 1fr; }
       .mm-grid { grid-template-columns: 1fr 1fr 1fr 1fr; }
-      #search { font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -357,31 +406,33 @@
 <body>
   <header class="dock">
     <div class="nav">
-      <a class="back" href="../index.html">← Home</a>
-      <h1>Electrical Formulas</h1>
-      <a class="print" href="../posters/electrical-formulas-poster.html">Print</a>
-    </div>
-    <div class="search-wrap">
-      <input type="search" id="search" placeholder="Search: ohm, drop, 3-phase, Zs…" autocomplete="off" enterkeyhint="search" />
-    </div>
-    <div class="filters" id="filters" role="tablist" aria-label="Filter by topic">
-      <button type="button" class="chip active" data-cat="all">All</button>
-      <button type="button" class="chip" data-cat="basics">Basics</button>
-      <button type="button" class="chip" data-cat="circuits">Circuits</button>
-      <button type="button" class="chip" data-cat="cables">Cables</button>
-      <button type="button" class="chip" data-cat="ac">AC</button>
-      <button type="button" class="chip" data-cat="power">Power</button>
-      <button type="button" class="chip" data-cat="safety">Safety</button>
-      <button type="button" class="chip" data-cat="machines">Motors</button>
-      <button type="button" class="chip" data-cat="reference">Units</button>
-    </div>
-    <div class="jump-row">
-      <label for="jump">Jump</label>
-      <select id="jump">
-        <option value="">Quick reference…</option>
-      </select>
+      <a class="back" href="../index.html">←</a>
+      <h1>Formulas</h1>
+      <button type="button" class="nav-btn" id="open-sheet">Jump</button>
     </div>
   </header>
+
+  <div class="sheet" id="sheet" hidden>
+    <div class="sheet-head">
+      <h2>Quick reference</h2>
+      <button type="button" class="sheet-close" id="close-sheet">Done</button>
+    </div>
+    <div class="sheet-tools">
+      <input type="search" id="search" placeholder="Search formulas…" autocomplete="off" enterkeyhint="search" />
+      <div class="filters" id="filters">
+        <button type="button" class="chip active" data-cat="all">All</button>
+        <button type="button" class="chip" data-cat="basics">Basics</button>
+        <button type="button" class="chip" data-cat="circuits">Circuits</button>
+        <button type="button" class="chip" data-cat="cables">Cables</button>
+        <button type="button" class="chip" data-cat="ac">AC</button>
+        <button type="button" class="chip" data-cat="power">Power</button>
+        <button type="button" class="chip" data-cat="safety">Safety</button>
+        <button type="button" class="chip" data-cat="machines">Motors</button>
+        <button type="button" class="chip" data-cat="reference">Units</button>
+      </div>
+    </div>
+    <div class="jump-list" id="jump-list"></div>
+  </div>
 
   <main>
     <p class="status" id="status">26 sections</p>
@@ -657,25 +708,35 @@
 
     <footer class="page-footer">
       Study reference only — verify against applicable wiring regulations and manufacturer tables.
+      · <a href="../posters/electrical-formulas-poster.html">Print poster</a>
     </footer>
   </main>
 
   <script>
     (function () {
+      const cats = {
+        basics: "Basics",
+        circuits: "Circuits",
+        cables: "Cables",
+        ac: "AC",
+        power: "Power",
+        safety: "Safety",
+        machines: "Motors",
+        reference: "Units"
+      };
       const chips = Array.from(document.querySelectorAll(".chip"));
       const cards = Array.from(document.querySelectorAll(".card"));
       const search = document.getElementById("search");
-      const jump = document.getElementById("jump");
+      const list = document.getElementById("jump-list");
       const empty = document.getElementById("empty");
       const status = document.getElementById("status");
+      const sheet = document.getElementById("sheet");
+      const openBtn = document.getElementById("open-sheet");
+      const closeBtn = document.getElementById("close-sheet");
       let activeCat = "all";
 
       const haystack = new Map(cards.map((card) => {
-        const text = [
-          card.textContent,
-          card.dataset.keys || "",
-          card.dataset.cat || ""
-        ].join(" ").toLowerCase();
+        const text = [card.textContent, card.dataset.keys || "", card.dataset.cat || ""].join(" ").toLowerCase();
         return [card, text];
       }));
 
@@ -683,51 +744,93 @@
         return (card.querySelector("h2")?.textContent || card.id).replace(/\s+/g, " ").trim();
       }
 
-      function rebuildJump(visible) {
-        const keep = jump.value;
-        jump.innerHTML = '<option value="">Quick reference…</option>';
-        visible.forEach((card) => {
-          const opt = document.createElement("option");
-          opt.value = card.id;
-          opt.textContent = titleOf(card);
-          jump.appendChild(opt);
+      function visibleCards() {
+        const q = search.value.trim().toLowerCase();
+        return cards.filter((card) => {
+          const catOk = activeCat === "all" || card.dataset.cat === activeCat;
+          return catOk && (!q || haystack.get(card).includes(q));
         });
-        jump.value = visible.some((c) => c.id === keep) ? keep : "";
+      }
+
+      function rebuildList(visible) {
+        list.innerHTML = "";
+        if (!visible.length) {
+          list.innerHTML = '<p class="jump-empty">No matching sections.</p>';
+          return;
+        }
+        Object.keys(cats).forEach((cat) => {
+          const group = visible.filter((card) => card.dataset.cat === cat);
+          if (!group.length) return;
+          const g = document.createElement("div");
+          g.className = "jump-group";
+          g.textContent = cats[cat];
+          list.appendChild(g);
+          group.forEach((card) => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "jump-item";
+            btn.dataset.id = card.id;
+            const raw = titleOf(card);
+            const num = raw.slice(0, 2);
+            const name = raw.slice(2).trim();
+            btn.innerHTML = '<span class="n"></span><span class="t"></span>';
+            btn.querySelector(".n").textContent = num;
+            btn.querySelector(".t").textContent = name;
+            list.appendChild(btn);
+          });
+        });
       }
 
       function applyFilter() {
-        const q = search.value.trim().toLowerCase();
-        const visible = [];
-        cards.forEach((card) => {
-          const catOk = activeCat === "all" || card.dataset.cat === activeCat;
-          const qOk = !q || haystack.get(card).includes(q);
-          const show = catOk && qOk;
-          card.classList.toggle("off", !show);
-          if (show) visible.push(card);
-        });
+        const visible = visibleCards();
+        cards.forEach((card) => card.classList.toggle("off", !visible.includes(card)));
         empty.classList.toggle("show", visible.length === 0);
         status.textContent = visible.length === cards.length
           ? cards.length + " sections"
           : visible.length + " of " + cards.length;
-        rebuildJump(visible);
+        rebuildList(visible);
       }
 
       function syncDockHeight() {
         const dock = document.querySelector(".dock");
-        if (!dock) return;
-        document.documentElement.style.setProperty("--dock-h", dock.offsetHeight + "px");
+        if (dock) document.documentElement.style.setProperty("--dock-h", dock.offsetHeight + "px");
       }
 
       function goTo(id) {
         const card = document.getElementById(id);
         const dock = document.querySelector(".dock");
-        if (!card || card.classList.contains("off") || !dock) return;
+        if (!card || !dock) return;
+        card.classList.remove("off");
+        closeSheet();
         syncDockHeight();
-        const top = card.getBoundingClientRect().top + window.scrollY - dock.offsetHeight - 8;
-        window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
-        card.classList.add("flash");
-        setTimeout(() => card.classList.remove("flash"), 900);
+        requestAnimationFrame(() => {
+          const top = card.getBoundingClientRect().top + window.scrollY - dock.offsetHeight - 8;
+          window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+          card.classList.add("flash");
+          setTimeout(() => card.classList.remove("flash"), 900);
+        });
       }
+
+      function openSheet() {
+        sheet.hidden = false;
+        sheet.classList.add("open");
+        document.body.style.overflow = "hidden";
+        rebuildList(visibleCards());
+        setTimeout(() => search.focus(), 50);
+      }
+
+      function closeSheet() {
+        sheet.classList.remove("open");
+        sheet.hidden = true;
+        document.body.style.overflow = "";
+      }
+
+      openBtn.addEventListener("click", openSheet);
+      closeBtn.addEventListener("click", closeSheet);
+      sheet.addEventListener("click", (e) => {
+        const item = e.target.closest(".jump-item");
+        if (item) goTo(item.dataset.id);
+      });
 
       chips.forEach((chip) => {
         chip.addEventListener("click", () => {
@@ -735,19 +838,16 @@
           chip.classList.add("active");
           activeCat = chip.dataset.cat;
           applyFilter();
-          window.scrollTo({ top: 0, behavior: "smooth" });
         });
       });
 
       search.addEventListener("input", applyFilter);
-      jump.addEventListener("change", () => {
-        if (jump.value) goTo(jump.value);
-      });
 
       document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && sheet.classList.contains("open")) closeSheet();
         if (e.key === "/" && document.activeElement !== search) {
           e.preventDefault();
-          search.focus();
+          openSheet();
         }
       });
 
