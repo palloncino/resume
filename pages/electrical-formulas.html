@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Electrical Formula Reference — Antonio Guiotto</title>
+  <link rel="icon" href="../favicon.png" type="image/png" sizes="32x32" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f4f5f6;
+      --card: #ffffff;
+      --ink: #17191c;
+      --soft: #565f68;
+      --faint: #8a929a;
+      --rule: #e2e4e7;
+      --accent: #9a5b00;
+      --accent-soft: #fff2df;
+      --key: #0b5fa5;
+      --key-soft: #e9f2fb;
+      --warn: #b3261e;
+      --warn-soft: #fdeceb;
+      --radius: 12px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 56px;
+    }
+
+    .mono {
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, "Roboto Mono", monospace;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* ── Sticky header ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(244, 245, 246, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--rule);
+      padding: 10px 16px 0;
+    }
+
+    .topbar-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-bottom: 10px;
+    }
+
+    .back-link {
+      font-size: 0.82rem;
+      color: var(--soft);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .back-link:hover {
+      color: var(--ink);
+    }
+
+    .brand {
+      flex: 1;
+      min-width: 180px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand .bolt {
+      color: var(--accent);
+    }
+
+    .poster-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: #fff;
+      background: var(--ink);
+      padding: 8px 12px;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+
+    .poster-btn:hover {
+      background: #33383e;
+    }
+
+    .toolbar-row {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-wrap {
+      position: relative;
+      flex: 1;
+      max-width: 340px;
+    }
+
+    #search {
+      width: 100%;
+      font: inherit;
+      font-size: 0.9rem;
+      padding: 9px 12px 9px 32px;
+      border: 1px solid var(--rule);
+      border-radius: 9px;
+      background: #fff;
+      color: var(--ink);
+      outline: none;
+    }
+
+    #search:focus {
+      border-color: var(--key);
+      box-shadow: 0 0 0 3px var(--key-soft);
+    }
+
+    .search-wrap::before {
+      content: "";
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      width: 13px;
+      height: 13px;
+      transform: translateY(-50%);
+      background: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a929a' stroke-width='2.2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M21 21l-4.3-4.3'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .chips {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+
+    .chips::-webkit-scrollbar {
+      display: none;
+    }
+
+    .chip {
+      flex-shrink: 0;
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--soft);
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      padding: 7px 12px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .chip:hover {
+      border-color: var(--faint);
+    }
+
+    .chip.active {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #fff;
+    }
+
+    /* ── Main layout ── */
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 18px 16px 0;
+    }
+
+    .intro {
+      font-size: 0.86rem;
+      color: var(--soft);
+      max-width: 62em;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .board {
+      column-width: 300px;
+      column-gap: 14px;
+    }
+
+    .card {
+      display: block;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 14px 16px 15px;
+      margin: 0 0 14px;
+      scroll-margin-top: 110px;
+    }
+
+    .card.key {
+      border-color: #bcdcf5;
+      box-shadow: 0 0 0 1px #eaf4fc inset;
+    }
+
+    .card.hero {
+      column-span: all;
+      background: linear-gradient(135deg, var(--accent-soft), #fff);
+      border: 1.5px solid var(--accent);
+      text-align: center;
+      padding: 18px 16px 20px;
+    }
+
+    .card h2 {
+      font-size: 0.92rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 7px;
+      margin-bottom: 9px;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .card.key h2 {
+      color: var(--key);
+      border-bottom-color: #bcdcf5;
+    }
+
+    .card h2 .idx {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--faint);
+    }
+
+    .card.hero h2 {
+      justify-content: center;
+      border: none;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .sub {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      margin: 10px 0 5px;
+    }
+
+    .card h2 + .sub,
+    .card > .sub:first-of-type {
+      margin-top: 0;
+    }
+
+    .formula {
+      margin-bottom: 8px;
+    }
+
+    .frm {
+      font-size: 1.02rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--ink);
+    }
+
+    .card.hero .frm {
+      font-size: 1.7rem;
+      margin: 4px 0;
+    }
+
+    .read {
+      font-size: 0.79rem;
+      font-style: italic;
+      color: var(--soft);
+      margin-top: 1px;
+      line-height: 1.35;
+    }
+
+    .legend {
+      font-size: 0.72rem;
+      color: var(--faint);
+      line-height: 1.5;
+      margin: 6px 0 2px;
+    }
+
+    .legend strong {
+      color: var(--soft);
+      font-weight: 700;
+    }
+
+    .note {
+      font-size: 0.79rem;
+      font-weight: 600;
+      color: var(--warn);
+      background: var(--warn-soft);
+      border-radius: 8px;
+      padding: 7px 10px;
+      margin: 8px 0 2px;
+      line-height: 1.4;
+    }
+
+    .ref-note {
+      font-size: 0.74rem;
+      color: var(--faint);
+      font-style: italic;
+      margin-bottom: 6px;
+    }
+
+    .tag-advanced {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: #fff;
+      background: var(--warn);
+      border-radius: 4px;
+      padding: 2px 7px;
+      margin-bottom: 8px;
+    }
+
+    /* ── Mental model strip ── */
+    .mentalmodel {
+      max-width: 1180px;
+      margin: 22px auto 0;
+      padding: 16px 16px 4px;
+      border-top: 2px solid var(--ink);
+    }
+
+    .mentalmodel h2 {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+
+    .mm-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 8px 16px;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      color: var(--soft);
+      padding-bottom: 10px;
+    }
+
+    .mm-grid b {
+      color: var(--key);
+    }
+
+    .empty {
+      text-align: center;
+      color: var(--faint);
+      font-size: 0.9rem;
+      padding: 60px 20px;
+    }
+
+    footer.page-footer {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 16px 0;
+      font-size: 0.72rem;
+      color: var(--faint);
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .board {
+        column-width: 100%;
+      }
+
+      .brand {
+        order: -1;
+        width: 100%;
+      }
+
+      .back-link {
+        order: 0;
+      }
+
+      .poster-btn {
+        order: 1;
+        margin-left: auto;
+      }
+
+      .search-wrap {
+        flex: 1 1 100%;
+        max-width: none;
+      }
+
+      .chips {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="../index.html" class="back-link">← Home</a>
+      <div class="brand"><span class="bolt">⚡</span> Electrical Formula Reference</div>
+      <a href="../posters/electrical-formulas-poster.html" class="poster-btn" target="_blank" rel="noopener">
+        🖨️ Poster / Print version
+      </a>
+    </div>
+    <div class="toolbar-row">
+      <div class="search-wrap">
+        <input type="search" id="search" placeholder="Search formulas — e.g. “ohm”, “voltage drop”, “three-phase”" />
+      </div>
+      <div class="chips" id="chips">
+        <button type="button" class="chip active" data-cat="all">All</button>
+        <button type="button" class="chip" data-cat="basics">Basics</button>
+        <button type="button" class="chip" data-cat="circuits">Circuits</button>
+        <button type="button" class="chip" data-cat="cables">Cables</button>
+        <button type="button" class="chip" data-cat="ac">AC &amp; Reactive</button>
+        <button type="button" class="chip" data-cat="power">Power Systems</button>
+        <button type="button" class="chip" data-cat="safety">Safety &amp; Testing</button>
+        <button type="button" class="chip" data-cat="machines">Motors</button>
+        <button type="button" class="chip" data-cat="reference">Reference</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <p class="intro">
+      From first-principles electrics to AC systems, three-phase, testing, transformers and motors. Search or
+      filter by category to jump straight to what you need — every formula has a plain-English reading directly
+      underneath it.
+    </p>
+
+    <div class="board" id="board">
+
+      <article class="card key" id="fundamentals" data-cat="basics">
+        <h2><span class="idx">01</span> Fundamental Quantities</h2>
+
+        <h3 class="sub">Current</h3>
+        <div class="formula"><div class="frm mono">I = Q / t</div><div class="read">“I equals Q divided by t.”</div></div>
+        <div class="formula"><div class="frm mono">Q = I × t</div><div class="read">“Q equals I times t.”</div></div>
+        <div class="legend">I = current (A) · Q = charge (C) · t = time (s) · <strong>1 A = 1 C/s</strong></div>
+
+        <h3 class="sub">Voltage</h3>
+        <div class="formula"><div class="frm mono">V = E / Q</div><div class="read">“V equals E divided by Q.”</div></div>
+        <div class="formula"><div class="frm mono">E = V × Q</div><div class="read">“E equals V times Q.”</div></div>
+        <div class="legend">V = volts · E = energy (J) · Q = coulombs · <strong>1 V = 1 J/C</strong></div>
+        <div class="note">Voltage drop is the difference in electrical potential energy per coulomb across an element. Loads transfer energy — they do not consume charge.</div>
+
+        <h3 class="sub">Power &amp; Energy</h3>
+        <div class="formula"><div class="frm mono">P = E / t</div><div class="read">“P equals E divided by t.”</div></div>
+        <div class="formula"><div class="frm mono">E = P × t</div><div class="read">“E equals P times t.”</div></div>
+        <div class="legend"><strong>1 W = 1 J/s</strong></div>
+        <div class="formula"><div class="frm mono">P = V × I</div><div class="read">“P equals V times I.”</div></div>
+        <div class="formula"><div class="frm mono">I = P/V &nbsp; · &nbsp; V = P/I</div><div class="read">Rearranged forms of P = V × I.</div></div>
+      </article>
+
+      <article class="card key" id="ohms-law" data-cat="basics">
+        <h2><span class="idx">02</span> Ohm's Law</h2>
+        <div class="formula"><div class="frm mono">V = I × R</div><div class="read">“V equals I times R.”</div></div>
+        <div class="formula"><div class="frm mono">I = V / R</div><div class="read">“I equals V divided by R.”</div></div>
+        <div class="formula"><div class="frm mono">R = V / I</div><div class="read">“R equals V divided by I.”</div></div>
+        <div class="legend">V = volts · I = amperes · R = ohms (Ω)</div>
+      </article>
+
+      <article class="card" id="resistive-power" data-cat="basics">
+        <h2><span class="idx">03</span> Resistive Power / Heating</h2>
+        <div class="formula"><div class="frm mono">P = I² × R</div><div class="read">“P equals I squared times R.”</div></div>
+        <div class="formula"><div class="frm mono">P = V² / R</div><div class="read">“P equals V squared divided by R.”</div></div>
+        <div class="ref-note">Also P = V × I — see “Fundamental Quantities”.</div>
+        <div class="note">Cable heating rises with the square of current.</div>
+      </article>
+
+      <article class="card key" id="series" data-cat="circuits">
+        <h2><span class="idx">04</span> Series Circuits</h2>
+        <h3 class="sub">Resistance</h3>
+        <div class="formula"><div class="frm mono">Rtotal = R1 + R2 + R3 + …</div><div class="read">“Total resistance equals R one plus R two plus R three, and so on.”</div></div>
+        <h3 class="sub">Voltage</h3>
+        <div class="formula"><div class="frm mono">Vtotal = V1 + V2 + V3 + …</div><div class="read">“Total voltage equals V one plus V two plus V three, and so on.”</div></div>
+        <h3 class="sub">Current</h3>
+        <div class="formula"><div class="frm mono">I1 = I2 = I3 = Itotal</div><div class="read">“The current is the same through every component in series.”</div></div>
+        <h3 class="sub">Voltage divider</h3>
+        <div class="formula"><div class="frm mono">Vx = Vs × (Rx / Rtotal)</div><div class="read">“V x equals supply voltage times R x divided by total resistance.”</div></div>
+        <div class="note">Series: same current, voltage divides.</div>
+      </article>
+
+      <article class="card key" id="parallel" data-cat="circuits">
+        <h2><span class="idx">05</span> Parallel Circuits</h2>
+        <h3 class="sub">Voltage</h3>
+        <div class="formula"><div class="frm mono">V1 = V2 = V3 = Vsupply</div><div class="read">“Each branch voltage equals the supply voltage.”</div></div>
+        <h3 class="sub">Current — Kirchhoff's Current Law</h3>
+        <div class="formula"><div class="frm mono">Itotal = I1 + I2 + I3 + …</div><div class="read">“Total current equals the sum of the branch currents.”</div></div>
+        <h3 class="sub">Resistance</h3>
+        <div class="formula"><div class="frm mono">1/Rtotal = 1/R1 + 1/R2 + 1/R3 + …</div><div class="read">“One divided by total resistance equals the sum of one divided by each branch resistance.”</div></div>
+        <div class="formula"><div class="frm mono">Rtotal = (R1 × R2) / (R1 + R2)</div><div class="read">“Total resistance equals R one times R two divided by R one plus R two.” (two resistors)</div></div>
+        <div class="note">Parallel: same voltage, current divides.</div>
+      </article>
+
+      <article class="card" id="kirchhoff" data-cat="circuits">
+        <h2><span class="idx">06</span> Kirchhoff's Laws</h2>
+        <h3 class="sub">Current law — KCL</h3>
+        <div class="formula"><div class="frm mono">Σ Iin = Σ Iout</div><div class="read">“The sum of currents entering equals the sum of currents leaving.”</div></div>
+        <h3 class="sub">Voltage law — KVL</h3>
+        <div class="formula"><div class="frm mono">Σ V = 0</div><div class="read">“The algebraic sum of voltages around a closed loop equals zero.”</div></div>
+        <div class="formula"><div class="frm mono">Vsupply = Vdrop1 + Vdrop2 + …</div><div class="read">Practical form of KVL.</div></div>
+      </article>
+
+      <article class="card key" id="cable-resistance" data-cat="cables">
+        <h2><span class="idx">07</span> Cable Resistance</h2>
+        <div class="formula"><div class="frm mono">R = ρ × L / A</div><div class="read">“R equals rho times L divided by A.”</div></div>
+        <div class="legend">R = resistance · ρ (rho) = material resistivity · L = conductor length · A = cross-sectional area</div>
+        <div class="formula"><div class="frm mono">Rloop = 2 × ρ × L / A</div><div class="read">“Loop resistance equals two times rho times L divided by A.”</div></div>
+        <div class="legend">Only use the factor 2 when L is the one-way length.</div>
+        <div class="note">Longer cable → more resistance. Larger cross-sectional area → less resistance.</div>
+      </article>
+
+      <article class="card key" id="voltage-drop" data-cat="cables">
+        <h2><span class="idx">08</span> Voltage Drop &amp; Cable Loss</h2>
+        <div class="formula"><div class="frm mono">ΔV = I × R</div><div class="read">“Voltage drop equals current times resistance.”</div></div>
+        <div class="formula"><div class="frm mono">Voltage drop % = (ΔV / Vsupply) × 100</div><div class="read">“Voltage-drop percentage equals voltage drop divided by supply voltage times one hundred.”</div></div>
+        <div class="formula"><div class="frm mono">ΔV = (mV/A/m × I × L) / 1000</div><div class="read">“Voltage drop equals millivolts per amp per metre times current times length divided by one thousand.”</div></div>
+        <div class="legend">Use the tabulated mV/A/m value from the applicable cable/design tables.</div>
+        <div class="formula"><div class="frm mono">Ploss = I² × R</div><div class="read">“Power loss equals current squared times cable resistance.”</div></div>
+      </article>
+
+      <article class="card" id="energy-billing" data-cat="basics">
+        <h2><span class="idx">09</span> Electrical Energy / Billing</h2>
+        <div class="formula"><div class="frm mono">Energy (kWh) = Power (kW) × Time (h)</div><div class="read">“Energy in kilowatt-hours equals power in kilowatts times time in hours.”</div></div>
+        <div class="formula"><div class="frm mono">Cost = kWh × tariff</div><div class="read">“Cost equals kilowatt-hours times the electricity tariff.”</div></div>
+        <div class="legend">1000 W = 1 kW · 1000 Wh = 1 kWh</div>
+      </article>
+
+      <article class="card" id="efficiency" data-cat="basics">
+        <h2><span class="idx">10</span> Efficiency</h2>
+        <div class="formula"><div class="frm mono">η = Pout / Pin</div><div class="read">“Eta equals output power divided by input power.”</div></div>
+        <div class="formula"><div class="frm mono">η% = (Pout / Pin) × 100</div><div class="read">“Efficiency percentage equals output power divided by input power times one hundred.”</div></div>
+        <div class="legend">η (eta) = efficiency</div>
+      </article>
+
+      <article class="card key" id="ac-fundamentals" data-cat="ac">
+        <h2><span class="idx">11</span> AC Fundamentals</h2>
+        <h3 class="sub">Frequency &amp; period</h3>
+        <div class="formula"><div class="frm mono">f = 1 / T</div><div class="read">“Frequency equals one divided by period.”</div></div>
+        <div class="formula"><div class="frm mono">T = 1 / f</div><div class="read">“Period equals one divided by frequency.”</div></div>
+        <div class="legend">f = frequency, hertz (Hz) · T = period (s)</div>
+        <div class="note">50 Hz → T = 0.02 s = 20 ms</div>
+        <h3 class="sub">Angular frequency</h3>
+        <div class="formula"><div class="frm mono">ω = 2πf</div><div class="read">“Omega equals two pi times frequency.”</div></div>
+        <div class="legend">ω (omega) = angular frequency</div>
+        <h3 class="sub">Sine-wave voltage</h3>
+        <div class="formula"><div class="frm mono">v(t) = Vpeak × sin(2πft)</div><div class="read">“Voltage at time t equals peak voltage times sine of two pi f t.”</div></div>
+      </article>
+
+      <article class="card key" id="rms-peak" data-cat="ac">
+        <h2><span class="idx">12</span> RMS &amp; Peak AC Values</h2>
+        <div class="formula"><div class="frm mono">Vrms = Vpeak / √2</div><div class="read">“RMS voltage equals peak voltage divided by square root of two.”</div></div>
+        <div class="formula"><div class="frm mono">Vpeak = Vrms × √2</div><div class="read">“Peak voltage equals RMS voltage times square root of two.”</div></div>
+        <div class="formula"><div class="frm mono">Irms = Ipeak / √2 &nbsp; · &nbsp; Ipeak = Irms × √2</div><div class="read">Same relationship applies to current.</div></div>
+        <div class="note">230 V RMS ≈ 325 V peak</div>
+      </article>
+
+      <article class="card" id="capacitors" data-cat="ac">
+        <h2><span class="idx">13</span> Capacitors</h2>
+        <div class="formula"><div class="frm mono">Q = C × V</div><div class="read">“Charge equals capacitance times voltage.”</div></div>
+        <div class="legend">C = capacitance, farads (F)</div>
+        <div class="formula"><div class="frm mono">E = ½ C V²</div><div class="read">“Energy equals one half C times V squared.”</div></div>
+        <div class="formula"><div class="frm mono">XC = 1 / (2πfC)</div><div class="read">“X C equals one divided by two pi f C.”</div></div>
+        <div class="note">Higher frequency → lower capacitive reactance.</div>
+      </article>
+
+      <article class="card" id="inductors" data-cat="ac">
+        <h2><span class="idx">14</span> Inductors</h2>
+        <div class="formula"><div class="frm mono">V = L × (ΔI / Δt)</div><div class="read">“Voltage equals inductance times change in current divided by change in time.”</div></div>
+        <div class="formula"><div class="frm mono">E = ½ L I²</div><div class="read">“Energy equals one half L times I squared.”</div></div>
+        <div class="formula"><div class="frm mono">XL = 2πfL</div><div class="read">“X L equals two pi f L.”</div></div>
+        <div class="note">Higher frequency → higher inductive reactance.</div>
+      </article>
+
+      <article class="card" id="impedance" data-cat="ac">
+        <h2><span class="idx">15</span> Impedance</h2>
+        <div class="formula"><div class="frm mono">Z = V / I &nbsp; · &nbsp; I = V / Z</div><div class="read">“Impedance equals voltage divided by current.”</div></div>
+        <div class="formula"><div class="frm mono">Z = √(R² + (XL − XC)²)</div><div class="read">“Impedance equals the square root of R squared plus X L minus X C squared.” (series R-L-C)</div></div>
+        <div class="legend">Z = impedance (Ω) · R = resistance · XL = inductive reactance · XC = capacitive reactance</div>
+      </article>
+
+      <article class="card" id="ac-power" data-cat="ac">
+        <h2><span class="idx">16</span> AC Power</h2>
+        <div class="formula"><div class="frm mono">S = V × I</div><div class="read">“S equals V times I.” — apparent power (VA)</div></div>
+        <div class="formula"><div class="frm mono">P = V × I × cos φ</div><div class="read">“P equals V times I times cosine phi.” — real power (W)</div></div>
+        <div class="formula"><div class="frm mono">Qreactive = V × I × sin φ</div><div class="read">“Reactive power equals V times I times sine phi.” (var)</div></div>
+        <div class="formula"><div class="frm mono">S² = P² + Qreactive²</div><div class="read">Power triangle.</div></div>
+        <div class="formula"><div class="frm mono">PF = cos φ = P / S</div><div class="read">“Power factor equals cosine phi, which equals real power divided by apparent power.”</div></div>
+        <div class="legend">φ (phi) = phase angle between V and I</div>
+        <div class="note">Purely resistive load: power factor ≈ 1, so P ≈ V × I.</div>
+      </article>
+
+      <article class="card key" id="transformers" data-cat="power">
+        <h2><span class="idx">17</span> Transformers</h2>
+        <div class="formula"><div class="frm mono">Vp / Vs = Np / Ns</div><div class="read">“Primary voltage divided by secondary voltage equals primary turns divided by secondary turns.”</div></div>
+        <div class="formula"><div class="frm mono">Ip / Is = Ns / Np</div><div class="read">“Primary current divided by secondary current equals secondary turns divided by primary turns.”</div></div>
+        <div class="formula"><div class="frm mono">Vp × Ip ≈ Vs × Is</div><div class="read">“Primary voltage times primary current approximately equals secondary voltage times secondary current.”</div></div>
+        <div class="legend">p = primary · s = secondary · N = number of turns</div>
+      </article>
+
+      <article class="card" id="single-phase" data-cat="power">
+        <h2><span class="idx">18</span> Single-Phase Power</h2>
+        <div class="formula"><div class="frm mono">P = V × I</div><div class="read">Resistive load.</div></div>
+        <div class="formula"><div class="frm mono">P = V × I × PF</div><div class="read">“Power equals voltage times current times power factor.” (general AC load)</div></div>
+      </article>
+
+      <article class="card key" id="three-phase" data-cat="power">
+        <h2><span class="idx">19</span> Three-Phase Power</h2>
+        <div class="formula"><div class="frm mono">P = √3 × VL × IL × cos φ</div><div class="read">“Power equals square root of three times line voltage times line current times cosine phi.”</div></div>
+        <div class="formula"><div class="frm mono">S = √3 × VL × IL</div><div class="read">“S equals square root of three times line voltage times line current.”</div></div>
+        <div class="formula"><div class="frm mono">Qreactive = √3 × VL × IL × sin φ</div><div class="read">“Reactive power equals square root of three times line voltage times line current times sine phi.”</div></div>
+        <div class="legend">VL = line-to-line voltage · IL = line current</div>
+        <div class="note">EU 230/400 V system: Line–Neutral ≈ 230 V · Line–Line ≈ 400 V</div>
+      </article>
+
+      <article class="card" id="star-delta" data-cat="power">
+        <h2><span class="idx">20</span> Star &amp; Delta</h2>
+        <h3 class="sub">Star / Wye</h3>
+        <div class="formula"><div class="frm mono">VL = √3 × Vphase</div><div class="read">“Line voltage equals square root of three times phase voltage.”</div></div>
+        <div class="formula"><div class="frm mono">IL = Iphase</div><div class="read">“Line current equals phase current.”</div></div>
+        <h3 class="sub">Delta</h3>
+        <div class="formula"><div class="frm mono">VL = Vphase</div><div class="read">“Line voltage equals phase voltage.”</div></div>
+        <div class="formula"><div class="frm mono">IL = √3 × Iphase</div><div class="read">“Line current equals square root of three times phase current.”</div></div>
+      </article>
+
+      <article class="card" id="rcd" data-cat="safety">
+        <h2><span class="idx">21</span> RCD / Residual Current</h2>
+        <div class="formula"><div class="frm mono">IΔ = |IL − IN|</div><div class="read">“Residual current equals the absolute difference between Live current and Neutral current.”</div></div>
+        <div class="legend">IΔ = residual/differential current · IL = Live current · IN = Neutral current</div>
+        <div class="ref-note">e.g. 5.000 A − 4.975 A = 0.025 A = 25 mA</div>
+        <div class="note">MCB → excessive current. RCD → current imbalance.</div>
+      </article>
+
+      <article class="card key" id="fault-loop" data-cat="safety">
+        <h2><span class="idx">22</span> Fault Current / Earth-Fault Loop</h2>
+        <div class="formula"><div class="frm mono">Ifault = U0 / Zs</div><div class="read">“Fault current equals voltage to earth divided by earth-fault-loop impedance.”</div></div>
+        <div class="formula"><div class="frm mono">Zs = Ze + (R1 + R2)</div><div class="read">“Z s equals Z e plus R one plus R two.”</div></div>
+        <div class="formula"><div class="frm mono">Zs ≤ U0 / Ia</div><div class="read">“Z s must be less than or equal to U zero divided by the current required to operate the protective device.”</div></div>
+        <div class="legend">U0 = nominal voltage to earth · Ze = external earth-loop impedance · R1 = line conductor resistance · R2 = protective conductor resistance</div>
+        <div class="note">Actual permitted Zs and disconnection times must always come from the applicable regulations/device tables.</div>
+      </article>
+
+      <article class="card hero" id="ib-in-iz" data-cat="safety">
+        <h2><span class="idx">23</span> Basic Circuit Design Relationship</h2>
+        <div class="frm mono">Ib ≤ In ≤ Iz</div>
+        <div class="read">“I b is less than or equal to I n, which is less than or equal to I z.”</div>
+        <div class="legend">Ib = design/load current · In = protective-device nominal rating · Iz = cable current-carrying capacity</div>
+        <div class="note" style="display:inline-block; margin-top:8px;">load → protective device → cable</div>
+      </article>
+
+      <article class="card" id="adiabatic" data-cat="safety">
+        <h2><span class="idx">24</span> Protective Conductor (Adiabatic)</h2>
+        <span class="tag-advanced">ADVANCED — use with applicable regulations/tables</span>
+        <div class="formula"><div class="frm mono">S = √(I²t) / k</div><div class="read">“S equals the square root of I squared t divided by k.”</div></div>
+        <div class="formula"><div class="frm mono">S = I√t / k</div><div class="read">Equivalent form.</div></div>
+        <div class="legend">S = required conductor cross-sectional area · I = fault current · t = protective-device disconnection time · k = material/insulation constant</div>
+      </article>
+
+      <article class="card" id="motors" data-cat="machines">
+        <h2><span class="idx">25</span> Motor Basics</h2>
+        <h3 class="sub">Synchronous speed</h3>
+        <div class="formula"><div class="frm mono">ns = 120f / p</div><div class="read">“Synchronous speed equals one hundred twenty times frequency divided by number of poles.”</div></div>
+        <div class="legend">ns = synchronous speed (rpm) · f = frequency (Hz) · p = number of poles</div>
+        <h3 class="sub">Induction-motor slip</h3>
+        <div class="formula"><div class="frm mono">Slip % = ((ns − nr) / ns) × 100</div><div class="read">“Slip percentage equals synchronous speed minus rotor speed, divided by synchronous speed, times one hundred.”</div></div>
+        <div class="legend">nr = actual rotor speed</div>
+        <h3 class="sub">Mechanical power</h3>
+        <div class="formula"><div class="frm mono">Pmechanical = τ × ω</div><div class="read">“Mechanical power equals torque times angular velocity.”</div></div>
+        <div class="legend">τ (tau) = torque (N·m) · ω (omega) = angular velocity (rad/s)</div>
+      </article>
+
+      <article class="card" id="prefixes" data-cat="reference">
+        <h2><span class="idx">26</span> Prefixes &amp; Conversions</h2>
+        <div class="legend mono" style="font-size:0.78rem; line-height:1.9;">
+          1 kA = 1000 A<br>
+          1 A = 1000 mA<br>
+          1 mA = 0.001 A<br>
+          1 kV = 1000 V<br>
+          1 kW = 1000 W<br>
+          1 kΩ = 1000 Ω<br>
+          1 MΩ = 1,000,000 Ω<br>
+          1 mF = 10⁻³ F<br>
+          1 µF = 10⁻⁶ F<br>
+          1 nF = 10⁻⁹ F<br>
+          √2 ≈ 1.414 · √3 ≈ 1.732 · π ≈ 3.142
+        </div>
+      </article>
+
+    </div>
+
+    <div class="empty" id="empty" hidden>No formulas match your search.</div>
+  </main>
+
+  <section class="mentalmodel">
+    <h2>Mental model — hold onto these</h2>
+    <div class="mm-grid">
+      <div><b>Current:</b> charge per second.</div>
+      <div><b>Voltage:</b> potential-energy difference per coulomb.</div>
+      <div><b>Resistance:</b> opposition to current.</div>
+      <div><b>Power:</b> rate of energy transfer.</div>
+      <div><b>Load:</b> transfers electrical energy; it does not consume charge.</div>
+      <div><b>Series:</b> same current, voltage divides.</div>
+      <div><b>Parallel:</b> same voltage, current divides.</div>
+      <div><b>MCB:</b> protects against overcurrent.</div>
+      <div><b>RCD:</b> detects Live–Neutral current imbalance.</div>
+      <div><b>PE:</b> provides a protective fault-current path.</div>
+      <div><b>Neutral:</b> normally near earth potential; not "used-up Live".</div>
+      <div><b>Ib≤In≤Iz:</b> load → protective device → cable.</div>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    Reference sheet for personal study — always verify against applicable national wiring regulations and manufacturer
+    tables before real installation work. ·
+    <a href="../posters/electrical-formulas-poster.html" target="_blank" rel="noopener">Printable poster version →</a>
+  </footer>
+
+  <script>
+    (function () {
+      const chips = Array.from(document.querySelectorAll('.chip'));
+      const cards = Array.from(document.querySelectorAll('.card'));
+      const search = document.getElementById('search');
+      const empty = document.getElementById('empty');
+      let activeCat = 'all';
+
+      const cardText = new Map(cards.map(c => [c, c.textContent.toLowerCase()]));
+
+      function applyFilter() {
+        const q = search.value.trim().toLowerCase();
+        let anyVisible = false;
+        cards.forEach(card => {
+          const cat = card.dataset.cat;
+          const matchesCat = activeCat === 'all' || cat === activeCat;
+          const matchesQuery = !q || cardText.get(card).includes(q);
+          const show = matchesCat && matchesQuery;
+          card.hidden = !show;
+          if (show) anyVisible = true;
+        });
+        empty.hidden = anyVisible;
+      }
+
+      chips.forEach(chip => chip.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        activeCat = chip.dataset.cat;
+        applyFilter();
+      }));
+
+      search.addEventListener('input', applyFilter);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement !== search) {
+          e.preventDefault();
+          search.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>

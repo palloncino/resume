@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Antonio Guiotto — Restaurant &amp; Hospitality CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --text: #1c1917;
+      --text-soft: #57534e;
+      --text-faint: #78716c;
+      --rule: #d6d3d1;
+      --accent-strong: #1c1917;
+      --rule-major: #1c1917;
+      --rule-light: #c4c2be;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      font-size: 9.75pt;
+      line-height: 1.42;
+      color: var(--text);
+      background: #e7e5e4;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .sheet {
+      width: 100%;
+      max-width: 210mm;
+      margin: 12px auto;
+      padding: 12mm 14mm 10mm;
+      background: #fff;
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 10mm 12mm;
+      }
+
+      body {
+        background: #fff;
+        font-size: 9pt;
+        line-height: 1.35;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .sheet {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+
+      .sheet + .sheet {
+        page-break-before: always;
+        break-before: page;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+    }
+
+    .toolbar {
+      max-width: 210mm;
+      margin: 16px auto 0;
+      padding: 0 8px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    .toolbar a {
+      color: var(--text-soft);
+      text-decoration: none;
+    }
+
+    .toolbar a:hover {
+      text-decoration: underline;
+    }
+
+    .toolbar button {
+      font: inherit;
+      font-weight: 600;
+      color: #fff;
+      background: #1c1917;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      cursor: pointer;
+    }
+
+    .toolbar button:hover {
+      background: #44403c;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.75rem 1rem;
+      align-items: start;
+      padding-bottom: 0.55rem;
+      margin-bottom: 0.7rem;
+      border-bottom: 1pt solid var(--rule-major);
+    }
+
+    h1 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--accent-strong);
+      line-height: 1.15;
+    }
+
+    .tagline {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-soft);
+      margin-top: 0.35rem;
+      line-height: 1.35;
+    }
+
+    .contact-block {
+      margin-top: 0.45rem;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      line-height: 1.5;
+    }
+
+    .contact-block .row {
+      margin-top: 0.12rem;
+    }
+
+    .contact-block .row:first-child {
+      margin-top: 0;
+    }
+
+    .contact-block .label {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .contact-block .label::after {
+      content: "\00a0";
+    }
+
+    .photo-wrap {
+      flex-shrink: 0;
+      align-self: start;
+      padding: 2px;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      background: #fff;
+      line-height: 0;
+    }
+
+    .photo {
+      display: block;
+      max-width: 96px;
+      max-height: 120px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      object-position: top center;
+    }
+
+    @media print {
+      .photo {
+        max-width: 84px;
+        max-height: 104px;
+      }
+    }
+
+    section.cv-block {
+      margin-bottom: 0.55rem;
+    }
+
+    section.cv-block:last-of-type {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      color: var(--accent-strong);
+      margin: 0 0 0.32rem 0;
+      padding: 0 0 0.2rem 0;
+      border-bottom: 1pt solid var(--rule-light);
+    }
+
+    .summary p {
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.35rem 1.4rem;
+    }
+
+    ul.plain-list {
+      list-style-type: disc;
+      list-style-position: outside;
+      margin: 0;
+      padding-left: 1.15em;
+    }
+
+    ul.plain-list > li {
+      margin-bottom: 0.14rem;
+      padding-left: 0.3em;
+      font-size: 0.84rem;
+      line-height: 1.4;
+    }
+
+    ul.plain-list > li:last-child {
+      margin-bottom: 0;
+    }
+
+    .job-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--accent-strong);
+      line-height: 1.28;
+      margin-bottom: 0.1rem;
+    }
+
+    .job-org {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      font-weight: 500;
+      margin-bottom: 0.06rem;
+    }
+
+    .job-dates {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--text-faint);
+      margin-bottom: 0.25rem;
+    }
+
+    .avail-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.2rem 0.85rem;
+      font-size: 0.86rem;
+      line-height: 1.4;
+    }
+
+    .avail-grid .day {
+      font-weight: 700;
+      color: var(--accent-strong);
+    }
+
+    .avail-note {
+      margin-top: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--text-soft);
+      line-height: 1.4;
+    }
+
+    .cover h2 {
+      margin-bottom: 0.75rem;
+    }
+
+    .cover .letter {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      max-width: 38em;
+    }
+
+    .cover .letter p {
+      margin-bottom: 0.85rem;
+    }
+
+    .cover .letter p:last-child {
+      margin-bottom: 0;
+    }
+
+    .cover .sign-off {
+      margin-top: 1.4rem;
+    }
+
+    @media (max-width: 560px) {
+      .sheet {
+        padding: 10mm;
+        margin: 0;
+        box-shadow: none;
+      }
+
+      header {
+        grid-template-columns: 1fr;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="toolbar no-print">
+    <button type="button" onclick="window.print()">Save as PDF / Print</button>
+    <a href="../index.html">← Back</a>
+  </div>
+
+  <!-- PAGE 1: CV -->
+  <div class="sheet">
+    <header>
+      <div>
+        <h1>Antonio Guiotto</h1>
+        <p class="tagline">Part-time Hospitality &amp; Customer Service — Evenings / Weekends</p>
+        <div class="contact-block">
+          <p class="row">St. Julian's, Malta</p>
+          <p class="row"><span class="label">Phone</span>+356 79641219</p>
+          <p class="row"><span class="label">Email</span>powerhydratoni@gmail.com</p>
+        </div>
+      </div>
+      <div class="photo-wrap">
+        <img class="photo" src="../assets/me-id.png" alt="" />
+      </div>
+    </header>
+
+    <section class="cv-block summary">
+      <h2>Profile</h2>
+      <p>
+        Reliable, punctual, and hardworking professional looking for a
+        <strong>part-time weekend / evening position</strong> in hospitality or
+        customer service. I enjoy working in a team, learning quickly, and
+        providing excellent service to customers. Available for evening and
+        weekend shifts and committed to being dependable.
+      </p>
+    </section>
+
+    <section class="cv-block">
+      <h2>Skills</h2>
+      <ul class="plain-list two-col">
+        <li>Customer service</li>
+        <li>Teamwork</li>
+        <li>Fast learner</li>
+        <li>Fluent English</li>
+        <li>Native Italian</li>
+        <li>Responsible and punctual</li>
+        <li>Comfortable in busy environments</li>
+        <li>Physically fit</li>
+        <li>Food preparation and cleaning</li>
+        <li>Cash handling</li>
+      </ul>
+    </section>
+
+    <section class="cv-block">
+      <h2>Work Experience</h2>
+      <p class="job-title">Front-End Engineer</p>
+      <p class="job-org">Current employer — Malta</p>
+      <p class="job-dates">2025 – Present</p>
+      <ul class="plain-list">
+        <li>Work in a professional international team.</li>
+        <li>Solve problems under deadlines.</li>
+        <li>Maintain high quality standards.</li>
+        <li>Collaborate effectively with colleagues.</li>
+      </ul>
+    </section>
+
+    <section class="cv-block">
+      <h2>Education</h2>
+      <p style="font-size: 0.88rem;">School of Art — Italy</p>
+    </section>
+
+    <section class="cv-block">
+      <h2>Languages</h2>
+      <ul class="plain-list">
+        <li>Italian — Native</li>
+        <li>English — Professional / Fluent</li>
+        <li>Spanish — Basic</li>
+      </ul>
+    </section>
+
+    <section class="cv-block">
+      <h2>Availability</h2>
+      <div class="avail-grid">
+        <span class="day">Monday – Friday</span>
+        <span>from 16:30 / 17:00 – 23:00 <em style="color: var(--text-faint); font-style: normal;">(flexible start)</em></span>
+        <span class="day">Saturday</span>
+        <span>Full day</span>
+        <span class="day">Sunday</span>
+        <span>Full day</span>
+      </div>
+      <p class="avail-note">
+        Can occasionally start at <strong>16:00 or 16:30</strong> for evening shifts.
+        Available to start immediately.
+      </p>
+    </section>
+  </div>
+
+  <!-- PAGE 2: Cover note -->
+  <div class="sheet cover">
+    <h2>Cover note</h2>
+    <div class="letter">
+      <p>Dear Hiring Manager,</p>
+      <p>
+        I am looking for a stable part-time position and am available every
+        weekday evening from 5:00&nbsp;pm (flexible from 4:00–4:30&nbsp;pm when needed)
+        and all day on Saturdays and Sundays. I am reliable, punctual, and happy
+        to work flexible shifts. I would appreciate the opportunity to join your team.
+      </p>
+      <div class="sign-off">
+        <p>Kind regards,</p>
+        <p><strong>Antonio Guiotto</strong><br />+356 79641219<br />powerhydratoni@gmail.com</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

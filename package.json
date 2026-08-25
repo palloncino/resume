@@ -9,7 +9,9 @@
   "main": "convert-to-pdf.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pdf:hotel": "node scripts/hotel-resume-to-pdf.js"
+    "pdf:hotel": "node scripts/hotel-resume-to-pdf.js",
+    "pdf:restaurant": "node scripts/restaurant-resume-to-pdf.js",
+    "pdf:electrical": "node scripts/electrical-formulas-poster-to-pdf.js"
   },
   "repository": {
     "type": "git",
