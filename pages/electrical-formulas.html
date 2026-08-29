@@ -255,13 +255,12 @@
     }
 
     .legend-box {
-      display: none;
+      display: block;
       background: var(--card);
       border: 1px solid var(--rule);
       border-radius: 12px;
       margin-bottom: 12px;
     }
-    .legend-box.show { display: block; }
     .legend-box summary {
       list-style: none;
       cursor: pointer;
@@ -423,15 +422,6 @@
   </div>
 
   <main>
-    <section class="brief" id="brief">
-      <div class="who">
-        <span class="glyph" id="brief-glyph"></span>
-        <h2 id="brief-name"></h2>
-      </div>
-      <p id="brief-text"></p>
-      <div class="meta" id="brief-meta"></div>
-    </section>
-
     <details class="legend-box" id="legend-box" open>
       <summary>Symbols vs units</summary>
       <div class="legend-inner">
@@ -452,6 +442,15 @@
         </table>
       </div>
     </details>
+
+    <section class="brief" id="brief">
+      <div class="who">
+        <span class="glyph" id="brief-glyph"></span>
+        <h2 id="brief-name"></h2>
+      </div>
+      <p id="brief-text"></p>
+      <div class="meta" id="brief-meta"></div>
+    </section>
 
     <p class="status" id="status"></p>
     <div class="board" id="board">
@@ -601,15 +600,22 @@
       const filterBtn = document.getElementById("open-sheet");
       let active = "all";
 
-      try {
-        const stored = localStorage.getItem(LEGEND_KEY);
-        legend.open = stored !== "0";
-      } catch (e) {
-        legend.open = true;
+      function legendOpenFromMemory() {
+        try {
+          return localStorage.getItem(LEGEND_KEY) !== "0";
+        } catch (e) {
+          return true;
+        }
       }
 
-      legend.addEventListener("toggle", () => {
+      function rememberLegend() {
         try { localStorage.setItem(LEGEND_KEY, legend.open ? "1" : "0"); } catch (e) {}
+      }
+
+      legend.open = legendOpenFromMemory();
+      legend.addEventListener("toggle", rememberLegend);
+      window.addEventListener("storage", (e) => {
+        if (e.key === LEGEND_KEY) legend.open = e.newValue !== "0";
       });
 
       function tokens(el) {
@@ -637,7 +643,8 @@
         });
         empty.classList.toggle("show", n === 0);
         const filtered = active !== "all";
-        legend.classList.toggle("show", !filtered);
+        const wantOpen = legendOpenFromMemory();
+        if (legend.open !== wantOpen) legend.open = wantOpen;
         document.body.classList.toggle("filtered", filtered);
         if (!filtered) {
           brief.classList.remove("show");
