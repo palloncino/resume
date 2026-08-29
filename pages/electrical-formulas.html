@@ -5,31 +5,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="color-scheme" content="dark" />
-  <meta name="theme-color" content="#243528" />
+  <meta name="theme-color" content="#1c1c1e" />
   <title>Electrical Formula Archive — Antonio Guiotto</title>
   <link rel="icon" href="../favicon.png" type="image/png" sizes="32x32" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #243528;
-      --card: rgba(30, 46, 36, 0.9);
-      --elevated: #31463a;
-      --ink: #f6f3ea;
-      --soft: #d9d4c6;
-      --faint: #9aab9a;
-      --rule: rgba(246, 243, 234, 0.16);
-      --accent: #efe3a4;
-      --accent-soft: #3a4230;
-      --key: #e8f2e6;
-      --key-soft: rgba(246, 243, 234, 0.16);
-      --cyan: #b7ddd4;
-      --orange: #e4c49a;
-      --warn: #f0c8c4;
-      --warn-soft: #3d3330;
-      --dock: rgba(28, 42, 33, 0.94);
-      --chalk: #1e2d22;
-      --grid: rgba(246, 243, 234, 0.045);
+      --bg: #1c1c1e;
+      --card: #2c2c2e;
+      --elevated: #3a3a3c;
+      --ink: #f2f2f7;
+      --soft: #d1d1d6;
+      --faint: #8e8e93;
+      --rule: rgba(255, 255, 255, 0.12);
+      --accent: #f2f2f7;
+      --accent-soft: #3a3a3c;
+      --key: #f2f2f7;
+      --key-soft: rgba(255, 255, 255, 0.12);
+      --cyan: #aeaeb2;
+      --orange: #c7c7cc;
+      --warn: #ff9f0a;
+      --warn-soft: #3a3224;
+      --dock: rgba(28, 28, 30, 0.94);
+      --chalk: #1c1c1e;
       --safe-top: env(safe-area-inset-top, 0px);
       --dock-h: 52px;
     }
@@ -42,11 +41,7 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--bg);
-      background-image:
-        linear-gradient(var(--grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-      background-size: 26px 26px;
+      background: var(--bg);
       color: var(--ink);
       -webkit-font-smoothing: antialiased;
       padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px));
@@ -104,15 +99,16 @@
       padding: 0 14px;
       border: 0;
       border-radius: 9px;
-      background: var(--ink);
-      color: var(--chalk);
+      background: var(--elevated);
+      color: var(--ink);
       font: inherit;
       font-size: 0.88rem;
       font-weight: 700;
       cursor: pointer;
     }
     .nav-btn.on {
-      background: var(--accent);
+      background: var(--ink);
+      color: var(--chalk);
     }
 
     .sheet {
@@ -120,11 +116,7 @@
       position: fixed;
       inset: 0;
       z-index: 80;
-      background-color: var(--bg);
-      background-image:
-        linear-gradient(var(--grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-      background-size: 26px 26px;
+      background: var(--bg);
       padding-top: var(--safe-top);
     }
     .sheet.open { display: flex; flex-direction: column; }
