@@ -342,6 +342,37 @@
       font-style: italic;
       margin-bottom: 4px;
     }
+    .sym-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      line-height: 1.25;
+    }
+    .sym-table th,
+    .sym-table td {
+      padding: 6px 6px;
+      text-align: left;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: baseline;
+    }
+    .sym-table th {
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+    .sym-table td:nth-child(2),
+    .sym-table td:nth-child(4) {
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, "Roboto Mono", monospace;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+    .sym-table td:nth-child(2) { color: var(--key); }
+    .sym-table td:nth-child(4) { color: var(--cyan); }
+    .sym-table td:nth-child(3) { color: var(--soft); }
+    .sym-table .hint { color: var(--faint); font-weight: 600; font-size: 0.68rem; }
+
     .tag-advanced {
       display: inline-block;
       font-size: 0.62rem;
@@ -448,6 +479,31 @@
   <main>
     <p class="status" id="status">26 sections</p>
     <div class="board" id="board">
+
+      <article class="card key" id="symbols" data-cat="reference" data-keys="symbol unit joule energy E J coulomb charge ampere volt watt ohm omega table legend formula">
+        <h2><span class="idx">00</span> Symbols vs Units</h2>
+        <div class="note">Formula symbol = letter in the equation. Unit symbol = what you write after a number. Energy is <b>E</b>; joules are <b>J</b>.</div>
+        <table class="sym-table">
+          <thead>
+            <tr>
+              <th>Quantity</th>
+              <th>Formula</th>
+              <th>Unit</th>
+              <th>Unit symbol</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Energy</td><td>E</td><td>joule</td><td>J</td></tr>
+            <tr><td>Charge</td><td>Q</td><td>coulomb</td><td>C</td></tr>
+            <tr><td>Current</td><td>I</td><td>ampere</td><td>A</td></tr>
+            <tr><td>Voltage</td><td>V</td><td>volt</td><td>V</td></tr>
+            <tr><td>Power</td><td>P</td><td>watt</td><td>W</td></tr>
+            <tr><td>Resistance</td><td>R</td><td>ohm</td><td>Ω <span class="hint">(omega)</span></td></tr>
+            <tr><td>Time</td><td>t</td><td>second</td><td>s</td></tr>
+          </tbody>
+        </table>
+        <div class="legend">V is both the voltage formula letter and the volt unit — read the context. Time stays lowercase: t, s.</div>
+      </article>
 
       <article class="card key" id="fundamentals" data-cat="basics" data-keys="current voltage power energy charge coulomb ampere watt joule fundamentals">
         <h2><span class="idx">01</span> Fundamental Quantities</h2>
