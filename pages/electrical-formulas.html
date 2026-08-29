@@ -100,6 +100,7 @@
     .nav-btn {
       justify-self: end;
       height: 36px;
+      min-width: 64px;
       padding: 0 14px;
       border: 0;
       border-radius: 9px;
@@ -109,6 +110,9 @@
       font-size: 0.88rem;
       font-weight: 700;
       cursor: pointer;
+    }
+    .nav-btn.on {
+      background: var(--accent);
     }
 
     .sheet {
@@ -258,6 +262,37 @@
       color: var(--cyan);
     }
 
+    .legend-box {
+      display: none;
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+    .legend-box.show { display: block; }
+    .legend-box summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 11px 13px;
+      font-size: 0.95rem;
+      font-weight: 800;
+    }
+    .legend-box summary::-webkit-details-marker { display: none; }
+    .legend-box summary::after {
+      content: "+";
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--faint);
+    }
+    .legend-box[open] summary::after { content: "–"; }
+    .legend-inner { padding: 0 13px 12px; }
+    .legend-inner .read { margin-bottom: 2px; }
+
     .status {
       font-size: 0.75rem;
       font-weight: 600;
@@ -380,13 +415,13 @@
     <div class="nav">
       <a class="back" href="../index.html">← Home</a>
       <h1>Formulas</h1>
-      <button type="button" class="nav-btn" id="open-sheet">Jump</button>
+      <button type="button" class="nav-btn" id="open-sheet">Filter</button>
     </div>
   </header>
 
   <div class="sheet" id="sheet" hidden>
     <div class="sheet-head">
-      <h2>Jump by sign</h2>
+      <h2>Filter by sign</h2>
       <button type="button" class="sheet-close" id="close-sheet">Done</button>
     </div>
     <div class="sheet-tools">
@@ -405,11 +440,9 @@
       <div class="meta" id="brief-meta"></div>
     </section>
 
-    <p class="status" id="status"></p>
-    <div class="board" id="board">
-
-      <article class="item span" data-syms="V I R P E Q t" data-keys="symbol unit joule energy coulomb table legend">
-        <div class="frm">Symbols vs units</div>
+    <details class="legend-box" id="legend-box" open>
+      <summary>Symbols vs units</summary>
+      <div class="legend-inner">
         <div class="read">Formula letter ≠ unit letter. Energy is E; joules are J.</div>
         <table class="sym-table">
           <thead>
@@ -425,7 +458,11 @@
             <tr><td>Time</td><td>t</td><td>second</td><td>s</td></tr>
           </tbody>
         </table>
-      </article>
+      </div>
+    </details>
+
+    <p class="status" id="status"></p>
+    <div class="board" id="board">
 
       <article class="item" data-syms="I Q t" data-keys="current charge"><div class="frm mono">I = Q / t</div><div class="read">“I equals Q divided by t.”</div><div class="legend">I current (A) · Q charge (C) · t time (s) · <strong>1 A = 1 C/s</strong></div></article>
       <article class="item" data-syms="I Q t" data-keys="charge"><div class="frm mono">Q = I × t</div><div class="read">“Q equals I times t.”</div></article>
@@ -525,7 +562,7 @@
       </article>
     </div>
 
-    <p class="empty" id="empty">No formulas for that sign. Pick another in Jump.</p>
+    <p class="empty" id="empty">No formulas for that sign. Pick another in Filter.</p>
     <footer class="page-footer">
       Computation archive — verify against applicable wiring regulations.
       · <a href="../posters/electrical-formulas-poster.html">Print poster</a>
@@ -535,7 +572,7 @@
   <script>
     (function () {
       const SIGNS = {
-        all: { glyph: "All", name: "All signs", unit: "", blurb: "Full computation archive. Pick a sign to keep only the formulas that use it." },
+        all: { glyph: "All", name: "Clear filter", unit: "", blurb: "Full computation archive. Pick a sign to keep only the formulas that use it." },
         V: { glyph: "V", name: "Voltage", unit: "volt (V) · 1 V = 1 J/C", blurb: "Electrical potential-energy difference per coulomb. Formula letter V. Unit letter is also V — read the context. Loads transfer energy; they do not consume charge." },
         I: { glyph: "I", name: "Current", unit: "ampere (A) · 1 A = 1 C/s", blurb: "Charge per second. Same through every series component. Splits between parallel branches." },
         R: { glyph: "R", name: "Resistance", unit: "ohm (Ω)", blurb: "Opposition to current. Series: add. Parallel: reciprocals add. Longer cable → more R; thicker cable → less R." },
@@ -560,6 +597,7 @@
         XL: { glyph: "XL", name: "Inductive reactance", unit: "ohm (Ω)", blurb: "XL = 2πfL. Higher frequency or larger L → higher XL. Inductors oppose AC more as f rises." }
       };
 
+      const LEGEND_KEY = "ef-symbols-open";
       const items = Array.from(document.querySelectorAll(".item"));
       const search = document.getElementById("search");
       const grid = document.getElementById("sign-grid");
@@ -567,7 +605,20 @@
       const status = document.getElementById("status");
       const sheet = document.getElementById("sheet");
       const brief = document.getElementById("brief");
+      const legend = document.getElementById("legend-box");
+      const filterBtn = document.getElementById("open-sheet");
       let active = "all";
+
+      try {
+        const stored = localStorage.getItem(LEGEND_KEY);
+        legend.open = stored !== "0";
+      } catch (e) {
+        legend.open = true;
+      }
+
+      legend.addEventListener("toggle", () => {
+        try { localStorage.setItem(LEGEND_KEY, legend.open ? "1" : "0"); } catch (e) {}
+      });
 
       function tokens(el) {
         return (el.dataset.syms || "").split(/\s+/).filter(Boolean);
@@ -593,8 +644,13 @@
           if (show) n += 1;
         });
         empty.classList.toggle("show", n === 0);
-        if (active === "all") {
+        const filtered = active !== "all";
+        legend.classList.toggle("show", !filtered);
+        document.body.classList.toggle("filtered", filtered);
+        if (!filtered) {
           brief.classList.remove("show");
+          filterBtn.textContent = "Filter";
+          filterBtn.classList.remove("on");
           status.textContent = n + " formulas";
         } else {
           const s = SIGNS[active];
@@ -603,6 +659,8 @@
           document.getElementById("brief-name").textContent = s.name;
           document.getElementById("brief-text").textContent = s.blurb;
           document.getElementById("brief-meta").textContent = s.unit;
+          filterBtn.textContent = s.glyph;
+          filterBtn.classList.add("on");
           status.textContent = n + " formulas with " + s.glyph;
         }
         paintSigns();
